@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="COMP2011J.Game.EngineFX">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/COMP2011J.Game.EngineFX.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/libs/COMP2011J.Game.EngineFX.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/libs/COMP2011J.Game.EngineFX.jar!/" />
+    </SOURCES>
+  </library>
+</component>
