@@ -25,8 +25,8 @@ public class GameScreen implements Screen {
     }
 
     private void drawShape(GraphicsContext gc, Player p) {
-        int x = p.getX();
-        int y = p.getY();
+        double x = p.getX();
+        double y = p.getY();
         double radius = p.getRotation();
 
         // Draw the ship

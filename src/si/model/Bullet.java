@@ -4,7 +4,7 @@ package si.model;
 import javafx.geometry.Rectangle2D;
 
 public class Bullet implements Movable, Hittable {
-    private int x, y;
+    private double x, y;
     private boolean direction; // True for up, false for down
     private boolean alive = true;
     private Rectangle2D hitBox;
@@ -14,7 +14,7 @@ public class Bullet implements Movable, Hittable {
     public static final int BULLET_WIDTH = 4;
     private static final int BULLET_SPEED = 5;
 
-    public Bullet(int x, int y, boolean direction, String name) {
+    public Bullet(double x, double y, boolean direction, String name) {
         this.direction = direction;
         this.x = x;
         this.y = y;
@@ -31,11 +31,9 @@ public class Bullet implements Movable, Hittable {
         hitBox = new Rectangle2D(x, y, BULLET_WIDTH, BULLET_HEIGHT);
     }
 
-    public int getX() {
-        return x;
-    }
+    public double getX() { return x; }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 

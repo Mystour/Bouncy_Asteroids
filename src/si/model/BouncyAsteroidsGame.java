@@ -68,11 +68,7 @@ public class BouncyAsteroidsGame implements Game {
 //            }
 //        }
         if (listener.isPressingUp()){
-            double radians = player.getRotation() + 3*Math.PI/2;
             player.accelerate();
-            float dx = player.getSpeed_x();
-            float dy = player.getSpeed_y();
-            player.move(dx, dy);
         }
         else if (listener.isPressingLeft()) {
             player.rotate(-Math.PI/32);
@@ -80,12 +76,7 @@ public class BouncyAsteroidsGame implements Game {
         else if (listener.isPressingRight()) {
             player.rotate(Math.PI/32);
         }
-        else{
-            double radians = player.getRotation() + 3*Math.PI/2;
-            float dx = player.getSpeed_x();
-            float dy = player.getSpeed_y();
-            player.move(dx, dy);
-        }
+        player.move();
     }
 
 //    private void playerBullets() {

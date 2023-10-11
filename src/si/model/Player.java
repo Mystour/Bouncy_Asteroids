@@ -4,9 +4,9 @@ package si.model;
 import javafx.geometry.Rectangle2D;
 
 public class Player implements Hittable {
-    private int x;
-    private int y;
-    private float speed_x, speed_y;
+    private double x;
+    private double y;
+    private double speed_x, speed_y;
     private Rectangle2D hitBox;
     private double rotation;  // Initialized to 0 by default
     private int weaponCountdown;
@@ -22,11 +22,11 @@ public class Player implements Hittable {
         hitBox = new Rectangle2D(x, y, 8 * SHIP_SCALE, 5 * SHIP_SCALE);
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 
@@ -78,13 +78,27 @@ public class Player implements Hittable {
         return b;
     }
 
-    public void move(float x1, float y1) {
-        Rectangle2D newBox = new Rectangle2D(x + x1, y+y1, 8 * SHIP_SCALE, 5 * SHIP_SCALE);
-        if (BouncyAsteroidsGame.getScreenBounds().contains(newBox)) {
-            hitBox = newBox;
-            this.x += (int) x1;
-            this.y += (int) y1;
+    public void move() {
+        double dx = speed_x;
+        double dy = speed_y;
+
+        this.x += dx;
+        this.y += dy;
+
+        if (this.x > BouncyAsteroidsGame.SCREEN_WIDTH) {
+            this.x -= BouncyAsteroidsGame.SCREEN_WIDTH;
+        } else if (this.x < 0) {
+            this.x += BouncyAsteroidsGame.SCREEN_WIDTH;
         }
+
+        if (this.y > BouncyAsteroidsGame.SCREEN_HEIGHT) {
+            this.y -= BouncyAsteroidsGame.SCREEN_HEIGHT;
+        } else if (this.y < 0) {
+            this.y += BouncyAsteroidsGame.SCREEN_HEIGHT;
+        }
+
+        Rectangle2D newBox = new Rectangle2D(this.x, this.y, 8 * SHIP_SCALE, 5 * SHIP_SCALE);
+        hitBox = newBox;
     }
 
     public void rotate(double degrees) {
@@ -96,13 +110,6 @@ public class Player implements Hittable {
         return rotation;
     }
 
-    public float getSpeed_x() {
-        return speed_x;
-    }
-
-    public float getSpeed_y() {
-        return speed_y;
-    }
 
     public void accelerate() {
         float acceleration = 0.2f;
