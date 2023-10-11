@@ -76,7 +76,7 @@ public class Player implements Hittable {
 
     public void move(int x1, int y1) {
         Rectangle2D newBox = new Rectangle2D(x + x1, y+y1, 8 * SHIP_SCALE, 5 * SHIP_SCALE);
-        if (SpaceInvadersGame.getScreenBounds().contains(newBox)) {
+        if (BouncyAsteroidsGame.getScreenBounds().contains(newBox)) {
             hitBox = newBox;
             this.x += x1;
             this.y += y1;

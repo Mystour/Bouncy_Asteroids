@@ -4,26 +4,29 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import si.model.BouncyAsteroidsGame;
+
 import ucd.comp2011j.engine.GameManager;
-import si.model.SpaceInvadersGame;
 import ucd.comp2011j.engine.ScoreKeeper;
 
-public class ApplicationStart  extends Application {
+import java.io.IOException;
+
+public class ApplicationStart extends Application {
 
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) throws IOException{
         StackPane root = new StackPane();
-        Scene scene = new Scene(root, SpaceInvadersGame.SCREEN_WIDTH, SpaceInvadersGame.SCREEN_HEIGHT);
+        Scene scene = new Scene(root, BouncyAsteroidsGame.SCREEN_WIDTH, BouncyAsteroidsGame.SCREEN_HEIGHT);
         PlayerListener playerListener = new PlayerListener();
         playerListener.setListeners(scene);
         MenuListener menuListener = new MenuListener();
         menuListener.setListeners(scene);
-        primaryStage.setTitle("Space Invaders");
-        SpaceInvadersGame game = new SpaceInvadersGame(playerListener);
+        primaryStage.setTitle("Bouncy Asteroids");
+        BouncyAsteroidsGame game = new BouncyAsteroidsGame(playerListener);
         GameScreen gameScreen = new GameScreen(game);
         MenuScreen menuScreen = new MenuScreen();
         ScoreKeeper scoreKeeper = new ScoreKeeper("scores.txt");

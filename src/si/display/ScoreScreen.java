@@ -3,12 +3,10 @@ package si.display;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
-import si.model.SpaceInvadersGame;
+import si.model.BouncyAsteroidsGame;
 import ucd.comp2011j.engine.Score;
 import ucd.comp2011j.engine.ScoreKeeper;
 import ucd.comp2011j.engine.Screen;
@@ -20,7 +18,7 @@ public class ScoreScreen implements Screen {
 
     public ScoreScreen(ScoreKeeper sc) {
         this.scoreKeeper = sc;
-        this.canvas = new Canvas(SpaceInvadersGame.SCREEN_WIDTH, SpaceInvadersGame.SCREEN_HEIGHT);
+        this.canvas = new Canvas(BouncyAsteroidsGame.SCREEN_WIDTH, BouncyAsteroidsGame.SCREEN_HEIGHT);
     }
     public Canvas getCanvas(){
         return canvas;
@@ -28,26 +26,26 @@ public class ScoreScreen implements Screen {
 
     public void paint() {
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.clearRect(0,0, SpaceInvadersGame.SCREEN_WIDTH, SpaceInvadersGame.SCREEN_HEIGHT);
+        gc.clearRect(0,0, BouncyAsteroidsGame.SCREEN_WIDTH, BouncyAsteroidsGame.SCREEN_HEIGHT);
         gc.setFill(Color.BLACK);
-        gc.fillRect(0,0,SpaceInvadersGame.SCREEN_WIDTH, SpaceInvadersGame.SCREEN_HEIGHT);
+        gc.fillRect(0,0,BouncyAsteroidsGame.SCREEN_WIDTH, BouncyAsteroidsGame.SCREEN_HEIGHT);
         gc.setTextAlign(TextAlignment.CENTER);
         gc.setTextBaseline(VPos.CENTER);
         gc.setFont(new Font("Arial", 28));
         gc.setFill(Color.GREEN);
-        gc.fillText("Space Invaders Hall of Fame", SpaceInvadersGame.SCREEN_WIDTH/2, SpaceInvadersGame.SCREEN_HEIGHT / 10);
+        gc.fillText("Space Invaders Hall of Fame", BouncyAsteroidsGame.SCREEN_WIDTH/2, BouncyAsteroidsGame.SCREEN_HEIGHT / 10);
 
         Score[] scores = scoreKeeper.getScores();
         gc.setFont(new Font("Arial", 16));
         gc.setTextAlign(TextAlignment.LEFT);
         for (int i = 0; i < scores.length; i++) {
             Score score = scores[i];
-            gc.fillText(score.getName(), 2 * SpaceInvadersGame.SCREEN_WIDTH / 6, 96 + i * 32);
-            gc.fillText("" + score.getScore(), 4 * SpaceInvadersGame.SCREEN_WIDTH / 6, 96 + i * 32);
+            gc.fillText(score.getName(), 2 * BouncyAsteroidsGame.SCREEN_WIDTH / 6, 96 + i * 32);
+            gc.fillText("" + score.getScore(), 4 * BouncyAsteroidsGame.SCREEN_WIDTH / 6, 96 + i * 32);
         }
         gc.setTextAlign(TextAlignment.CENTER);
         gc.setTextBaseline(VPos.CENTER);
         gc.setFont(new Font("Arial", 28));
-        gc.fillText("Press 'M' to return to the Main Menu", SpaceInvadersGame.SCREEN_WIDTH/2, SpaceInvadersGame.SCREEN_HEIGHT / 10 * 9);
+        gc.fillText("Press 'M' to return to the Main Menu", BouncyAsteroidsGame.SCREEN_WIDTH/2, BouncyAsteroidsGame.SCREEN_HEIGHT / 10 * 9);
     }
 }

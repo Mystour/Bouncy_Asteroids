@@ -6,14 +6,13 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 public class PlayerListener {
-    private boolean left;
-    private boolean right;
-    private boolean fire;
-    private boolean pause;
+    private boolean up, left, right, fire, pause;
 
     public void resetPause() {
         pause = false;
     }
+
+    public boolean isPressingUp() {return up; }
 
     public boolean isPressingLeft() {
         return left;
@@ -32,30 +31,43 @@ public class PlayerListener {
     }
 
     public void setListeners(Scene s) {
-        s.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent e) {
-                if (e.getCode() == KeyCode.LEFT) {
+        s.setOnKeyPressed(e -> {
+            switch (e.getCode()) {
+                case UP:
+                    up = true;
+                    break;
+                case LEFT:
                     left = true;
-                } else if (e.getCode() == KeyCode.RIGHT) {
+                    break;
+                case RIGHT:
                     right = true;
-                } else if (e.getCode() == KeyCode.SPACE) {
+                    break;
+                case SPACE:
                     fire = true;
-                } else if (e.getCode() == KeyCode.P) {
+                    break;
+                case P:
                     pause = true;
-                }
+                    break;
+                default:
+                    break;
             }
         });
-        s.setOnKeyReleased(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent e) {
-                if (e.getCode() == KeyCode.LEFT) {
+        s.setOnKeyReleased(e -> {
+            switch (e.getCode()) {
+                case UP:
+                    up = false;
+                    break;
+                case LEFT:
                     left = false;
-                } else if (e.getCode() == KeyCode.RIGHT) {
+                    break;
+                case RIGHT:
                     right = false;
-                } else if (e.getCode() == KeyCode.SPACE) {
+                    break;
+                case SPACE:
                     fire = false;
-                }
+                    break;
+                default:
+                    break;
             }
         });
 
