@@ -6,7 +6,7 @@ import javafx.geometry.Rectangle2D;
 public class Player implements Hittable {
     private int x;
     private int y;
-    private int speed = 2;
+    private float speed_x, speed_y;
     private Rectangle2D hitBox;
     private double rotation;  // Initialized to 0 by default
     private int weaponCountdown;
@@ -78,12 +78,12 @@ public class Player implements Hittable {
         return b;
     }
 
-    public void move(int x1, int y1) {
+    public void move(float x1, float y1) {
         Rectangle2D newBox = new Rectangle2D(x + x1, y+y1, 8 * SHIP_SCALE, 5 * SHIP_SCALE);
         if (BouncyAsteroidsGame.getScreenBounds().contains(newBox)) {
             hitBox = newBox;
-            this.x += x1;
-            this.y += y1;
+            this.x += (int) x1;
+            this.y += (int) y1;
         }
     }
 
@@ -96,10 +96,19 @@ public class Player implements Hittable {
         return rotation;
     }
 
-    public int getSpeed() {
-        int acceleration = 1;
-        speed += acceleration;
-        return speed;
+    public float getSpeed_x() {
+        return speed_x;
+    }
+
+    public float getSpeed_y() {
+        return speed_y;
+    }
+
+    public void accelerate() {
+        float acceleration = 0.2f;
+        double radians = rotation + 3*Math.PI/2;
+        speed_x += (float) (acceleration * Math.cos(radians));
+        speed_y += (float) (acceleration * Math.sin(radians));
     }
 
 }
