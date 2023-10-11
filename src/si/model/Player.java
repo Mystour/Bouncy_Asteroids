@@ -6,7 +6,9 @@ import javafx.geometry.Rectangle2D;
 public class Player implements Hittable {
     private int x;
     private int y;
+    private int speed = 2;
     private Rectangle2D hitBox;
+    private double rotation;  // Initialized to 0 by default
     private int weaponCountdown;
     private boolean alive = true;
     public static final int SHIP_SCALE = 4;
@@ -83,6 +85,21 @@ public class Player implements Hittable {
             this.x += x1;
             this.y += y1;
         }
+    }
+
+    public void rotate(double degrees) {
+        rotation += degrees;
+        rotation = (rotation % 360 + 360) % 360; // Ensure rotation stays within [0, 360)
+    }
+
+    public double getRotation() {
+        return rotation;
+    }
+
+    public int getSpeed() {
+        int acceleration = 1;
+        speed += acceleration;
+        return speed;
     }
 
 }
