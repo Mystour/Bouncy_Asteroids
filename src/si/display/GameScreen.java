@@ -27,8 +27,11 @@ public class GameScreen implements Screen {
     private void drawShape(GraphicsContext gc, Player p) {
         int x = p.getX();
         int y = p.getY();
-        int[] x_coords = new int[]{0, 2, 2, 3, 3, 4, 4, 5, 5, 7, 7, 0, 0};
-        int[] y_coords = new int[]{2, 2, 1, 1, 0, 0, 1, 1, 2, 2, 4, 4, 2};
+
+        // Draw the ship
+        int[] x_coords = new int[]{7, 6, 6, 5, 5, 4, 0, 0, 4, 5, 3, 3, 5, 6, 8, 9, 11, 11, 9, 10, 14, 14, 10, 9, 9, 8, 8, 7};
+        int[] y_coords = new int[]{0, 1, 3, 4, 6, 7, 8, 10, 10, 11, 12, 13, 13, 12, 12, 13, 13, 12, 11, 10, 10, 8, 7, 6, 4, 3, 1, 0};
+
         double[] x_adjusted = new double[x_coords.length];
         double[] y_adjusted = new double[y_coords.length];
         for (int i = 0; i < x_coords.length; i++) {

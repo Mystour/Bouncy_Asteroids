@@ -13,8 +13,10 @@ public class Player implements Hittable {
     private static final int WIDTH = SHIP_SCALE * 8;
 
     public Player() {
+        // the player starts at the bottom of the screen, centered horizontally
         x = 400 - WIDTH;
         y = 450;
+
         hitBox = new Rectangle2D(x, y, 8 * SHIP_SCALE, 5 * SHIP_SCALE);
     }
 
