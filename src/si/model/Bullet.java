@@ -9,8 +9,8 @@ public class Bullet implements Movable, Hittable {
     private boolean alive = true;
     private Rectangle2D hitBox;
     private static int bulletCounter = 0;
-    public static final int BULLET_HEIGHT = 8;
-    public static final int BULLET_WIDTH = 4;
+    public static final int BULLET_HEIGHT = 4;
+    public static final int BULLET_WIDTH = 2;
     private static final int BULLET_SPEED = 5;
 
     public Bullet(double x, double y, double rotation) {

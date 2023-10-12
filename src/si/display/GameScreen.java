@@ -48,14 +48,14 @@ public class GameScreen implements Screen {
         double y = b.getY();
         double radius = b.getRotation();
         // Draw the bullet
-        int[] x_coords = new int[]{-1, 1, 1, -1};
-        int[] y_coords = new int[]{1, 1, -1, -1};
+        int[] x_coords = new int[]{-Bullet.BULLET_WIDTH/2, Bullet.BULLET_WIDTH/2, Bullet.BULLET_WIDTH/2, -Bullet.BULLET_WIDTH/2};
+        int[] y_coords = new int[]{-Bullet.BULLET_HEIGHT/2, -Bullet.BULLET_HEIGHT/2, Bullet.BULLET_HEIGHT/2, Bullet.BULLET_HEIGHT/2};
 
         double[] x_adjusted = new double[4];
         double[] y_adjusted = new double[4];
         for (int i = 0; i < 4; i++) {
-            x_adjusted[i] = x + (x_coords[i] * Math.cos(radius) - y_coords[i] * Math.sin(radius)) * Player.SHIP_SCALE;
-            y_adjusted[i] = y + (x_coords[i] * Math.sin(radius) + y_coords[i] * Math.cos(radius)) * Player.SHIP_SCALE;
+            x_adjusted[i] = x + (x_coords[i] * Math.cos(radius) - y_coords[i] * Math.sin(radius)) * Player.SHIP_SCALE/2;
+            y_adjusted[i] = y + (x_coords[i] * Math.sin(radius) + y_coords[i] * Math.cos(radius)) * Player.SHIP_SCALE/2;
         }
 
         gc.setFill(Color.GREEN);

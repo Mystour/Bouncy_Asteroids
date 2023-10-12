@@ -73,7 +73,7 @@ public class Player implements Hittable {
     public Bullet fire() {
         Bullet b = null;
         if (weaponCountdown == 0) {
-            b = new Bullet(x, y - 2 * SHIP_SCALE, rotation);
+            b = new Bullet(x, y, rotation);
         }
         return b;
     }
