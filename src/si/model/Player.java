@@ -73,7 +73,7 @@ public class Player implements Hittable {
     public Bullet fire() {
         Bullet b = null;
         if (weaponCountdown == 0) {
-            b = new Bullet(x + 3 * SHIP_SCALE, y - 1 * SHIP_SCALE, true, "Player");
+            b = new Bullet(x, y - 2 * SHIP_SCALE, rotation);
         }
         return b;
     }
@@ -116,6 +116,11 @@ public class Player implements Hittable {
         double radians = rotation + 3*Math.PI/2;
         speed_x += (float) (acceleration * Math.cos(radians));
         speed_y += (float) (acceleration * Math.sin(radians));
+        double maxSpeed = 8;
+        if (Math.pow(speed_x, 2) + Math.pow(speed_y, 2) > Math.pow(maxSpeed, 2)) {
+            speed_x = (float) (maxSpeed * Math.cos(radians));
+            speed_y = (float) (maxSpeed * Math.sin(radians));
+        }
     }
 
 }

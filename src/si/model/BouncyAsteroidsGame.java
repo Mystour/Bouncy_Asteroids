@@ -48,25 +48,25 @@ public class BouncyAsteroidsGame implements Game {
     @Override
     public void updateGame() {
         if (!isPaused()) {
-//            player.tick();
+            player.tick();
 //            targets.clear();
 //            targets.addAll(level[currentLevel].getHittable());
 //            targets.add(player);
-//            playerBullets();
+            playerBullets();
 //            enemyBullets();
 //            enemyBullets.addAll(level[currentLevel].move());
-              movePlayer();
+            movePlayer();
         }
     }
 
 
     private void movePlayer() {
-//        if (listener.isPressingFire()) {
-//            Bullet b = player.fire();
-//            if (b != null) {
-//                playerBullets.add(b);
-//            }
-//        }
+        if (listener.isPressingFire()) {
+            Bullet b = player.fire();
+            if (b != null) {
+                playerBullets.add(b);
+            }
+        }
         if (listener.isPressingUp()){
             player.accelerate();
         }
@@ -79,25 +79,25 @@ public class BouncyAsteroidsGame implements Game {
         player.move();
     }
 
-//    private void playerBullets() {
-//        List<Bullet> remove = new ArrayList<Bullet>();
-//        for (int i = 0; i < playerBullets.size(); i++) {
-//            if (playerBullets.get(i).isAlive() && playerBullets.get(i).getHitBox().intersects(SCREEN_BOUNDS)) {
-//                playerBullets.get(i).move();
-//                for (Hittable t : targets) {
-//                    if (t != playerBullets.get(i)) {
-//                        if (t.isHit(playerBullets.get(i))) {
-//                            playerScore += t.getPoints();
-//                            playerBullets.get(i).destroy();
-//                        }
-//                    }
-//                }
-//            } else {
-//                remove.add(playerBullets.get(i));
-//            }
-//        }
-//        playerBullets.removeAll(remove);
-//    }
+    private void playerBullets() {
+        List<Bullet> remove = new ArrayList<>();
+        for (int i = 0; i < playerBullets.size(); i++) {
+            if (playerBullets.get(i).isAlive() && playerBullets.get(i).getHitBox().intersects(SCREEN_BOUNDS)) {
+                playerBullets.get(i).move();
+                for (Hittable t : targets) {
+                    if (t != playerBullets.get(i)) {
+                        if (t.isHit(playerBullets.get(i))) {
+                            playerScore += t.getPoints();
+                            playerBullets.get(i).destroy();
+                        }
+                    }
+                }
+            } else {
+                remove.add(playerBullets.get(i));
+            }
+        }
+        playerBullets.removeAll(remove);
+    }
 
 //    private void enemyBullets() {
 //        List<Bullet> remove = new ArrayList<Bullet>();
@@ -200,12 +200,12 @@ public class BouncyAsteroidsGame implements Game {
         return player;
     }
 
-//    public List<Bullet> getBullets() {
-//        ArrayList<Bullet> bullets = new ArrayList<Bullet>();
-//        bullets.addAll(playerBullets);
-//        bullets.addAll(enemyBullets);
-//        return bullets;
-//    }
+    public List<Bullet> getBullets() {
+        ArrayList<Bullet> bullets = new ArrayList<>();
+        bullets.addAll(playerBullets);
+        bullets.addAll(enemyBullets);
+        return bullets;
+    }
 
 //    public List<EnemyShip> getEnemyShips() {
 //        return level[currentLevel].getEnemyShips();

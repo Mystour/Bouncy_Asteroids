@@ -31,7 +31,7 @@ public class GameScreen implements Screen {
 
         // Draw the ship
         int[] x_coords = new int[]{0, -1, -1, -2, -2, -3, -7, -7, -3, -2, -4, -4, -2, -1, 1, 2, 4, 4, 2, 3, 7, 7, 3, 2, 2, 1, 1, 0};
-        int[] y_coords = new int[]{-4, -3, -1, 0, 2, 3, 4, 6, 6, 7, 8, 9, 9, 8, 8, 9, 9, 8, 7, 6, 6, 4, 3, 2, 0, -1, -3, -4};
+        int[] y_coords = new int[]{-6, -5, -3, -2, 0, 1, 2, 4, 4, 5, 6, 7, 7, 6, 6, 7, 7, 6, 5, 4, 4, 2, 1, 0, -2, -3, -5, -6};
 
         double[] x_adjusted = new double[x_coords.length];
         double[] y_adjusted = new double[y_coords.length];
@@ -44,11 +44,23 @@ public class GameScreen implements Screen {
     }
 
     private void drawShape(GraphicsContext gc, Bullet b) {
+        double x = b.getX();
+        double y = b.getY();
+        double radius = b.getRotation();
+        // Draw the bullet
+        int[] x_coords = new int[]{-1, 1, 1, -1};
+        int[] y_coords = new int[]{1, 1, -1, -1};
+
+        double[] x_adjusted = new double[4];
+        double[] y_adjusted = new double[4];
+        for (int i = 0; i < 4; i++) {
+            x_adjusted[i] = x + (x_coords[i] * Math.cos(radius) - y_coords[i] * Math.sin(radius)) * Player.SHIP_SCALE;
+            y_adjusted[i] = y + (x_coords[i] * Math.sin(radius) + y_coords[i] * Math.cos(radius)) * Player.SHIP_SCALE;
+        }
+
         gc.setFill(Color.GREEN);
-        gc.fillRect(b.getX(), b.getY(), b.BULLET_WIDTH, b.BULLET_HEIGHT);
+        gc.fillPolygon(x_adjusted, y_adjusted, x_adjusted.length);
     }
-
-
 
     public void paint() {
         GraphicsContext gc = this.canvas.getGraphicsContext2D();
@@ -64,9 +76,9 @@ public class GameScreen implements Screen {
             gc.setTextAlign(TextAlignment.RIGHT);
             gc.fillText("Score: " + game.getPlayerScore(), BouncyAsteroidsGame.SCREEN_WIDTH, 0);
             drawShape(gc, game.getShip());
-//            for (Bullet bullet : game.getBullets()) {
-//                drawShape(gc, bullet);
-//            }
+            for (Bullet bullet : game.getBullets()) {
+                drawShape(gc, bullet);
+            }
             if ((game.isPaused() || !game.isPlayerAlive()) && game.getLives() > 0) {
                 gc.setTextAlign(TextAlignment.CENTER);
                 gc.setTextBaseline(VPos.CENTER);
