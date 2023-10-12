@@ -1,15 +1,12 @@
 package si.display;
 
-import javafx.geometry.Rectangle2D;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
-import si.model.BouncyAsteroidsGame;
-import si.model.Bullet;
-import si.model.Player;
+import si.model.*;
 import ucd.comp2011j.engine.Screen;
 
 public class GameScreen implements Screen {
@@ -62,6 +59,28 @@ public class GameScreen implements Screen {
         gc.fillPolygon(x_adjusted, y_adjusted, x_adjusted.length);
     }
 
+    private void drawShape(GraphicsContext gc, Asteroids at) {
+        if (at.getType() == PlanetType.A) {
+            drawAsteroidA(gc, at);
+        } else if (at.getType() == PlanetType.B) {
+            drawAsteroidB(gc, at);
+        } else {
+            drawAsteroidC(gc, at);
+        }
+    }
+
+    public void drawAsteroidA(GraphicsContext gc, Asteroids at) {
+        gc.setFill(Color.GRAY);  // Choose a color for the asteroid
+        double x = at.getX();  // The x coordinate of our asteroid
+        double y = at.getY();  // The y coordinate of our asteroid
+        double size = at.getSize();  // The size (radius) of our asteroid
+
+        gc.fillOval(x, y, size, size);  // draw a circle at (x, y) with a diameter the same as our size.
+    }
+
+    public void drawAsteroidB(GraphicsContext gc, Asteroids at){}
+    public void drawAsteroidC(GraphicsContext gc, Asteroids at){}
+
     public void paint() {
         GraphicsContext gc = this.canvas.getGraphicsContext2D();
         gc.clearRect(0, 0, BouncyAsteroidsGame.SCREEN_WIDTH, BouncyAsteroidsGame.SCREEN_HEIGHT);
@@ -79,12 +98,15 @@ public class GameScreen implements Screen {
             for (Bullet bullet : game.getBullets()) {
                 drawShape(gc, bullet);
             }
+            for (Asteroids asteroid : game.getAsteroids()) {
+                drawShape(gc, asteroid);
+            }
             if ((game.isPaused() || !game.isPlayerAlive()) && game.getLives() > 0) {
                 gc.setTextAlign(TextAlignment.CENTER);
                 gc.setTextBaseline(VPos.CENTER);
                 gc.setFont(new Font("Arial", 24));
                 gc.setFill(Color.GREEN);
-                gc.fillText("Press 'p' to continue ", BouncyAsteroidsGame.SCREEN_WIDTH/2, BouncyAsteroidsGame.SCREEN_HEIGHT/2);
+                gc.fillText("Prats 'p' to continue ", BouncyAsteroidsGame.SCREEN_WIDTH/2, BouncyAsteroidsGame.SCREEN_HEIGHT/2);
 
             } else if (!game.isPlayerAlive() && game.getLives() == 0) {
                 gc.setTextAlign(TextAlignment.CENTER);
