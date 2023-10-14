@@ -53,7 +53,7 @@ public class Level {
         List<EnemyShip> ships = swarm.getEnemyShips();
         List<Bullet> eBullets = new ArrayList<Bullet>();
         for (EnemyShip s : ships) {
-            double rotation = Math.atan2(y - s.getY(), x - s.getX());
+            double rotation = Math.atan2(s.getY() - y, x - s.getX());  // adjusted y direction
             Bullet b = s.fire(rotation);
             if (b != null) {
                 eBullets.add(b);
