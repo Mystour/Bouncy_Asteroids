@@ -9,11 +9,15 @@ import java.util.List;
 public class Level {
     private Swarm swarm;
 //    private double startingSpeed;
+    int numA, numB, numC;
 
     private BouncyAsteroidsGame game;
 
-    public Level(BouncyAsteroidsGame g){
+    public Level(int A, int B, int C, BouncyAsteroidsGame g){
         game = g;
+        numA = A;
+        numB = B;
+        numC = C;
         reset();
     }
 
@@ -36,6 +40,10 @@ public class Level {
     }
 
     public void reset() {
-        swarm = new Swarm(2, game);
+        swarm = new Swarm(numA, numB, numC, game);
+    }
+
+    public void move() {
+        swarm.move();
     }
 }

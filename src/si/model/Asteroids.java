@@ -8,19 +8,21 @@ import java.util.Random;
 public class Asteroids implements Hittable {
     private String name;
     private boolean alive;
-    private int size;
     private double x, y;
+    private double rotation;
+    private double speed, speed_x, speed_y;
     private PlanetType type;
-    private Random rand;
     private int height;
     public static final int SHIP_SCALE = 2;
 
-    public Asteroids(int x, int y, PlanetType type) {
+    public Asteroids(double x, double y, double rotation, PlanetType type) {
         this.x = x;
         this.y = y;
         this.type = type;
-        this.size = type.getRadius();
-        this.rand = new Random(x * 100 + y);
+        this.speed = type.getSpeed();
+        this.rotation = rotation;
+        this.speed_x = speed * Math.cos(rotation);
+        this.speed_y = speed * Math.sin(rotation);
         this.alive = true;
     }
 
@@ -66,6 +68,14 @@ public class Asteroids implements Hittable {
         return (int) y;
     }
 
-    public int getSize() { return size; }
+    public void setX(double x) { this.x = x; }
 
+    public void setY(double y) { this.y = y; }
+
+    public double getSpeedX() { return speed_x; }
+    public double getSpeedY() { return speed_y; }
+
+    public void setSpeedX(double speed_x) { this.speed_x = speed_x; }
+    public void setSpeedY(double speed_y) { this.speed_y = speed_y; }
+    public double getRotation() { return rotation; }
 }

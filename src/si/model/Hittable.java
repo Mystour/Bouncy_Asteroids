@@ -3,10 +3,10 @@ package si.model;
 import javafx.geometry.Rectangle2D;
 
 public interface Hittable {
-	public boolean isAlive();
-	public int getPoints();
-	public boolean isPlayer();
-	public boolean isHit(Bullet b);
-	public Rectangle2D getHitBox();
+	boolean isAlive();
+	int getPoints();
+	boolean isPlayer();
+	boolean isHit(Bullet b);
+	Rectangle2D getHitBox();
 }
 

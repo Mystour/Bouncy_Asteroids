@@ -22,7 +22,7 @@ public class BouncyAsteroidsGame implements Game {
     private Level[] level;
     public static final int BUNKER_TOP = 350;
     private static final int NO_LEVELS = 5;
-    private int currentLevel = 0;
+    private int currentLevel;
 
     public BouncyAsteroidsGame(PlayerListener listener) {
         this.listener = listener;
@@ -53,7 +53,9 @@ public class BouncyAsteroidsGame implements Game {
             targets.addAll(level[currentLevel].getHittable());
             targets.add(player);
             playerBullets();
+            Asteroids();
             movePlayer();
+            level[currentLevel].move();
         }
     }
 
@@ -82,12 +84,10 @@ public class BouncyAsteroidsGame implements Game {
         for (Bullet playerBullet : playerBullets) {
             if (playerBullet.isAlive() && playerBullet.getHitBox().intersects(SCREEN_BOUNDS)) {
                 playerBullet.move();
-                for (Hittable t : targets) {
-                    if (t != playerBullet) {
-                        if (t.isHit(playerBullet)) {
-                            playerScore += t.getPoints();
-                            playerBullet.destroy();
-                        }
+                for (Asteroids t : level[currentLevel].getAsteroids()) {
+                    if (t.isHit(playerBullet)) {
+                        playerScore += t.getPoints();
+                        playerBullet.destroy();
                     }
                 }
             } else {
@@ -95,6 +95,42 @@ public class BouncyAsteroidsGame implements Game {
             }
         }
         playerBullets.removeAll(remove);
+    }
+
+//    private void enemyBullets() {
+//        List<Bullet> remove = new ArrayList<Bullet>();
+//        for (int i = 0; i < enemyBullets.size(); i++) {
+//            Bullet b = enemyBullets.get(i);
+//            if (b.isAlive() && b.getHitBox().intersects(SCREEN_BOUNDS)) {
+//                b.move();
+//                for (Hittable t : targets) {
+//                    if (t != b) {
+//                        if (t.isHit(b)) {
+//                            if (t.isPlayer()) {
+//                                playerLives--;
+//                                pause = true;
+//                            }
+//                            b.destroy();
+//                        }
+//                    }
+//                }
+//            } else {
+//                remove.add(b);
+//            }
+//        }
+//        enemyBullets.removeAll(remove);
+//    }
+
+    private void Asteroids() {
+        for (int i = 0; i < level[currentLevel].getAsteroids().size(); i++) {
+            Asteroids a = level[currentLevel].getAsteroids().get(i);
+            if (a.isAlive() && a.getHitBox().intersects(SCREEN_BOUNDS)) {
+                if (player.isHit(a)) {
+                    playerLives--;
+                    pause = true;
+                }
+            }
+        }
     }
 
 
@@ -112,27 +148,25 @@ public class BouncyAsteroidsGame implements Game {
         targets = new ArrayList<Hittable>();
         playerLives = 3;
         playerScore = 0;
+        currentLevel = 0;
         playerBullets = new ArrayList<Bullet>();
         player = new Player();
-        level = new Level[1];
-        level[0] = new Level(this);
-//        level = new Level[5];
-//        level[0] = new Level(0.5, 3, 10, this);
-//        level[1] = new Level(1, 4, 11, this);
-//        level[2] = new Level(1.5, 5, 12, this);
-//        level[3] = new Level(2, 5, 14, this);
-//        level[4] = new Level(2.5, 5, 16, this);
+        level = new Level[NO_LEVELS];
+        level[0] = new Level(1, 0, 0, this);
+        level[1] = new Level(1, 0, 1, this);
+        level[2] = new Level(1, 1, 1, this);
+        level[3] = new Level(2, 0, 0, this);
+        level[4] = new Level(2, 1, 0, this);
     }
 
     @Override
     public boolean isLevelFinished() {
-//        if (currentLevel < NO_LEVELS) {
-//            int noShips = level[currentLevel].getAsteroidsRemaining();
-//            return level[currentLevel].getBottomY() >= BUNKER_TOP || noShips == 0;
-//        } else {
-//            return true;
-//        }
-        return false;
+        if (currentLevel < NO_LEVELS) {
+            int noAsteroids = level[currentLevel].getAsteroidsRemaining();
+            return noAsteroids == 0;
+        } else {
+            return true;
+        }
     }
 
     @Override
@@ -182,4 +216,8 @@ public class BouncyAsteroidsGame implements Game {
     public List<Asteroids> getAsteroids() {
         return level[currentLevel].getAsteroids();
     }
+
+    public int getLevel() { return currentLevel; }
+
+    public Player getPlayer() { return player; }
 }

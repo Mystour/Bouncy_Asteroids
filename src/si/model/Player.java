@@ -38,6 +38,14 @@ public class Player implements Hittable {
         return hit;
     }
 
+    public boolean isHit(Asteroids a) {
+        boolean hit = hitBox.intersects(a.getHitBox());
+        if (hit) {
+            alive = false;
+        }
+        return hit;
+    }
+
     public void tick() {
         if (weaponCountdown > 0) {
             weaponCountdown--;

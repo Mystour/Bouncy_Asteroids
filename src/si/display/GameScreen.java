@@ -60,26 +60,18 @@ public class GameScreen implements Screen {
     }
 
     private void drawShape(GraphicsContext gc, Asteroids at) {
-        if (at.getType() == PlanetType.A) {
-            drawAsteroidA(gc, at);
-        } else if (at.getType() == PlanetType.B) {
-            drawAsteroidB(gc, at);
-        } else {
-            drawAsteroidC(gc, at);
-        }
+        PlanetType type = at.getType();
+        drawAsteroid(gc, at, type.getRadius());
     }
 
-    public void drawAsteroidA(GraphicsContext gc, Asteroids at) {
-        gc.setFill(Color.GRAY);  // Choose a color for the asteroid
+    public void drawAsteroid(GraphicsContext gc, Asteroids at, int size) {
         double x = at.getX();  // The x coordinate of our asteroid
         double y = at.getY();  // The y coordinate of our asteroid
-        double size = at.getSize();  // The size (radius) of our asteroid
 
+        gc.setFill(Color.GRAY);  // Choose a color for the asteroid
         gc.fillOval(x, y, size, size);  // draw a circle at (x, y) with a diameter the same as our size.
     }
 
-    public void drawAsteroidB(GraphicsContext gc, Asteroids at){}
-    public void drawAsteroidC(GraphicsContext gc, Asteroids at){}
 
     public void paint() {
         GraphicsContext gc = this.canvas.getGraphicsContext2D();
@@ -92,6 +84,7 @@ public class GameScreen implements Screen {
             gc.setTextBaseline(VPos.TOP);
             gc.setFont(new Font("Arial", 24));
             gc.fillText("Lives: " + game.getLives(), 0, 0);
+            gc.fillText("Level: " + game.getLevel(), 0, 30);
             gc.setTextAlign(TextAlignment.RIGHT);
             gc.fillText("Score: " + game.getPlayerScore(), BouncyAsteroidsGame.SCREEN_WIDTH, 0);
             drawShape(gc, game.getShip());
