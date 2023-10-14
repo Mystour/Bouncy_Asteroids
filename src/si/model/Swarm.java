@@ -1,28 +1,20 @@
 package si.model;
 
-import javafx.geometry.Rectangle2D;
-
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Swarm implements Movable {
     private List<Asteroids> asteroids;
-    private boolean direction = true; // true for moving right false for left
+    private List<EnemyShip> ships;
     private double x, y;
-    private int space = 30;
-    private Asteroids[][] AsteroidGrid;
-//    private int rows, cols;
-    private int count = 0;
-    private double speed = 1;
-
-    private double radius;
     private Player player;
     private BouncyAsteroidsGame game;
 
-    public Swarm(int numA, int numB, int numC, BouncyAsteroidsGame g) {
+    public Swarm(int numA, int numB, int numC, int numS, BouncyAsteroidsGame g) {
         game = g;
-        asteroids = new ArrayList<Asteroids>();
+        asteroids = new ArrayList<>();
+        ships = new ArrayList<>();
+        ships = new ArrayList<>();
         player = game.getPlayer();
         for (int i = 0; i < numA; i++) {
             x = Math.random() * game.getScreenWidth();
@@ -54,14 +46,26 @@ public class Swarm implements Movable {
             Asteroids a = new Asteroids(x, y, Math.random()* 2 * Math.PI, PlanetType.C);
             asteroids.add(a);
         }
+
+        for (int i = 0; i < numS; i++) {
+            x = Math.random() * game.getScreenWidth();
+            y = Math.random() * game.getScreenHeight();
+            while (Math.abs(x - player.getX()) <  20 && Math.abs(y - player.getY()) < 20) {
+                x = Math.random() * game.getScreenWidth();
+                y = Math.random() * game.getScreenHeight();
+            }
+            EnemyShip s = new EnemyShip(x, y, AlienType.A);
+            ships.add(s);
+        }
     }
 
     public void move() {
-        List<Asteroids> remove = new ArrayList<Asteroids>();
-        List<Asteroids> add = new ArrayList<Asteroids>();
+        List<Asteroids> removeA = new ArrayList<Asteroids>();
+        List<Asteroids> addA = new ArrayList<Asteroids>();
+        List<EnemyShip> removeS = new ArrayList<EnemyShip>();
         for (Asteroids s : asteroids) {
             if (!s.isAlive()) {
-                remove.add(s);
+                removeA.add(s);
                 PlanetType type = s.getType();
                 if (type == PlanetType.A) {
                     int x = s.getX();
@@ -70,8 +74,8 @@ public class Swarm implements Movable {
                     Asteroids a = new Asteroids(x, y, rotation + Math.random() * Math.PI / 9, PlanetType.B);
                     Asteroids b = new Asteroids(x, y, rotation - Math.random() * Math.PI / 9, PlanetType.B);
 
-                    add.add(a);
-                    add.add(b);
+                    addA.add(a);
+                    addA.add(b);
                 } else if (type == PlanetType.B) {
                     int x = s.getX();
                     int y = s.getY();
@@ -79,13 +83,13 @@ public class Swarm implements Movable {
                     Asteroids a = new Asteroids(x, y, rotation + Math.random() * Math.PI / 9, PlanetType.C);
                     Asteroids b = new Asteroids(x, y, rotation - Math.random() * Math.PI / 9, PlanetType.C);
 
-                    add.add(a);
-                    add.add(b);
+                    addA.add(a);
+                    addA.add(b);
                 }
             }
         }
-        asteroids.removeAll(remove);  // remove dead asteroids
-        asteroids.addAll(add);        // add new asteroids
+        asteroids.removeAll(removeA);  // remove dead asteroids
+        asteroids.addAll(addA);        // add new asteroids
 
         // randomly move asteroids
         for (Asteroids s : asteroids) {
@@ -105,33 +109,45 @@ public class Swarm implements Movable {
             }
             s.move(speed_x, speed_y);
         }
-    }
 
-    public void tick() {
-        count++;
+        for (EnemyShip s : ships) {
+            if (!s.isAlive()) {
+                removeS.add(s);
+            }
+        }
+        ships.removeAll(removeS);
+
+        for (EnemyShip s: ships){
+            double speed_x, speed_y;
+            AlienType type = s.getType();
+            int height = type.getHeight();
+            int width = type.getWidth();
+
+            speed_x = s.getSpeedX();
+            speed_y = s.getSpeedY();
+
+            if (s.getX() + speed_x > game.getScreenWidth() - width || s.getX() + speed_x < 0) {
+                speed_x = -speed_x;
+                s.setSpeedX(speed_x);
+            }
+            if (s.getY() + speed_y > game.getScreenHeight() - height || s.getY() + speed_y < 0) {
+                speed_y = -speed_y;
+                s.setSpeedY(speed_y);
+            }
+            s.move(speed_x, speed_y);
+        }
     }
 
     public List<Hittable> getHittable() {
         return new ArrayList<Hittable>(asteroids);
     }
 
-//    public List<Asteroids> getBottom() {
-//        List<Asteroids> bottomasteroids = new ArrayList<Asteroids>();
-//
-//        for (int i = 0; i < cols; i++) {
-//            boolean found = false;
-//            for (int j = rows - 1; j >= 0 && !found; j--) {
-//                if (shipGrid[j][i].isAlive()) {
-//                    found = true;
-//                    bottomasteroids.add(shipGrid[j][i]);
-//                }
-//            }
-//        }
-//        return bottomasteroids;
-//    }
-
     public List<Asteroids> getAsteroids() {
         return new ArrayList<Asteroids>(asteroids);
+    }
+
+    public List<EnemyShip> getEnemyShips() {
+        return new ArrayList<EnemyShip>(ships);
     }
 
     public int getAsteroidsRemaining() { return asteroids.size(); }

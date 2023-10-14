@@ -8,26 +8,23 @@ import java.util.List;
 
 public class Level {
     private Swarm swarm;
-//    private double startingSpeed;
-    int numA, numB, numC;
+    int numA, numB, numC, numS;
 
     private BouncyAsteroidsGame game;
 
-    public Level(int A, int B, int C, BouncyAsteroidsGame g){
+    public Level(int A, int B, int C, int S, BouncyAsteroidsGame g){
         game = g;
         numA = A;
         numB = B;
         numC = C;
+        numS = S;
         reset();
     }
 
     public int getAsteroidsRemaining() {
         return swarm.getAsteroidsRemaining();
     }
-//
-//    public int getBottomY() {
-//        return swarm.getBottomY();
-//    }
+
 
     public List<Hittable> getHittable() {
         List<Hittable> targets = new ArrayList<Hittable>();
@@ -39,11 +36,29 @@ public class Level {
         return swarm.getAsteroids();
     }
 
-    public void reset() {
-        swarm = new Swarm(numA, numB, numC, game);
+    public List<EnemyShip> getEnemyShips() {
+        return swarm.getEnemyShips();
     }
 
-    public void move() {
+    public void reset() {
+        swarm = new Swarm(numA, numB, numC, numS, game);
+    }
+
+
+    public List<Bullet> move() {
         swarm.move();
+        Player player = game.getPlayer();
+        double x = player.getX();
+        double y = player.getY();
+        List<EnemyShip> ships = swarm.getEnemyShips();
+        List<Bullet> eBullets = new ArrayList<Bullet>();
+        for (EnemyShip s : ships) {
+            double rotation = Math.atan2(y - s.getY(), x - s.getX());
+            Bullet b = s.fire(rotation);
+            if (b != null) {
+                eBullets.add(b);
+            }
+        }
+        return eBullets;
     }
 }

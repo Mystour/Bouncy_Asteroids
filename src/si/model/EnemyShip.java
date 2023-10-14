@@ -8,17 +8,22 @@ public class EnemyShip implements Hittable {
     private String name;
     private boolean alive;
     private double x, y;
+    private double speed_x, speed_y;
+    private double rotation;
     private AlienType type;
     private Random rand;
     private int height;
     public static final int SHIP_SCALE = 2;
 
-    public EnemyShip(int x, int y, AlienType type) {
+    public EnemyShip(double x, double y, AlienType type) {
         this.x = x;
         this.y = y;
         this.type = type;
         this.height = type.getHeight();
-        this.rand = new Random(x * 100 + y);
+        this.rand = new Random((int)(x * 100 + y));
+        this.rotation = rand.nextDouble() * 2 * Math.PI;
+        this.speed_x = type.getSpeed() * Math.cos(rotation);
+        this.speed_y = type.getSpeed() * Math.sin(rotation);
         this.alive = true;
     }
 
@@ -51,12 +56,12 @@ public class EnemyShip implements Hittable {
         y += cY;
     }
 
-    public Bullet fire() {
+    public Bullet fire(double rotation) {
         Bullet bul = null;
-        if (rand.nextInt() % 200 == 0) {
-            int a = ((int) x + (type.getWidth() * SHIP_SCALE) / 2);
-            int b = (int) y + (SHIP_SCALE * height);
-            bul = new Bullet(a, b, false, name);
+        if (rand.nextInt() % 2 == 0) {
+            double a = x + (double) (type.getWidth() * SHIP_SCALE) / 2;
+            double b =  y + (SHIP_SCALE * height);
+            bul = new Bullet(a, b, rotation);
         }
         return bul;
     }
@@ -73,4 +78,19 @@ public class EnemyShip implements Hittable {
         return (int) y;
     }
 
+    public double getSpeedX() {
+        return speed_x;
+    }
+
+    public double getSpeedY() {
+        return speed_y;
+    }
+
+    public void setSpeedX(double speed_x) {
+        this.speed_x = speed_x;
+    }
+
+    public void setSpeedY(double speed_y) {
+        this.speed_y = speed_y;
+    }
 }

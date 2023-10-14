@@ -33,7 +33,7 @@ public class ScoreScreen implements Screen {
         gc.setTextBaseline(VPos.CENTER);
         gc.setFont(new Font("Arial", 28));
         gc.setFill(Color.GREEN);
-        gc.fillText("Space Invaders Hall of Fame", BouncyAsteroidsGame.SCREEN_WIDTH/2, BouncyAsteroidsGame.SCREEN_HEIGHT / 10);
+        gc.fillText("Bouncy Asteroids Hall of Fame", BouncyAsteroidsGame.SCREEN_WIDTH/2, BouncyAsteroidsGame.SCREEN_HEIGHT / 10);
 
         Score[] scores = scoreKeeper.getScores();
         gc.setFont(new Font("Arial", 16));

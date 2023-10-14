@@ -16,6 +16,7 @@ public class BouncyAsteroidsGame implements Game {
     public static final int SCREEN_HEIGHT = 512;
     private static final Rectangle2D SCREEN_BOUNDS = new Rectangle2D(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     private List<Bullet> playerBullets;
+    private List<Bullet> enemyBullets;
     private ArrayList<Hittable> targets;
     private final PlayerListener listener;
     private Player player;
@@ -97,29 +98,29 @@ public class BouncyAsteroidsGame implements Game {
         playerBullets.removeAll(remove);
     }
 
-//    private void enemyBullets() {
-//        List<Bullet> remove = new ArrayList<Bullet>();
-//        for (int i = 0; i < enemyBullets.size(); i++) {
-//            Bullet b = enemyBullets.get(i);
-//            if (b.isAlive() && b.getHitBox().intersects(SCREEN_BOUNDS)) {
-//                b.move();
-//                for (Hittable t : targets) {
-//                    if (t != b) {
-//                        if (t.isHit(b)) {
-//                            if (t.isPlayer()) {
-//                                playerLives--;
-//                                pause = true;
-//                            }
-//                            b.destroy();
-//                        }
-//                    }
-//                }
-//            } else {
-//                remove.add(b);
-//            }
-//        }
-//        enemyBullets.removeAll(remove);
-//    }
+    private void enemyBullets() {
+        List<Bullet> remove = new ArrayList<Bullet>();
+        for (int i = 0; i < enemyBullets.size(); i++) {
+            Bullet b = enemyBullets.get(i);
+            if (b.isAlive() && b.getHitBox().intersects(SCREEN_BOUNDS)) {
+                b.move();
+                for (Hittable t : targets) {
+                    if (t != b) {
+                        if (t.isHit(b)) {
+                            if (t.isPlayer()) {
+                                playerLives--;
+                                pause = true;
+                            }
+                            b.destroy();
+                        }
+                    }
+                }
+            } else {
+                remove.add(b);
+            }
+        }
+        enemyBullets.removeAll(remove);
+    }
 
     private void Asteroids() {
         for (int i = 0; i < level[currentLevel].getAsteroids().size(); i++) {
@@ -150,13 +151,14 @@ public class BouncyAsteroidsGame implements Game {
         playerScore = 0;
         currentLevel = 0;
         playerBullets = new ArrayList<Bullet>();
+        enemyBullets = new ArrayList<Bullet>();
         player = new Player();
         level = new Level[NO_LEVELS];
-        level[0] = new Level(1, 0, 0, this);
-        level[1] = new Level(1, 0, 1, this);
-        level[2] = new Level(1, 1, 1, this);
-        level[3] = new Level(2, 0, 0, this);
-        level[4] = new Level(2, 1, 0, this);
+        level[0] = new Level(1, 0, 0, 1, this);
+        level[1] = new Level(1, 0, 1, 1, this);
+        level[2] = new Level(1, 1, 1, 1, this);
+        level[3] = new Level(2, 0, 0, 1, this);
+        level[4] = new Level(2, 1, 0, 1, this);
     }
 
     @Override
@@ -210,6 +212,7 @@ public class BouncyAsteroidsGame implements Game {
     public List<Bullet> getBullets() {
         ArrayList<Bullet> bullets = new ArrayList<>();
         bullets.addAll(playerBullets);
+        bullets.addAll(enemyBullets);
         return bullets;
     }
 
@@ -217,7 +220,11 @@ public class BouncyAsteroidsGame implements Game {
         return level[currentLevel].getAsteroids();
     }
 
-    public int getLevel() { return currentLevel; }
+    public List<EnemyShip> getEnemyShips() {
+        return level[currentLevel].getEnemyShips();
+    }
+
+    public int getLevel() { return currentLevel + 1; }
 
     public Player getPlayer() { return player; }
 }
