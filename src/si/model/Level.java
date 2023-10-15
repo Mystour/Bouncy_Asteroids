@@ -1,8 +1,6 @@
 package si.model;
 
 
-import javafx.geometry.Rectangle2D;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,20 +9,17 @@ import java.time.Instant;
 
 public class Level {
     private Swarm swarm;
-    int numA, numB, numC, numS;
+    int numA, numB, numC;
 
-    private BouncyAsteroidsGame game;
+    private final BouncyAsteroidsGame game;
     private Instant levelStartTime;
 
-    private boolean passed;
 
-
-    public Level(int A, int B, int C, int S, BouncyAsteroidsGame g){
+    public Level(int A, int B, int C, BouncyAsteroidsGame g){
         game = g;
         numA = A;
         numB = B;
         numC = C;
-        numS = S;
         reset();
     }
 
@@ -34,9 +29,7 @@ public class Level {
 
 
     public List<Hittable> getHittable() {
-        List<Hittable> targets = new ArrayList<Hittable>();
-        targets.addAll(swarm.getHittable());
-        return targets;
+        return new ArrayList<Hittable>(swarm.getHittable());
     }
 
     public List<Asteroids> getAsteroids() {
@@ -53,39 +46,21 @@ public class Level {
     }
 
 
-    public List<Bullet> move() {
+    public List<Bullet> move(int currentLevel) {
         swarm.move();
-        List<Bullet> eBullets = new ArrayList<Bullet>();
         if (has30SecondsPassed()) {
-            EnemyShip newShip = createEnemyShip();
+            EnemyShip newShip = createEnemyShip(currentLevel);
             swarm.addEnemyShip(newShip);
-
-            Player player = game.getPlayer();
-            double x = player.getX();
-            double y = player.getY();
-            List<EnemyShip> ships = swarm.getEnemyShips();
-            for (EnemyShip s : ships) {
-                double rotation = Math.atan2(s.getY() - y, x - s.getX());
-                Bullet b = s.fire(rotation);
-                if (b != null) {
-                    eBullets.add(b);
-                }
-            }
             levelStartTime = Instant.now();
         }
-        return eBullets;
+        return getEbullet();
     }
 
     private boolean has30SecondsPassed() {
-        passed = Duration.between(levelStartTime, Instant.now()).getSeconds() >= 3;
-        return passed;
+        return Duration.between(levelStartTime, Instant.now()).getSeconds() >= 30;
     }
 
-    public boolean getPassed() {
-        return passed;
-    }
-
-    private EnemyShip createEnemyShip() {
+    private EnemyShip createEnemyShip(int currentLevel) {
         double x, y;
         x = Math.random() * game.getScreenWidth();
         y = Math.random() * game.getScreenHeight();
@@ -93,6 +68,23 @@ public class Level {
             x = Math.random() * game.getScreenWidth();
             y = Math.random() * game.getScreenHeight();
         }
-        return new EnemyShip(x, y, AlienType.A);
+        if (currentLevel <= 5) return new EnemyShip(x, y, AlienType.A);
+        else return new EnemyShip(x, y, AlienType.B);
+    }
+
+    private List<Bullet> getEbullet() {
+        List<Bullet> eBullets = new ArrayList<Bullet>();
+        Player player = game.getPlayer();
+        double x = player.getX();
+        double y = player.getY();
+        List<EnemyShip> ships = swarm.getEnemyShips();
+        for (EnemyShip s : ships) {
+            double rotation = Math.atan2(s.getY() - y, x - s.getX());
+            Bullet b = s.fire(rotation);
+            if (b != null) {
+                eBullets.add(b);
+            }
+        }
+        return eBullets;
     }
 }

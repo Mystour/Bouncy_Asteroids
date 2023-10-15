@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Swarm implements Movable {
-    private List<Asteroids> asteroids;
-    private List<EnemyShip> ships;
-    private double x, y;
-    private Player player;
-    private BouncyAsteroidsGame game;
+    private final List<Asteroids> asteroids;
+    private final List<EnemyShip> ships;
+    private final BouncyAsteroidsGame game;
 
     public Swarm(int numA, int numB, int numC, BouncyAsteroidsGame g) {
         game = g;
         asteroids = new ArrayList<>();
         ships = new ArrayList<>();
-        player = game.getPlayer();
+        Player player = game.getPlayer();
+        double x;
+        double y;
         for (int i = 0; i < numA; i++) {
             x = Math.random() * game.getScreenWidth();
             y = Math.random() * game.getScreenHeight();
@@ -129,7 +129,10 @@ public class Swarm implements Movable {
     }
 
     public List<Hittable> getHittable() {
-        return new ArrayList<Hittable>(asteroids);
+        List<Hittable> targets = new ArrayList<Hittable>();
+        targets.addAll(asteroids);
+        targets.addAll(ships);
+        return targets;
     }
 
     public List<Asteroids> getAsteroids() {

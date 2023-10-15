@@ -5,14 +5,12 @@ import javafx.geometry.Rectangle2D;
 import java.util.Random;
 
 public class EnemyShip implements Hittable {
-    private String name;
     private boolean alive;
     private double x, y;
     private double speed_x, speed_y;
-    private double rotation;
-    private AlienType type;
-    private Random rand;
-    private int height;
+    private final AlienType type;
+    private final Random rand;
+    private final int height;
     public static final int SHIP_SCALE = 2;
 
     public EnemyShip(double x, double y, AlienType type) {
@@ -21,7 +19,7 @@ public class EnemyShip implements Hittable {
         this.type = type;
         this.height = type.getHeight();
         this.rand = new Random((int)(x * 100 + y));
-        this.rotation = rand.nextDouble() * 2 * Math.PI;
+        double rotation = rand.nextDouble() * 2 * Math.PI;
         this.speed_x = type.getSpeed() * Math.cos(rotation);
         this.speed_y = type.getSpeed() * Math.sin(rotation);
         this.alive = true;
