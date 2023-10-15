@@ -10,7 +10,7 @@ public class Swarm implements Movable {
     private Player player;
     private BouncyAsteroidsGame game;
 
-    public Swarm(int numA, int numB, int numC, int numS, BouncyAsteroidsGame g) {
+    public Swarm(int numA, int numB, int numC, BouncyAsteroidsGame g) {
         game = g;
         asteroids = new ArrayList<>();
         ships = new ArrayList<>();
@@ -44,17 +44,6 @@ public class Swarm implements Movable {
             }
             Asteroids a = new Asteroids(x, y, Math.random()* 2 * Math.PI, PlanetType.C);
             asteroids.add(a);
-        }
-
-        for (int i = 0; i < numS; i++) {
-            x = Math.random() * game.getScreenWidth();
-            y = Math.random() * game.getScreenHeight();
-            while (Math.abs(x - player.getX()) < 20 && Math.abs(y - player.getY()) < 20) {
-                x = Math.random() * game.getScreenWidth();
-                y = Math.random() * game.getScreenHeight();
-            }
-            EnemyShip s = new EnemyShip(x, y, AlienType.A);
-            ships.add(s);
         }
     }
 
@@ -109,7 +98,7 @@ public class Swarm implements Movable {
             s.move(speed_x, speed_y);
         }
 
-        if (game.getCurrentLevel() != null && game.getCurrentLevel().getPassed()) {
+        if (!ships.isEmpty()) {
             for (EnemyShip s : ships) {
                 if (!s.isAlive()) {
                     removeS.add(s);
@@ -152,4 +141,8 @@ public class Swarm implements Movable {
     }
 
     public int getAsteroidsRemaining() { return asteroids.size(); }
+
+    public void addEnemyShip(EnemyShip s) {
+        ships.add(s);
+    }
 }

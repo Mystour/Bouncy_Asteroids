@@ -136,10 +136,8 @@ public class GameScreen implements Screen {
             for (Asteroids asteroid : game.getAsteroids()) {
                 drawShape(gc, asteroid);
             }
-            if (game.getCurrentLevel() != null && game.getCurrentLevel().getPassed()) {
-                for (EnemyShip s : game.getEnemyShips()) {
-                    drawShape(gc, s);
-                }
+            for (EnemyShip s : game.getEnemyShips()) {
+                drawShape(gc, s);
             }
             if ((game.isPaused() || !game.isPlayerAlive()) && game.getLives() > 0) {
                 gc.setTextAlign(TextAlignment.CENTER);

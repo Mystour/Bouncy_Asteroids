@@ -54,7 +54,7 @@ public class BouncyAsteroidsGame implements Game {
             targets.addAll(level[currentLevel].getHittable());
             targets.add(player);
             playerBullets();
-            if (level[currentLevel] != null && level[currentLevel].getPassed()) {
+            if (getEnemyShips() != null) {
                 enemyBullets();
                 enemyBullets.addAll(level[currentLevel].move());
             }
