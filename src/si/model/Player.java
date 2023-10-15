@@ -46,6 +46,14 @@ public class Player implements Hittable {
         return hit;
     }
 
+    public boolean isHit(EnemyShip s) {
+        boolean hit = hitBox.intersects(s.getHitBox());
+        if (hit) {
+            alive = false;
+        }
+        return hit;
+    }
+
     public void tick() {
         if (weaponCountdown > 0) {
             weaponCountdown--;

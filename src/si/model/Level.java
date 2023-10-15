@@ -6,11 +6,18 @@ import javafx.geometry.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.time.Duration;
+import java.time.Instant;
+
 public class Level {
     private Swarm swarm;
     int numA, numB, numC, numS;
 
     private BouncyAsteroidsGame game;
+    private Instant levelStartTime;
+
+    private boolean passed;
+
 
     public Level(int A, int B, int C, int S, BouncyAsteroidsGame g){
         game = g;
@@ -42,23 +49,37 @@ public class Level {
 
     public void reset() {
         swarm = new Swarm(numA, numB, numC, numS, game);
+        levelStartTime = Instant.now();
     }
 
 
     public List<Bullet> move() {
         swarm.move();
-        Player player = game.getPlayer();
-        double x = player.getX();
-        double y = player.getY();
-        List<EnemyShip> ships = swarm.getEnemyShips();
-        List<Bullet> eBullets = new ArrayList<Bullet>();
-        for (EnemyShip s : ships) {
-            double rotation = Math.atan2(s.getY() - y, x - s.getX());  // adjusted y direction
-            Bullet b = s.fire(rotation);
-            if (b != null) {
-                eBullets.add(b);
+        if (has30SecondsPassed()) {
+            Player player = game.getPlayer();
+            double x = player.getX();
+            double y = player.getY();
+            List<EnemyShip> ships = swarm.getEnemyShips();
+            List<Bullet> eBullets = new ArrayList<Bullet>();
+            for (EnemyShip s : ships) {
+                double rotation = Math.atan2(s.getY() - y, x - s.getX());  // adjusted y direction
+                Bullet b = s.fire(rotation);
+                if (b != null) {
+                    eBullets.add(b);
+                }
             }
+            return eBullets;
+        } else {
+            return new ArrayList<Bullet>();
         }
-        return eBullets;
+    }
+
+    private boolean has30SecondsPassed() {
+        passed = Duration.between(levelStartTime, Instant.now()).getSeconds() >= 10;
+        return passed;
+    }
+
+    public boolean getPassed() {
+        return passed;
     }
 }

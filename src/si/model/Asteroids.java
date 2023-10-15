@@ -38,6 +38,14 @@ public class Asteroids implements Hittable {
         return hit;
     }
 
+    public boolean isHit(EnemyShip s) {
+        boolean hit = getHitBox().intersects(s.getHitBox());
+        if (hit) {
+            alive = false;
+        }
+        return hit;
+    }
+
     public boolean isAlive() {
         return alive;
     }

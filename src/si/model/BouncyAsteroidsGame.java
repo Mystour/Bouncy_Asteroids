@@ -54,9 +54,12 @@ public class BouncyAsteroidsGame implements Game {
             targets.addAll(level[currentLevel].getHittable());
             targets.add(player);
             playerBullets();
-            enemyBullets();
-            enemyBullets.addAll(level[currentLevel].move());
+            if (level[currentLevel] != null && level[currentLevel].getPassed()) {
+                enemyBullets();
+                enemyBullets.addAll(level[currentLevel].move());
+            }
             Asteroids();
+            EnemyShips();
             movePlayer();
             level[currentLevel].move();
         }
@@ -90,6 +93,7 @@ public class BouncyAsteroidsGame implements Game {
                 for (Asteroids t : level[currentLevel].getAsteroids()) {
                     if (t.isHit(playerBullet)) {
                         playerScore += t.getPoints();
+                        hasOver10000();
                         playerBullet.destroy();
                     }
                 }
@@ -131,6 +135,22 @@ public class BouncyAsteroidsGame implements Game {
                 if (player.isHit(a)) {
                     playerLives--;
                     pause = true;
+                }
+            }
+        }
+    }
+
+    private void EnemyShips() {
+        for (EnemyShip s : level[currentLevel].getEnemyShips()) {
+            if (s.isAlive() && s.getHitBox().intersects(SCREEN_BOUNDS)) {
+                if (player.isHit(s)) {
+                    playerLives--;
+                    pause = true;
+                }
+            }
+            for (Asteroids a : level[currentLevel].getAsteroids()) {
+                if (a.isHit(s)) {
+                    s.setAlive(false);
                 }
             }
         }
@@ -229,4 +249,14 @@ public class BouncyAsteroidsGame implements Game {
     public int getLevel() { return currentLevel + 1; }
 
     public Player getPlayer() { return player; }
+
+    public Level getCurrentLevel() {
+        return level[currentLevel];
+    }
+
+    public void hasOver10000(){
+        if (playerScore > 10000){
+            playerLives++;
+        }
+    }
 }

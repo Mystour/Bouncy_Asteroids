@@ -1,7 +1,7 @@
 package si.model;
 
 public enum AlienType {
-	A(9, 7, 20, 1), B(8, 7,15, 2);
+	A(9, 7, 500, 1), B(4, 6,1000, 2);
 	private int width;
 	private int height;
 	private int score;

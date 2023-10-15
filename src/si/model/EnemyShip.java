@@ -43,6 +43,10 @@ public class EnemyShip implements Hittable {
         return alive;
     }
 
+    public void setAlive(boolean alive) {
+        this.alive = alive;
+    }
+
     public int getPoints() {
         return type.getScore();
     }
@@ -58,7 +62,7 @@ public class EnemyShip implements Hittable {
 
     public Bullet fire(double rotation) {
         Bullet bul = null;
-        if (rand.nextInt() % 2 == 0) {
+        if (rand.nextInt() % 200 == 0) {
             double a = x + (double) (type.getWidth() * SHIP_SCALE) / 2;
             double b =  y + (SHIP_SCALE * height);
             bul = new Bullet(a, b, rotation);

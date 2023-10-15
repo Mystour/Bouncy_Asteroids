@@ -14,7 +14,6 @@ public class Swarm implements Movable {
         game = g;
         asteroids = new ArrayList<>();
         ships = new ArrayList<>();
-        ships = new ArrayList<>();
         player = game.getPlayer();
         for (int i = 0; i < numA; i++) {
             x = Math.random() * game.getScreenWidth();
@@ -50,7 +49,7 @@ public class Swarm implements Movable {
         for (int i = 0; i < numS; i++) {
             x = Math.random() * game.getScreenWidth();
             y = Math.random() * game.getScreenHeight();
-            while (Math.abs(x - player.getX()) <  20 && Math.abs(y - player.getY()) < 20) {
+            while (Math.abs(x - player.getX()) < 20 && Math.abs(y - player.getY()) < 20) {
                 x = Math.random() * game.getScreenWidth();
                 y = Math.random() * game.getScreenHeight();
             }
@@ -110,31 +109,33 @@ public class Swarm implements Movable {
             s.move(speed_x, speed_y);
         }
 
-        for (EnemyShip s : ships) {
-            if (!s.isAlive()) {
-                removeS.add(s);
+        if (game.getCurrentLevel() != null && game.getCurrentLevel().getPassed()) {
+            for (EnemyShip s : ships) {
+                if (!s.isAlive()) {
+                    removeS.add(s);
+                }
             }
-        }
-        ships.removeAll(removeS);
+            ships.removeAll(removeS);
 
-        for (EnemyShip s: ships){
-            double speed_x, speed_y;
-            AlienType type = s.getType();
-            int height = type.getHeight();
-            int width = type.getWidth();
+            for (EnemyShip s: ships){
+                double speed_x, speed_y;
+                AlienType type = s.getType();
+                int height = type.getHeight();
+                int width = type.getWidth();
 
-            speed_x = s.getSpeedX();
-            speed_y = s.getSpeedY();
+                speed_x = s.getSpeedX();
+                speed_y = s.getSpeedY();
 
-            if (s.getX() + speed_x > game.getScreenWidth() - width || s.getX() + speed_x < 0) {
-                speed_x = -speed_x;
-                s.setSpeedX(speed_x);
+                if (s.getX() + speed_x > game.getScreenWidth() - width || s.getX() + speed_x < 0) {
+                    speed_x = -speed_x;
+                    s.setSpeedX(speed_x);
+                }
+                if (s.getY() + speed_y > game.getScreenHeight() - height || s.getY() + speed_y < 0) {
+                    speed_y = -speed_y;
+                    s.setSpeedY(speed_y);
+                }
+                s.move(speed_x, speed_y);
             }
-            if (s.getY() + speed_y > game.getScreenHeight() - height || s.getY() + speed_y < 0) {
-                speed_y = -speed_y;
-                s.setSpeedY(speed_y);
-            }
-            s.move(speed_x, speed_y);
         }
     }
 
