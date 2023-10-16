@@ -92,4 +92,8 @@ public class Level {
         }
         return eBullets;
     }
+
+    public void setLevelStartTime(Instant levelStartTime) {
+        this.levelStartTime = levelStartTime;
+    }
 }

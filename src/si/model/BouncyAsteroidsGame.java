@@ -4,6 +4,7 @@ import ucd.comp2011j.engine.Game;
 import javafx.geometry.Rectangle2D;
 import si.display.PlayerListener;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -191,7 +192,13 @@ public class BouncyAsteroidsGame implements Game {
     public boolean isLevelFinished() {
         if (currentLevel < NO_LEVELS) {
             int noAsteroids = level[currentLevel].getAsteroidsRemaining();
-            return noAsteroids == 0 && level[currentLevel].getEnemyShips().isEmpty();
+            if (noAsteroids == 0 && level[currentLevel].getEnemyShips().isEmpty()){
+                level[currentLevel].setLevelStartTime(Instant.now());
+                return true;
+            }
+            else {
+                return false;
+            }
         } else {
             return true;
         }

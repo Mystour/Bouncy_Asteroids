@@ -81,14 +81,11 @@ public class Asteroids implements Hittable {
         return (int) y;
     }
 
-    public void setX(double x) { this.x = x; }
-
-    public void setY(double y) { this.y = y; }
-
     public double getSpeedX() { return speed_x; }
     public double getSpeedY() { return speed_y; }
 
     public void setSpeedX(double speed_x) { this.speed_x = speed_x; }
     public void setSpeedY(double speed_y) { this.speed_y = speed_y; }
+
     public double getRotation() { return rotation; }
 }
