@@ -133,7 +133,9 @@ public class GameScreen implements Screen {
             gc.fillText("Level: " + game.getLevel(), 0, 30);
             gc.setTextAlign(TextAlignment.RIGHT);
             gc.fillText("Score: " + game.getPlayerScore(), BouncyAsteroidsGame.SCREEN_WIDTH, 0);
-            drawShape(gc, game.getShip());
+            if (game.getPlayer().isAlive() && shouldPaint()) {
+                drawShape(gc, game.getPlayer());
+            }
             for (Bullet bullet : game.getBullets()) {
                 drawShape(gc, bullet);
             }
@@ -157,5 +159,14 @@ public class GameScreen implements Screen {
                 gc.setFill(Color.GREEN);gc.fillText("Game over ", BouncyAsteroidsGame.SCREEN_WIDTH/2, BouncyAsteroidsGame.SCREEN_HEIGHT/2);
             }
         }
+    }
+
+    private boolean shouldPaint(){
+        Player p = game.getPlayer();
+        int invincibilityCountdown = p.getInvincibilityCountdown();
+        return invincibilityCountdown % 8 == 0  ||
+                invincibilityCountdown % 8 == 1 ||
+                invincibilityCountdown % 8 == 2 ||
+                invincibilityCountdown % 8 == 3;
     }
 }

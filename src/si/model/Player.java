@@ -10,6 +10,7 @@ public class Player implements Hittable {
     private Rectangle2D hitBox;
     private double rotation;  // Initialized to 0 by default
     private int weaponCountdown;
+    private int invincibilityCountdown = 0;
     private boolean alive = true;
     public static final int SHIP_SCALE = 4;
     private static final int WIDTH = SHIP_SCALE * 8;
@@ -39,22 +40,27 @@ public class Player implements Hittable {
     }
 
     public boolean isHit(Asteroids a) {
-        boolean hit = hitBox.intersects(a.getHitBox());
+        boolean hit = invincibilityCountdown <= 0 && hitBox.intersects(a.getHitBox());
         if (hit) {
             alive = false;
+            invincibilityCountdown = 120;  // 60 frames = 1 second
         }
         return hit;
     }
 
     public boolean isHit(EnemyShip s) {
-        boolean hit = hitBox.intersects(s.getHitBox());
+        boolean hit = invincibilityCountdown <= 0 && hitBox.intersects(s.getHitBox());
         if (hit) {
             alive = false;
+            invincibilityCountdown = 120;  // 60 frames = 1 second
         }
         return hit;
     }
 
     public void tick() {
+        if (invincibilityCountdown > 0) {
+            invincibilityCountdown--;
+        }
         if (weaponCountdown > 0) {
             weaponCountdown--;
         } else {
@@ -131,7 +137,6 @@ public class Player implements Hittable {
         return rotation;
     }
 
-
     public void accelerate() {
         float acceleration = 0.2f;
         double radians = rotation + 3*Math.PI/2;
@@ -144,4 +149,7 @@ public class Player implements Hittable {
         }
     }
 
+    public int getInvincibilityCountdown() {
+        return invincibilityCountdown;
+    }
 }

@@ -238,10 +238,6 @@ public class BouncyAsteroidsGame implements Game {
         return SCREEN_HEIGHT;
     }
 
-    public Player getShip() {
-        return player;
-    }
-
     public List<Bullet> getBullets() {
         ArrayList<Bullet> bullets = new ArrayList<>();
         bullets.addAll(playerBullets);
