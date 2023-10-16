@@ -6,14 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="52b52198-ca85-4962-8e92-807cb5161ed5" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/si/display/GameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/display/GameScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/si/model/Asteroids.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/Asteroids.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/si/model/BouncyAsteroidsGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/BouncyAsteroidsGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/si/model/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/Bullet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/si/model/EnemyShip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/EnemyShip.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/si/model/Hittable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/Hittable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/si/model/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/Level.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/si/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +114,7 @@
       <workItem from="1697379476012" duration="660000" />
       <workItem from="1697381115292" duration="3837000" />
       <workItem from="1697417172378" duration="15000" />
-      <workItem from="1697422486540" duration="3955000" />
+      <workItem from="1697422486540" duration="4856000" />
     </task>
     <servers />
   </component>
