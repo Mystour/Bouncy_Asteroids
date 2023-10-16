@@ -86,10 +86,15 @@ public class Player implements Hittable {
         return hitBox;
     }
 
+    @Override
+    public boolean isEnemy() {
+        return false;
+    }
+
     public Bullet fire() {
         Bullet b = null;
         if (weaponCountdown == 0) {
-            b = new Bullet(x, y, rotation);
+            b = new Bullet(x, y, rotation + 3*Math.PI/2, "player");
         }
         return b;
     }

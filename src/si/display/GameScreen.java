@@ -43,7 +43,7 @@ public class GameScreen implements Screen {
     private void drawShape(GraphicsContext gc, Bullet b) {
         double x = b.getX();
         double y = b.getY();
-        double radius = b.getRotation();
+        double radius = b.getRotation() + Math.PI/2;
         // Draw the bullet
         int[] x_coords = new int[]{-Bullet.BULLET_WIDTH/2, Bullet.BULLET_WIDTH/2, Bullet.BULLET_WIDTH/2, -Bullet.BULLET_WIDTH/2};
         int[] y_coords = new int[]{-Bullet.BULLET_HEIGHT/2, -Bullet.BULLET_HEIGHT/2, Bullet.BULLET_HEIGHT/2, Bullet.BULLET_HEIGHT/2};
@@ -55,7 +55,11 @@ public class GameScreen implements Screen {
             y_adjusted[i] = y + (x_coords[i] * Math.sin(radius) + y_coords[i] * Math.cos(radius)) * Player.SHIP_SCALE/2;
         }
 
-        gc.setFill(Color.GREEN);
+        if (b.getType().equals("player")) {
+            gc.setFill(Color.GREEN);
+        } else {
+            gc.setFill(Color.RED);
+        }
         gc.fillPolygon(x_adjusted, y_adjusted, x_adjusted.length);
     }
 

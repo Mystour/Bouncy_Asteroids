@@ -5,24 +5,26 @@ import javafx.geometry.Rectangle2D;
 
 public class Bullet implements Movable, Hittable {
     private double x, y;
-    private double rotation;
+    private final double rotation;
     private boolean alive = true;
     private Rectangle2D hitBox;
     private static int bulletCounter = 0;
     public static final int BULLET_HEIGHT = 4;
     public static final int BULLET_WIDTH = 2;
     private static final int BULLET_SPEED = 5;
+    private String type;
 
-    public Bullet(double x, double y, double rotation) {
+    public Bullet(double x, double y, double rotation, String type) {
         this.rotation = rotation;
         this.x = x;
         this.y = y;
+        this.type = type;
         hitBox = new Rectangle2D(x, y, BULLET_WIDTH, BULLET_HEIGHT);
     }
 
     public void move() {
-        double dx = BULLET_SPEED * Math.sin(rotation);
-        double dy = -BULLET_SPEED * Math.cos(rotation);
+        double dx = BULLET_SPEED * Math.cos(rotation);
+        double dy = BULLET_SPEED * Math.sin(rotation);
 
         x += dx;
         y += dy;
@@ -70,4 +72,11 @@ public class Bullet implements Movable, Hittable {
         alive = false;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public boolean isEnemy() {
+        return false;
+    }
 }

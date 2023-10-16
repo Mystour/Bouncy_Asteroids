@@ -68,6 +68,11 @@ public class Asteroids implements Hittable {
         return new Rectangle2D(x, y, type.getRadius(), type.getRadius());
     }
 
+    @Override
+    public boolean isEnemy() {
+        return false;
+    }
+
     public int getX() {
         return (int) x;
     }

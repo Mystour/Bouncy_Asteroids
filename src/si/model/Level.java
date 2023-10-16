@@ -84,7 +84,7 @@ public class Level {
         double y = player.getY();
         List<EnemyShip> ships = swarm.getEnemyShips();
         for (EnemyShip s : ships) {
-            double rotation = Math.atan2(s.getY() - y, x - s.getX());
+            double rotation = Math.atan2(y - s.getY(), x - s.getX());  // the range is [-pi, pi]
             Bullet b = s.fire(rotation);
             if (b != null) {
                 eBullets.add(b);

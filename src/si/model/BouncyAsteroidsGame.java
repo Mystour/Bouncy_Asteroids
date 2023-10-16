@@ -111,7 +111,7 @@ public class BouncyAsteroidsGame implements Game {
                 b.move();
                 for (Hittable t : targets) {
                     if (t != b) {
-                        if (t.isHit(b)) {
+                        if (!t.isEnemy() && t.isHit(b)) {
                             if (t.isPlayer()) {
                                 playerLives--;
                                 pause = true;

@@ -63,7 +63,7 @@ public class EnemyShip implements Hittable {
         if (rand.nextInt() % 200 == 0) {
             double a = x + (double) (type.getWidth() * SHIP_SCALE) / 2;
             double b =  y + (SHIP_SCALE * height);
-            bul = new Bullet(a, b, rotation);
+            bul = new Bullet(a, b, rotation, "enemy");
         }
         return bul;
     }
@@ -94,5 +94,9 @@ public class EnemyShip implements Hittable {
 
     public void setSpeedY(double speed_y) {
         this.speed_y = speed_y;
+    }
+
+    public boolean isEnemy() {
+        return true;
     }
 }

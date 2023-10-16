@@ -8,5 +8,7 @@ public interface Hittable {
 	boolean isPlayer();
 	boolean isHit(Bullet b);
 	Rectangle2D getHitBox();
+
+	boolean isEnemy();
 }
 
