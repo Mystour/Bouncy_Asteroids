@@ -62,14 +62,19 @@ public class Level {
 
     private EnemyShip createEnemyShip(int currentLevel) {
         double x, y;
-        x = Math.random() * game.getScreenWidth();
-        y = Math.random() * game.getScreenHeight();
-        while (Math.abs(x - game.getPlayer().getX()) < 20 && Math.abs(y - game.getPlayer().getY()) < 20) {
-            x = Math.random() * game.getScreenWidth();
-            y = Math.random() * game.getScreenHeight();
+        AlienType type;
+        if (currentLevel <= 5) {
+            type = AlienType.A;
+        } else {
+            type = AlienType.B;
         }
-        if (currentLevel <= 5) return new EnemyShip(x, y, AlienType.A);
-        else return new EnemyShip(x, y, AlienType.B);
+        x = type.getWidth() + Math.random() * (game.getScreenWidth() - 2 * type.getWidth());
+        y = type.getHeight() + Math.random() * (game.getScreenHeight() - 2 * type.getHeight());
+        while (Math.abs(x - game.getPlayer().getX()) < 20 && Math.abs(y - game.getPlayer().getY()) < 20) {
+            x = type.getWidth() + Math.random() * game.getScreenWidth();
+            y = type.getHeight() + Math.random() * game.getScreenHeight();
+        }
+        return new EnemyShip(x, y, type);
     }
 
     private List<Bullet> getEbullet() {
