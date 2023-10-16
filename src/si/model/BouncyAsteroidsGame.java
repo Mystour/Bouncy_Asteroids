@@ -193,7 +193,7 @@ public class BouncyAsteroidsGame implements Game {
         if (currentLevel < NO_LEVELS) {
             int noAsteroids = level[currentLevel].getAsteroidsRemaining();
             if (noAsteroids == 0 && level[currentLevel].getEnemyShips().isEmpty()){
-                level[currentLevel].setLevelStartTime(Instant.now());
+                level[currentLevel+1].setLevelStartTime(Instant.now());
                 return true;
             }
             else {
