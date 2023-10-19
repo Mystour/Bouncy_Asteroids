@@ -11,8 +11,8 @@ import ucd.comp2011j.engine.Screen;
 
 public class GameScreen implements Screen {
     private static final long serialVersionUID = -8282302849760730222L;
-    private BouncyAsteroidsGame game;
-    private Canvas canvas;
+    private final BouncyAsteroidsGame game;
+    private final Canvas canvas;
 
     public Canvas getCanvas(){return canvas;}
 
@@ -27,8 +27,8 @@ public class GameScreen implements Screen {
         double radius = p.getRotation();
 
         // Draw the ship
-        int[] x_coords = new int[]{0, -1, -1, -2, -2, -3, -7, -7, -3, -2, -4, -4, -2, -1, 1, 2, 4, 4, 2, 3, 7, 7, 3, 2, 2, 1, 1, 0};
-        int[] y_coords = new int[]{-6, -5, -3, -2, 0, 1, 2, 4, 4, 5, 6, 7, 7, 6, 6, 7, 7, 6, 5, 4, 4, 2, 1, 0, -2, -3, -5, -6};
+        double[] x_coords = new double[]{0, -1, -1, -2, -2, -3, -4, -4, -5, -5, -7, -7, -3, -2, -4, -4, -2, -1, 1, 2, 4, 4, 2, 3, 7, 7, 5, 5, 4, 4, 3, 2, 2, 1, 1, 0};
+        double[] y_coords = new double[]{-6, -5, -3, -2, 0, 1, 1.25, 0, 0, 1.5, 2, 4, 4, 5, 6, 7, 7, 6, 6, 7, 7, 6, 5, 4, 4, 2, 1.5, 0, 0, 1.25, 1, 0, -2, -3, -5, -6};
 
         double[] x_adjusted = new double[x_coords.length];
         double[] y_adjusted = new double[y_coords.length];

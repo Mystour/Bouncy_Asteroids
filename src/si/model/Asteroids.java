@@ -1,25 +1,20 @@
 package si.model;
 
 import javafx.geometry.Rectangle2D;
-import javafx.scene.shape.Circle;
-
-import java.util.Random;
 
 public class Asteroids implements Hittable {
-    private String name;
     private boolean alive;
     private double x, y;
-    private double rotation;
-    private double speed, speed_x, speed_y;
-    private PlanetType type;
-    private int height;
-    public static final int SHIP_SCALE = 2;
+    private final double rotation;
+    private double speed_x;
+    private double speed_y;
+    private final PlanetType type;
 
     public Asteroids(double x, double y, double rotation, PlanetType type) {
         this.x = x;
         this.y = y;
         this.type = type;
-        this.speed = type.getSpeed();
+        double speed = type.getSpeed();
         this.rotation = rotation;
         this.speed_x = speed * Math.cos(rotation);
         this.speed_y = speed * Math.sin(rotation);
