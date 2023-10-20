@@ -43,8 +43,8 @@ public class EnemyShip implements Hittable, Collisible {
 
     @Override
     public boolean isCollision(Player p) {
-        boolean collision = getHitBox().intersects(p.getHitBox());
-        if (collision && p.getInvincibilityCountdown() <= 0) {
+        boolean collision = getHitBox().intersects(p.getHitBox()) && p.getInvincibilityCountdown() <= 0;
+        if (collision) {
             p.setAlive(false);
             p.setLives(p.getLives() - 1);
             p.setInvincibilityCountdown(120);  // 60 frames = 1 second

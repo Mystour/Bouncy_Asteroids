@@ -112,7 +112,7 @@ public class BouncyAsteroidsGame implements Game {
     private void player(){
         for (Collisible c : colliders){
             if (c.isAlive()  && c.isCollision(player)){
-                if (! c.isProps()){
+                if (!c.isProps()){
                     pause = true;
                 }
             }
