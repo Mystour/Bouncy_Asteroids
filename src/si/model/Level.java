@@ -33,6 +33,10 @@ public class Level {
         return new ArrayList<Hittable>(swarm.getHittable());
     }
 
+    public List<Collisible> getCollisible() {
+        return new ArrayList<Collisible>(swarm.getCollisible());
+    }
+
     public List<Asteroids> getAsteroids() {
         return swarm.getAsteroids();
     }

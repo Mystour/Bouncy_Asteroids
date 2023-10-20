@@ -1,6 +1,9 @@
 package si.model;
 
 import javafx.geometry.Rectangle2D;
+
+import java.time.Instant;
+
 public class Props implements Collisible{
     private boolean alive;
     private double x, y;
@@ -24,16 +27,6 @@ public class Props implements Collisible{
         return alive;
     }
 
-
-    public boolean isPlayer() {
-        return false;
-    }
-
-    public boolean isEnemy() {
-        return false;
-    }
-
-    public boolean isAsteroid() { return false; }
 
     public void move(double cX, double cY) {
         x += cX;
@@ -80,11 +73,19 @@ public class Props implements Collisible{
         this.speed_y = speed_y;
     }
 
+    @Override
     public boolean isCollision(Player p) {
         boolean collision = getHitBox().intersects(p.getHitBox());
         if (collision) {
             alive = false;
+            p.setTripleFire(true);
+            p.setPropsTime(Instant.now());
         }
         return collision;
+    }
+
+    @Override
+    public boolean isProps() {
+        return true;
     }
 }

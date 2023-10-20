@@ -169,6 +169,14 @@ public class Swarm implements Movable {
         return targets;
     }
 
+    public List<Collisible> getCollisible() {
+        List<Collisible> targets = new ArrayList<Collisible>();
+        targets.addAll(asteroids);
+        targets.addAll(ships);
+        targets.addAll(props);
+        return targets;
+    }
+
     public List<Asteroids> getAsteroids() {
         return new ArrayList<Asteroids>(asteroids);
     }

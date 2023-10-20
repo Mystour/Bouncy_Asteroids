@@ -11,7 +11,6 @@ import java.util.List;
 
 
 public class BouncyAsteroidsGame implements Game {
-    private int playerLives;
     private int playerScore;
     private int count = 1;
     private boolean pause = true;
@@ -21,6 +20,7 @@ public class BouncyAsteroidsGame implements Game {
     private List<Bullet> playerBullets;
     private List<Bullet> enemyBullets;
     private ArrayList<Hittable> targets;
+    private ArrayList<Collisible> colliders;
     private final PlayerListener listener;
     private Player player;
     private Level[] level;
@@ -38,7 +38,7 @@ public class BouncyAsteroidsGame implements Game {
     }
 
     public int getLives() {
-        return playerLives;
+        return player.getLives();
     }
 
     public void checkForPause() {
@@ -55,15 +55,17 @@ public class BouncyAsteroidsGame implements Game {
             targets.clear();
             targets.addAll(level[currentLevel].getHittable());
             targets.add(player);
+
+            colliders.clear();
+            colliders.addAll(level[currentLevel].getCollisible());
             playerBullets();
             if (getEnemyShips() != null) {
                 enemyBullets();
                 enemyBullets.addAll(level[currentLevel].move(currentLevel));
             }
-            Asteroids();
-            EnemyShips();
-            Props();
+            enemyShips();
             movePlayer();
+            player();
             level[currentLevel].move(currentLevel);
         }
     }
@@ -107,6 +109,16 @@ public class BouncyAsteroidsGame implements Game {
         playerBullets.removeAll(remove);
     }
 
+    private void player(){
+        for (Collisible c : colliders){
+            if (c.isAlive()  && c.isCollision(player)){
+                if (! c.isProps()){
+                    pause = true;
+                }
+            }
+        }
+    }
+
     private void enemyBullets() {
         List<Bullet> remove = new ArrayList<Bullet>();
         for (Bullet b : enemyBullets) {
@@ -116,7 +128,7 @@ public class BouncyAsteroidsGame implements Game {
                     if (t != b) {
                         if (!t.isEnemy() && t.isHit(b)) {
                             if (t.isPlayer()) {
-                                playerLives--;
+                                player.setLives(player.getLives() - 1);
                                 pause = true;
                             }
                             b.destroy();
@@ -130,41 +142,12 @@ public class BouncyAsteroidsGame implements Game {
         enemyBullets.removeAll(remove);
     }
 
-    private void Asteroids() {
-        for (int i = 0; i < level[currentLevel].getAsteroids().size(); i++) {
-            Asteroids a = level[currentLevel].getAsteroids().get(i);
-            if (a.isAlive() && a.getHitBox().intersects(SCREEN_BOUNDS)) {
-                if (player.isHit(a)) {
-                    playerLives--;
-                    pause = true;
-                }
-            }
-        }
-    }
 
-    private void EnemyShips() {
+    private void enemyShips() {
         for (EnemyShip s : level[currentLevel].getEnemyShips()) {
-            if (s.isAlive() && s.getHitBox().intersects(SCREEN_BOUNDS)) {
-                if (player.isHit(s)) {
-                    playerLives--;
-                    pause = true;
-                }
-            }
             for (Asteroids a : level[currentLevel].getAsteroids()) {
                 if (a.isHit(s)) {
                     s.setAlive(false);
-                }
-            }
-        }
-    }
-
-    private void Props() {
-        for (Props p : level[currentLevel].getProps()) {
-            if (p.isAlive() && p.getHitBox().intersects(SCREEN_BOUNDS)) {
-                if (p.isCollision(player)) {
-                    playerLives++;
-                    player.setTripleFire(true);
-                    player.setPropsTime(Instant.now());
                 }
             }
         }
@@ -183,7 +166,7 @@ public class BouncyAsteroidsGame implements Game {
     @Override
     public void startNewGame() {
         targets = new ArrayList<Hittable>();
-        playerLives = 3;
+        colliders = new ArrayList<Collisible>();
         playerScore = 0;
         currentLevel = 0;
         playerBullets = new ArrayList<Bullet>();
@@ -241,7 +224,7 @@ public class BouncyAsteroidsGame implements Game {
 
     @Override
     public boolean isGameOver() {
-        return !(playerLives > 0 && currentLevel <= NO_LEVELS);
+        return !(player.getLives() > 0 && currentLevel <= NO_LEVELS);
     }
 
 
@@ -274,7 +257,7 @@ public class BouncyAsteroidsGame implements Game {
 
     public void hasOver10000(){
         if (playerScore > 10000 * count){
-            playerLives++;
+            player.setLives(player.getLives() + 1);
             count++;
         }
     }

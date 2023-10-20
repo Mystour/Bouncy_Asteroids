@@ -17,6 +17,7 @@ public class Player implements Hittable {
     private int weaponCountdown;
     private int invincibilityCountdown = 0;
     private boolean alive = true;
+    private int lives = 3;
     public static final int SHIP_SCALE = 4;
     private static final int WIDTH = SHIP_SCALE * 8;
     private boolean tripleFire;
@@ -47,24 +48,6 @@ public class Player implements Hittable {
         return hit;
     }
 
-    public boolean isHit(Asteroids a) {
-        boolean hit = invincibilityCountdown <= 0 && hitBox.intersects(a.getHitBox());
-        if (hit) {
-            alive = false;
-            invincibilityCountdown = 120;  // 60 frames = 1 second
-        }
-        return hit;
-    }
-
-    public boolean isHit(EnemyShip s) {
-        boolean hit = invincibilityCountdown <= 0 && hitBox.intersects(s.getHitBox());
-        if (hit) {
-            alive = false;
-            invincibilityCountdown = 120;  // 60 frames = 1 second
-        }
-        return hit;
-    }
-
     public void tick() {
         if (invincibilityCountdown > 0) {
             invincibilityCountdown--;
@@ -76,9 +59,6 @@ public class Player implements Hittable {
         }
     }
 
-    public boolean isAlive() {
-        return alive;
-    }
 
     public void resetDestroyed() {
         alive = true;
@@ -110,8 +90,8 @@ public class Player implements Hittable {
         if (weaponCountdown == 0) {
             b.add(new Bullet(x, y, rotation + Math.PI * 3/2, "player"));
             if (tripleFire){
-                b.add(new Bullet(x - Math.cos(rotation) * 30, y - Math.sin(rotation) * 30, rotation + Math.PI * 3/2, "player"));
-                b.add(new Bullet(x + Math.cos(rotation) * 30, y + Math.sin(rotation) * 30, rotation + Math.PI * 3/2, "player"));
+                b.add(new Bullet(x - Math.cos(rotation) * 5 * SHIP_SCALE, y - Math.sin(rotation) * 30, rotation + Math.PI * 3/2, "player"));
+                b.add(new Bullet(x + Math.cos(rotation) * 5 * SHIP_SCALE, y + Math.sin(rotation) * 30, rotation + Math.PI * 3/2, "player"));
             }
         }
         return b;
@@ -165,6 +145,10 @@ public class Player implements Hittable {
         return invincibilityCountdown;
     }
 
+    public void setInvincibilityCountdown(int invincibilityCountdown) {
+        this.invincibilityCountdown = invincibilityCountdown;
+    }
+
     public void setTripleFire(boolean tripleFire) {
         this.tripleFire = tripleFire;
     }
@@ -175,5 +159,20 @@ public class Player implements Hittable {
 
     public boolean has10SecondsPassed() {
         return Duration.between(propsTime, Instant.now()).getSeconds() >= 10;
+    }
+
+    public void setLives(int lives) {
+        this.lives = lives;
+    }
+
+    public int getLives() {
+        return lives;
+    }
+
+    public boolean isAlive() {
+        return alive;
+    }
+    public void setAlive(boolean alive) {
+        this.alive = alive;
     }
 }

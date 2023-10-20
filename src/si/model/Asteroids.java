@@ -2,7 +2,7 @@ package si.model;
 
 import javafx.geometry.Rectangle2D;
 
-public class Asteroids implements Hittable {
+public class Asteroids implements Hittable, Collisible {
     private boolean alive;
     private double x, y;
     private final double rotation;
@@ -43,6 +43,22 @@ public class Asteroids implements Hittable {
 
     public boolean isAlive() {
         return alive;
+    }
+
+    @Override
+    public boolean isCollision(Player p) {
+        boolean collision = getHitBox().intersects(p.getHitBox());
+        if (collision && p.getInvincibilityCountdown() <= 0) {
+            p.setAlive(false);
+            p.setLives(p.getLives() - 1);
+            p.setInvincibilityCountdown(120);  // 60 frames = 1 second
+        }
+        return collision;
+    }
+
+    @Override
+    public boolean isProps() {
+        return false;
     }
 
     public int getPoints() {
