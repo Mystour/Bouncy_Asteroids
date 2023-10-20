@@ -100,7 +100,7 @@ public class GameScreen implements Screen {
         gc.fillRect(x + 2 * EnemyShip.SHIP_SCALE, y + EnemyShip.SHIP_SCALE * 0, EnemyShip.SHIP_SCALE, EnemyShip.SHIP_SCALE);
         gc.fillRect(x + 6 * EnemyShip.SHIP_SCALE, y + EnemyShip.SHIP_SCALE * 0, EnemyShip.SHIP_SCALE, EnemyShip.SHIP_SCALE);
 
-        // creating eye holes
+        // creating eyeholes
         gc.setFill(Color.BLACK);
         gc.fillRect(x + 3 * EnemyShip.SHIP_SCALE, y + EnemyShip.SHIP_SCALE * 3, EnemyShip.SHIP_SCALE, EnemyShip.SHIP_SCALE);
         gc.fillRect(x + 5 * EnemyShip.SHIP_SCALE, y + EnemyShip.SHIP_SCALE * 3, EnemyShip.SHIP_SCALE, EnemyShip.SHIP_SCALE);
@@ -117,6 +117,14 @@ public class GameScreen implements Screen {
         for (int i = 0; i < x_coords.length; i++) {
             gc.fillRect(x + x_coords[i] * EnemyShip.SHIP_SCALE, y + EnemyShip.SHIP_SCALE * y_coords[i], EnemyShip.SHIP_SCALE * widths[i], EnemyShip.SHIP_SCALE * heights[i]);
         }
+    }
+
+    private void drawShape(GraphicsContext gc, Props p) {
+        double x = p.getX();
+        double y = p.getY();
+
+        gc.setFill(Color.BLUE);  // Choose a color for the asteroid
+        gc.fillOval(x, y, p.getRadius(), p.getRadius());  // draw a circle at (x, y) with a diameter the same as our size.
     }
 
     public void paint() {
@@ -144,6 +152,9 @@ public class GameScreen implements Screen {
             }
             for (EnemyShip s : game.getEnemyShips()) {
                 drawShape(gc, s);
+            }
+            for (Props p : game.getProps()) {
+                drawShape(gc, p);
             }
             if ((game.isPaused() || !game.isPlayerAlive()) && game.getLives() > 0) {
                 gc.setTextAlign(TextAlignment.CENTER);

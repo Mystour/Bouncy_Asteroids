@@ -6,12 +6,14 @@ import java.util.List;
 public class Swarm implements Movable {
     private final List<Asteroids> asteroids;
     private final List<EnemyShip> ships;
+    private final List<Props> props;
     private final BouncyAsteroidsGame game;
 
     public Swarm(int numA, int numB, int numC, BouncyAsteroidsGame g) {
         game = g;
         asteroids = new ArrayList<>();
         ships = new ArrayList<>();
+        props = new ArrayList<>();
         Player player = game.getPlayer();
         double x;
         double y;
@@ -55,6 +57,7 @@ public class Swarm implements Movable {
         List<Asteroids> removeA = new ArrayList<Asteroids>();
         List<Asteroids> addA = new ArrayList<Asteroids>();
         List<EnemyShip> removeS = new ArrayList<EnemyShip>();
+        List<Props> removeP = new ArrayList<Props>();
         for (Asteroids s : asteroids) {
             if (!s.isAlive()) {
                 removeA.add(s);
@@ -130,6 +133,33 @@ public class Swarm implements Movable {
                 s.move(speed_x, speed_y);
             }
         }
+
+        if (!props.isEmpty()) {
+            for (Props p : props) {
+                if (!p.isAlive()) {
+                    removeP.add(p);
+                }
+            }
+            props.removeAll(removeP);
+
+            for (Props p: props){
+                double speed_x, speed_y;
+                int radius = p.getRadius();
+
+                speed_x = p.getSpeedX();
+                speed_y = p.getSpeedY();
+
+                if (p.getX() + speed_x > game.getScreenWidth() - radius || p.getX() + speed_x < 0) {
+                    speed_x = -speed_x;
+                    p.setSpeedX(speed_x);
+                }
+                if (p.getY() + speed_y > game.getScreenHeight() - radius || p.getY() + speed_y < 0) {
+                    speed_y = -speed_y;
+                    p.setSpeedY(speed_y);
+                }
+                p.move(speed_x, speed_y);
+            }
+        }
     }
 
     public List<Hittable> getHittable() {
@@ -147,9 +177,13 @@ public class Swarm implements Movable {
         return new ArrayList<EnemyShip>(ships);
     }
 
+    public List<Props> getProps() { return new ArrayList<Props>(props); }
+
     public int getAsteroidsRemaining() { return asteroids.size(); }
 
     public void addEnemyShip(EnemyShip s) {
         ships.add(s);
     }
+
+    public void addProps(Props p) { props.add(p); }
 }

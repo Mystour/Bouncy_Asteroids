@@ -5,14 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52b52198-ca85-4962-8e92-807cb5161ed5" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/src/si/model/Collisible.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/si/model/Props.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scores.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scores.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/si/display/GameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/display/GameScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/si/model/Asteroids.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/Asteroids.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/si/model/BouncyAsteroidsGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/BouncyAsteroidsGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/si/model/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/Level.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/si/model/Swarm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/Swarm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -40,7 +53,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;invincibility&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;props&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/Program/Java_work/Bouncy_Asteroids/src/si/display&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -129,7 +142,9 @@
       <workItem from="1697717574932" duration="6000" />
       <workItem from="1697720673140" duration="109000" />
       <workItem from="1697720882151" duration="266000" />
-      <workItem from="1697722791423" duration="787000" />
+      <workItem from="1697722791423" duration="2555000" />
+      <workItem from="1697785330945" duration="1114000" />
+      <workItem from="1697793207828" duration="1917000" />
     </task>
     <servers />
   </component>

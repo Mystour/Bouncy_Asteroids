@@ -61,6 +61,7 @@ public class BouncyAsteroidsGame implements Game {
             }
             Asteroids();
             EnemyShips();
+            Props();
             movePlayer();
             level[currentLevel].move(currentLevel);
         }
@@ -151,6 +152,16 @@ public class BouncyAsteroidsGame implements Game {
             for (Asteroids a : level[currentLevel].getAsteroids()) {
                 if (a.isHit(s)) {
                     s.setAlive(false);
+                }
+            }
+        }
+    }
+
+    private void Props() {
+        for (Props p : level[currentLevel].getProps()) {
+            if (p.isAlive() && p.getHitBox().intersects(SCREEN_BOUNDS)) {
+                if (p.isCollision(player)) {
+                    playerLives++;
                 }
             }
         }
@@ -249,9 +260,9 @@ public class BouncyAsteroidsGame implements Game {
         return level[currentLevel].getAsteroids();
     }
 
-    public List<EnemyShip> getEnemyShips() {
-        return level[currentLevel].getEnemyShips();
-    }
+    public List<EnemyShip> getEnemyShips() { return level[currentLevel].getEnemyShips(); }
+
+    public List<Props> getProps() { return level[currentLevel].getProps(); }
 
     public int getLevel() { return currentLevel + 1; }
 

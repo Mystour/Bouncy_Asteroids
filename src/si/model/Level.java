@@ -39,6 +39,7 @@ public class Level {
     public List<EnemyShip> getEnemyShips() {
         return swarm.getEnemyShips();
     }
+    public List<Props> getProps(){ return swarm.getProps();}
 
     public void reset() {
         swarm = new Swarm(numA, numB, numC, game);
@@ -51,6 +52,9 @@ public class Level {
         if (has30SecondsPassed()) {
             EnemyShip newShip = createEnemyShip(currentLevel);
             swarm.addEnemyShip(newShip);
+
+            Props newProps = createProps();
+            swarm.addProps(newProps);
             levelStartTime = Instant.now();
         }
         return getEbullet();
@@ -75,6 +79,17 @@ public class Level {
             y = type.getHeight() + Math.random() * game.getScreenHeight();
         }
         return new EnemyShip(x, y, type);
+    }
+
+    private Props createProps() {
+        double x, y;
+        x = Props.getRadius() + Math.random() * (game.getScreenWidth() - 2 * Props.getRadius());
+        y = Props.getRadius() + Math.random() * (game.getScreenHeight() - 2 * Props.getRadius());
+        while (Math.abs(x - game.getPlayer().getX()) < 20 && Math.abs(y - game.getPlayer().getY()) < 20) {
+            x = Props.getRadius() + Math.random() * game.getScreenWidth();
+            y = Props.getRadius() + Math.random() * game.getScreenHeight();
+        }
+        return new Props(x, y);
     }
 
     private List<Bullet> getEbullet() {
