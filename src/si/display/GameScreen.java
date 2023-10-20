@@ -124,7 +124,16 @@ public class GameScreen implements Screen {
         double y = p.getY();
 
         gc.setFill(Color.BLUE);  // Choose a color for the asteroid
-        gc.fillOval(x, y, p.getRadius(), p.getRadius());  // draw a circle at (x, y) with a diameter the same as our size.
+
+        // add "P" to its center
+        gc.setTextAlign(TextAlignment.CENTER);
+        gc.setTextBaseline(VPos.CENTER);
+        gc.setFont(new Font("Arial", 24));
+        gc.fillText("P", x + Props.getRadius()/2, y + Props.getRadius()/2);
+
+
+
+        gc.fillOval(x, y, Props.getRadius(), Props.getRadius());  // draw a circle at (x, y) with a diameter the same as our size.
     }
 
     public void paint() {

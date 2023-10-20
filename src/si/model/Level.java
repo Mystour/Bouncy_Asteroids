@@ -12,7 +12,8 @@ public class Level {
     int numA, numB, numC;
 
     private final BouncyAsteroidsGame game;
-    private Instant levelStartTime;
+    private Instant enemyStartTime;
+    private Instant propsStartTime;
 
 
     public Level(int A, int B, int C, BouncyAsteroidsGame g){
@@ -43,7 +44,8 @@ public class Level {
 
     public void reset() {
         swarm = new Swarm(numA, numB, numC, game);
-        levelStartTime = Instant.now();
+        enemyStartTime = Instant.now();
+        propsStartTime = Instant.now();
     }
 
 
@@ -52,16 +54,27 @@ public class Level {
         if (has30SecondsPassed()) {
             EnemyShip newShip = createEnemyShip(currentLevel);
             swarm.addEnemyShip(newShip);
-
+            enemyStartTime = Instant.now();
+        }
+        if (has20SecondsPassed()) {
             Props newProps = createProps();
             swarm.addProps(newProps);
-            levelStartTime = Instant.now();
+            propsStartTime = Instant.now();
+        }
+
+        Player player = game.getPlayer();
+        if (player.has10SecondsPassed()){
+            player.setTripleFire(false);
         }
         return getEbullet();
     }
 
     private boolean has30SecondsPassed() {
-        return Duration.between(levelStartTime, Instant.now()).getSeconds() >= 30;
+        return Duration.between(enemyStartTime, Instant.now()).getSeconds() >= 30;
+    }
+
+    private boolean has20SecondsPassed() {
+        return Duration.between(propsStartTime, Instant.now()).getSeconds() >= 20;
     }
 
     private EnemyShip createEnemyShip(int currentLevel) {
@@ -108,7 +121,11 @@ public class Level {
         return eBullets;
     }
 
-    public void setLevelStartTime(Instant levelStartTime) {
-        this.levelStartTime = levelStartTime;
+    public void setEnemyStartTime(Instant enemyStartTime) {
+        this.enemyStartTime = enemyStartTime;
+    }
+
+    public void setPropsStartTime(Instant propsStartTime) {
+        this.propsStartTime = propsStartTime;
     }
 }

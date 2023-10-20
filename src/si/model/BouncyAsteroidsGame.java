@@ -5,6 +5,7 @@ import javafx.geometry.Rectangle2D;
 import si.display.PlayerListener;
 
 import java.time.Instant;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,9 +71,9 @@ public class BouncyAsteroidsGame implements Game {
 
     private void movePlayer() {
         if (listener.isPressingFire()) {
-            Bullet b = player.fire();
+            List<Bullet> b = player.fire();
             if (b != null) {
-                playerBullets.add(b);
+                playerBullets.addAll(b);
             }
         }
         if (listener.isPressingUp()){
@@ -162,6 +163,8 @@ public class BouncyAsteroidsGame implements Game {
             if (p.isAlive() && p.getHitBox().intersects(SCREEN_BOUNDS)) {
                 if (p.isCollision(player)) {
                     playerLives++;
+                    player.setTripleFire(true);
+                    player.setPropsTime(Instant.now());
                 }
             }
         }
@@ -204,7 +207,8 @@ public class BouncyAsteroidsGame implements Game {
         if (currentLevel < NO_LEVELS) {
             int noAsteroids = level[currentLevel].getAsteroidsRemaining();
             if (noAsteroids == 0 && level[currentLevel].getEnemyShips().isEmpty()){
-                level[currentLevel+1].setLevelStartTime(Instant.now());
+                level[currentLevel+1].setEnemyStartTime(Instant.now());
+                level[currentLevel+1].setPropsStartTime(Instant.now());
                 return true;
             }
             else {
@@ -274,4 +278,6 @@ public class BouncyAsteroidsGame implements Game {
             count++;
         }
     }
+
+
 }

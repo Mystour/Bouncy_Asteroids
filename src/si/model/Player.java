@@ -3,6 +3,11 @@ package si.model;
 
 import javafx.geometry.Rectangle2D;
 
+import java.time.Duration;
+import java.time.Instant;
+import java.util.List;
+import java.util.ArrayList;
+
 public class Player implements Hittable {
     private double x;
     private double y;
@@ -14,11 +19,14 @@ public class Player implements Hittable {
     private boolean alive = true;
     public static final int SHIP_SCALE = 4;
     private static final int WIDTH = SHIP_SCALE * 8;
+    private boolean tripleFire;
+    private Instant propsTime = Instant.now();
 
     public Player() {
         // the player starts at the bottom of the screen, centered horizontally
         x = 400 - WIDTH;
         y = 450;
+        tripleFire = false;
 
         hitBox = new Rectangle2D(x, y, 8 * SHIP_SCALE, 5 * SHIP_SCALE);
     }
@@ -97,10 +105,14 @@ public class Player implements Hittable {
         return false;
     }
 
-    public Bullet fire() {
-        Bullet b = null;
+    public List<Bullet> fire() {
+        List<Bullet> b = new ArrayList<Bullet>();
         if (weaponCountdown == 0) {
-            b = new Bullet(x, y, rotation + 3*Math.PI/2, "player");
+            b.add(new Bullet(x, y, rotation + Math.PI * 3/2, "player"));
+            if (tripleFire){
+                b.add(new Bullet(x - Math.cos(rotation) * 30, y - Math.sin(rotation) * 30, rotation + Math.PI * 3/2, "player"));
+                b.add(new Bullet(x + Math.cos(rotation) * 30, y + Math.sin(rotation) * 30, rotation + Math.PI * 3/2, "player"));
+            }
         }
         return b;
     }
@@ -151,5 +163,17 @@ public class Player implements Hittable {
 
     public int getInvincibilityCountdown() {
         return invincibilityCountdown;
+    }
+
+    public void setTripleFire(boolean tripleFire) {
+        this.tripleFire = tripleFire;
+    }
+
+    public void setPropsTime(Instant propsTime) {
+        this.propsTime = propsTime;
+    }
+
+    public boolean has10SecondsPassed() {
+        return Duration.between(propsTime, Instant.now()).getSeconds() >= 10;
     }
 }
