@@ -217,13 +217,14 @@ public class BouncyAsteroidsGame implements Game {
     @Override
     public void moveToNextLevel() {
         pause = true;
-        Swarm swarm = level[currentLevel].getSwarm();
+        Swarm preSwarm = level[currentLevel].getSwarm();
         currentLevel++;
         player.resetDestroyed();
         playerBullets = new ArrayList<Bullet>();
 
         // move props to the next level
-        level[currentLevel].getSwarm().setProps(swarm.getProps());
+        Swarm currentSwarm = level[currentLevel].getSwarm();
+        currentSwarm.setProps(preSwarm.getProps());
     }
 
     @Override
