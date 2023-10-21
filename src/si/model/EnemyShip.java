@@ -12,11 +12,18 @@ public class EnemyShip implements Hittable, Collisible {
     private final Random rand;
     private final int height;
     public static final int SHIP_SCALE = 2;
+    public double acceleration;
 
     public EnemyShip(double x, double y, AlienType type) {
         this.x = x;
         this.y = y;
         this.type = type;
+        if (type == AlienType.A){
+            this.acceleration = 0;
+        }
+        else {
+            this.acceleration = 0.1;
+        }
         this.height = type.getHeight();
         this.rand = new Random((int)(x * 100 + y));
         double rotation = rand.nextDouble() * 2 * Math.PI;
@@ -110,6 +117,10 @@ public class EnemyShip implements Hittable, Collisible {
 
     public void setSpeedY(double speed_y) {
         this.speed_y = speed_y;
+    }
+
+    public double getAcceleration() {
+        return acceleration;
     }
 
     public boolean isEnemy() {

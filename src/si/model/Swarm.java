@@ -119,8 +119,9 @@ public class Swarm implements Movable {
                 int height = type.getHeight();
                 int width = type.getWidth();
 
-                speed_x = s.getSpeedX();
-                speed_y = s.getSpeedY();
+                double rotation = Math.random() * 2 * Math.PI;
+                speed_x = s.getSpeedX() + s.getAcceleration() * Math.cos(rotation);
+                speed_y = s.getSpeedY() + s.getAcceleration() * Math.sin(rotation);
 
                 if (s.getX() + speed_x > game.getScreenWidth() - width || s.getX() + speed_x < 0) {
                     speed_x = -speed_x;

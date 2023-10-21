@@ -90,8 +90,8 @@ public class Player implements Hittable {
         if (weaponCountdown == 0) {
             b.add(new Bullet(x, y, rotation + Math.PI * 3/2, "player"));
             if (tripleFire){
-                b.add(new Bullet(x - Math.cos(rotation) * 5 * SHIP_SCALE, y - Math.sin(rotation) * 30, rotation + Math.PI * 3/2, "player"));
-                b.add(new Bullet(x + Math.cos(rotation) * 5 * SHIP_SCALE, y + Math.sin(rotation) * 30, rotation + Math.PI * 3/2, "player"));
+                b.add(new Bullet(x - Math.cos(rotation) * 4 * SHIP_SCALE, y - Math.sin(rotation) * 30, rotation + Math.PI * 3/2, "player"));
+                b.add(new Bullet(x + Math.cos(rotation) * 4 * SHIP_SCALE, y + Math.sin(rotation) * 30, rotation + Math.PI * 3/2, "player"));
             }
         }
         return b;

@@ -122,18 +122,19 @@ public class GameScreen implements Screen {
     private void drawShape(GraphicsContext gc, Props p) {
         double x = p.getX();
         double y = p.getY();
+        double radius = Props.getRadius();
 
-        gc.setFill(Color.BLUE);  // Choose a color for the asteroid
+        // Draw the props
+        gc.setFill(Color.BLUE);
+        gc.fillOval(x, y, radius, radius);
 
         // add "P" to its center
         gc.setTextAlign(TextAlignment.CENTER);
         gc.setTextBaseline(VPos.CENTER);
         gc.setFont(new Font("Arial", 24));
-        gc.fillText("P", x + Props.getRadius()/2, y + Props.getRadius()/2);
 
-
-
-        gc.fillOval(x, y, Props.getRadius(), Props.getRadius());  // draw a circle at (x, y) with a diameter the same as our size.
+        gc.setFill(Color.GREEN);  // Set the font color to green
+        gc.fillText("P", x + radius/2, y + radius/2);
     }
 
     public void paint() {
@@ -176,7 +177,8 @@ public class GameScreen implements Screen {
                 gc.setTextAlign(TextAlignment.CENTER);
                 gc.setTextBaseline(VPos.CENTER);
                 gc.setFont(new Font("Arial", 48));
-                gc.setFill(Color.GREEN);gc.fillText("Game over ", BouncyAsteroidsGame.SCREEN_WIDTH/2, BouncyAsteroidsGame.SCREEN_HEIGHT/2);
+                gc.setFill(Color.GREEN);
+                gc.fillText("Game over ", BouncyAsteroidsGame.SCREEN_WIDTH/2, BouncyAsteroidsGame.SCREEN_HEIGHT/2);
             }
         }
     }
