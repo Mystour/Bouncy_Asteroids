@@ -132,4 +132,8 @@ public class Level {
     public void setPropsStartTime(Instant propsStartTime) {
         this.propsStartTime = propsStartTime;
     }
+
+    public Swarm getSwarm() {
+        return swarm;
+    }
 }

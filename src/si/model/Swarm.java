@@ -185,6 +185,8 @@ public class Swarm implements Movable {
 
     public List<Props> getProps() { return new ArrayList<Props>(props); }
 
+    public void setProps(List<Props> props) { this.props.addAll(props); }
+
     public int getAsteroidsRemaining() { return asteroids.size(); }
 
     public void addEnemyShip(EnemyShip s) {
