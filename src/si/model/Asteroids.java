@@ -5,7 +5,7 @@ import javafx.geometry.Rectangle2D;
 public class Asteroids implements Hittable, Collisible {
     private boolean alive;
     private double x, y;
-    private final double rotation;
+    private double rotation;
     private double speed_x;
     private double speed_y;
     private final PlanetType type;
@@ -99,4 +99,5 @@ public class Asteroids implements Hittable, Collisible {
     public void setSpeedY(double speed_y) { this.speed_y = speed_y; }
 
     public double getRotation() { return rotation; }
+    public void setRotation(double rotation) { this.rotation = rotation; }
 }

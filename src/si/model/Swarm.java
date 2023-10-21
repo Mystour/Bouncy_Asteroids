@@ -95,14 +95,13 @@ public class Swarm implements Movable {
             speed_y = s.getSpeedY();
 
             if (s.getX() + speed_x > game.getScreenWidth() - radius || s.getX() + speed_x < 0) {
-                speed_x = -speed_x;
-                s.setSpeedX(speed_x);
+                s.setSpeedX(-speed_x);
             }
             if (s.getY() + speed_y > game.getScreenHeight() - radius || s.getY() + speed_y < 0) {
-                speed_y = -speed_y;
-                s.setSpeedY(speed_y);
+                s.setSpeedY(-speed_y);
             }
-            s.move(speed_x, speed_y);
+            s.setRotation(Math.atan2(s.getSpeedY(), s.getSpeedX()));
+            s.move(s.getSpeedX(), s.getSpeedY());
         }
 
         if (!ships.isEmpty()) {
@@ -124,14 +123,12 @@ public class Swarm implements Movable {
                 speed_y = s.getSpeedY() + s.getAcceleration() * Math.sin(rotation);
 
                 if (s.getX() + speed_x > game.getScreenWidth() - width || s.getX() + speed_x < 0) {
-                    speed_x = -speed_x;
-                    s.setSpeedX(speed_x);
+                    s.setSpeedX(-speed_x);
                 }
                 if (s.getY() + speed_y > game.getScreenHeight() - height || s.getY() + speed_y < 0) {
-                    speed_y = -speed_y;
-                    s.setSpeedY(speed_y);
+                    s.setSpeedY(-speed_y);
                 }
-                s.move(speed_x, speed_y);
+                s.move(s.getSpeedX(), s.getSpeedY());
             }
         }
 

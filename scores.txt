@@ -1,1 +1,3 @@
+9200 Player 1
+8350 Player 1
 6200 Player 1
