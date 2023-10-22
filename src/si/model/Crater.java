@@ -8,11 +8,13 @@ import javafx.scene.paint.Stop;
 
 public class Crater{
     private double detailX, detailY;
-    private double[] x_coords_detail, y_coords_detail;
-    private int numVertices;
+    private final double[] x_coords_detail;
+    private final double[] y_coords_detail;
+    private final int numVertices;
     private int detailSize;
 
-    public Crater(double detailX, double detailY, double[] x_coords_detail, double[] y_coords_detail, int numVertices) {
+    public Crater(int detailSize, double detailX, double detailY, double[] x_coords_detail, double[] y_coords_detail, int numVertices) {
+        this.detailSize = detailSize;
         this.detailX = detailX;
         this.detailY = detailY;
         this.x_coords_detail = x_coords_detail;
@@ -44,9 +46,10 @@ public class Crater{
     public RadialGradient getColor() {
         return new RadialGradient(
                 0, 0, detailX + detailSize / 2, detailY + detailSize / 2, detailSize / 2, false, CycleMethod.NO_CYCLE,
-                new Stop(0.0, Color.LIGHTGRAY),
-                new Stop(0.8, Color.DARKGRAY),
-                new Stop(1.0, Color.BLACK)
+
+                new Stop(0.0, Color.WHITE),
+                new Stop(0.8, Color.LIGHTGRAY),
+                new Stop(1.0, Color.DARKGRAY)
         );
     }
 }

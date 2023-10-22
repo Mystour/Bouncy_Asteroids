@@ -94,10 +94,10 @@ public class Swarm implements Movable {
             speed_x = s.getSpeedX();
             speed_y = s.getSpeedY();
 
-            if (s.getX() + speed_x > game.getScreenWidth() - radius || s.getX() + speed_x < 0) {
+            if (s.getX() + speed_x > game.getScreenWidth() - radius || s.getX() + speed_x < radius) {
                 s.setSpeedX(-speed_x);
             }
-            if (s.getY() + speed_y > game.getScreenHeight() - radius || s.getY() + speed_y < 0) {
+            if (s.getY() + speed_y > game.getScreenHeight() - radius || s.getY() + speed_y < radius) {
                 s.setSpeedY(-speed_y);
             }
             s.setRotation(Math.atan2(s.getSpeedY(), s.getSpeedX()));

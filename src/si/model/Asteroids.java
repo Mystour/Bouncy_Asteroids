@@ -1,10 +1,6 @@
 package si.model;
 
 import javafx.geometry.Rectangle2D;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.CycleMethod;
-import javafx.scene.paint.RadialGradient;
-import javafx.scene.paint.Stop;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +13,13 @@ public class Asteroids implements Hittable, Collisible {
     private double speed_y;
     private final PlanetType type;
     private final int numDetails = (int)(Math.random()*10+5); // Number of additional details
-    private final List<Crater> craters ;
+    private final List<Crater> craters;
+
+    private final List<Double> coordinatesX = new ArrayList<>();
+    private final List<Double> coordinatesY = new ArrayList<>();
+    private final double[] shapeX;
+    private final double[] shapeY;
+    private final int numberOfVertices = 10; // change to vary the number of vertices on the asteroid
 
     public Asteroids(double x, double y, double rotation, PlanetType type) {
         this.x = x;
@@ -30,6 +32,9 @@ public class Asteroids implements Hittable, Collisible {
         this.alive = true;
 
         this.craters = generateCraters();
+        generateShape();
+        this.shapeX = coordinatesX.stream().mapToDouble(Double::doubleValue).toArray();
+        this.shapeY = coordinatesY.stream().mapToDouble(Double::doubleValue).toArray();
     }
 
     public PlanetType getType() {
@@ -83,6 +88,12 @@ public class Asteroids implements Hittable, Collisible {
     public void move(double cX, double cY) {
         x += cX;
         y += cY;
+
+        for (int i = 0; i < numberOfVertices; i++) {
+            shapeX[i] += cX;
+            shapeY[i] += cY;
+        }
+
         for (Crater crater : craters) {
             crater.move(cX, cY);
         }
@@ -90,7 +101,7 @@ public class Asteroids implements Hittable, Collisible {
 
 
     public Rectangle2D getHitBox() {
-        return new Rectangle2D(x, y, type.getRadius(), type.getRadius());
+        return new Rectangle2D(x - type.getRadius(), y - type.getRadius(), type.getRadius() * 2, type.getRadius() * 2);
     }
 
     @Override
@@ -119,7 +130,7 @@ public class Asteroids implements Hittable, Collisible {
         List<Crater> craters = new ArrayList<Crater>();
         for (int i = 0; i < numDetails; i++) {
             // Create an asteroid detail (a smaller irregular polygon)
-            int detailSize = (int) (Math.random() * type.getRadius() / 2); // The size of the detail is a fraction of the asteroid's size
+            int detailSize = (int) type.getRadius(); // The size of the detail is a fraction of the asteroid's size
             double detailX = x + Math.random() * type.getRadius() - detailSize / 2; // The position of the detail is somewhere on the asteroid
             double detailY = y + Math.random() * type.getRadius() - detailSize / 2;
 
@@ -128,22 +139,36 @@ public class Asteroids implements Hittable, Collisible {
             double[] y_coords_detail = new double[numVertices];
             for (int j = 0; j < numVertices; j++) {
                 // For each vertex, gets a random position around the centroid of the detail
-                x_coords_detail[j] = detailX + detailSize / 2 + (Math.cos(2 * Math.PI * j / numVertices) * detailSize / 2 * (0.5 + Math.random() / 2));
-                y_coords_detail[j] = detailY + detailSize / 2 + (Math.sin(2 * Math.PI * j / numVertices) * detailSize / 2 * (0.5 + Math.random() / 2));
+                x_coords_detail[j] = detailX + (Math.cos(2 * Math.PI * j / numVertices) * detailSize * (0.5 + Math.random() / 2));
+                y_coords_detail[j] = detailY + (Math.sin(2 * Math.PI * j / numVertices) * detailSize * (0.5 + Math.random() / 2));
             }
-
-            RadialGradient gradient = new RadialGradient(
-                    0, 0, detailX + detailSize / 2, detailY + detailSize / 2, detailSize / 2, false, CycleMethod.NO_CYCLE,
-                    new Stop(0.0, Color.LIGHTGRAY),
-                    new Stop(0.8, Color.DARKGRAY),
-                    new Stop(1.0, Color.BLACK)
-            );
-            craters.add(new Crater(detailX, detailY, x_coords_detail, y_coords_detail, numVertices));
+            craters.add(new Crater(detailSize, detailX, detailY, x_coords_detail, y_coords_detail, numVertices));
         }
         return craters;
     }
 
     public List<Crater> getCraters() {
         return craters;
+    }
+
+    public void generateShape() {
+        for (int i = 0; i < 360; i += 360 / numberOfVertices) {
+            double radius = type.getRadius() * (0.9 + Math.random() * 0.2);
+            double radians = Math.toRadians(i);
+            coordinatesX.add(x + radius * Math.cos(radians));
+            coordinatesY.add(y + radius * Math.sin(radians));
+        }
+    }
+
+    public double[] getCoordinatesX() {
+        return shapeX;
+    }
+
+    public double[] getCoordinatesY() {
+        return shapeY;
+    }
+
+    public int getNumberOfVertices() {
+        return numberOfVertices;
     }
 }

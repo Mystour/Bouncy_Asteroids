@@ -1,3 +1,4 @@
 9200 Player 1
 8350 Player 1
+7750 ChenZiang
 6200 Player 1

@@ -90,22 +90,15 @@ public class GameScreen implements Screen {
     }
 
     private void drawShape(GraphicsContext gc, Asteroids at) {
-        PlanetType type = at.getType();
-        drawAsteroid(gc, at, type.getRadius());
-    }
-
-    public void drawAsteroid(GraphicsContext gc, Asteroids at, int size) {
-        double x = at.getX();  // The x coordinate of our asteroid
-        double y = at.getY();  // The y coordinate of our asteroid
-
         gc.setFill(Color.GRAY);  // Choose a color for the asteroid
-        gc.fillOval(x, y, size, size);  // draw a circle at (x, y) with a diameter the same as our size.
+        gc.fillPolygon(at.getCoordinatesX(), at.getCoordinatesY(), at.getNumberOfVertices());  // Draw the asteroid
 
         for (Crater c : at.getCraters()) {
             gc.setFill(c.getColor());
             gc.fillPolygon(c.x_coords_detail(), c.y_coords_detail(), c.numVertices());
         }
     }
+
 
     private void drawShape(GraphicsContext gc, EnemyShip es) {
         if (es.getType() == AlienType.A) {
