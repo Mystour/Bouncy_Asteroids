@@ -222,10 +222,6 @@ public class GameScreen implements Screen {
 
     private boolean shouldPaint(){
         Player p = game.getPlayer();
-        int invincibilityCountdown = p.getInvincibilityCountdown();
-        return invincibilityCountdown % 8 == 0  ||
-                invincibilityCountdown % 8 == 1 ||
-                invincibilityCountdown % 8 == 2 ||
-                invincibilityCountdown % 8 == 3;
+        return p.getInvincibilityCountdown() % 8 <= 3;
     }
 }
