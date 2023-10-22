@@ -4,6 +4,9 @@ import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.paint.Stop;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import si.model.*;
@@ -21,6 +24,7 @@ public class GameScreen implements Screen {
         this.canvas = new Canvas(BouncyAsteroidsGame.SCREEN_WIDTH, BouncyAsteroidsGame.SCREEN_HEIGHT);
     }
 
+
     private void drawShape(GraphicsContext gc, Player p) {
         double x = p.getX();
         double y = p.getY();
@@ -36,7 +40,14 @@ public class GameScreen implements Screen {
             x_adjusted[i] = x + (x_coords[i] * Math.cos(radius) - y_coords[i] * Math.sin(radius)) * Player.SHIP_SCALE;
             y_adjusted[i] = y + (x_coords[i] * Math.sin(radius) + y_coords[i] * Math.cos(radius)) * Player.SHIP_SCALE;
         }
-        gc.setFill(Color.GREEN);
+        LinearGradient camouflage = new LinearGradient(
+                0, 0, 1, 1, true, CycleMethod.REFLECT,
+                new Stop(0.0, Color.GREEN),
+                new Stop(0.33, Color.BLACK),
+                new Stop(0.67, Color.BROWN),
+                new Stop(1.0, Color.GREEN)
+        );
+        gc.setFill(camouflage);
         gc.fillPolygon(x_adjusted, y_adjusted, x_adjusted.length);
     }
 
@@ -60,6 +71,31 @@ public class GameScreen implements Screen {
         } else {
             gc.setFill(Color.RED);
         }
+        gc.fillPolygon(x_adjusted, y_adjusted, x_adjusted.length);
+        drawFlame(gc, b);
+    }
+
+    private void drawFlame(GraphicsContext gc, Bullet b) {
+        double x = b.getX();
+        double y = b.getY();
+        double radius = b.getRotation() + Math.PI / 2;
+        double scale = Player.SHIP_SCALE / 2;
+
+        int[] x_coords = new int[]{-Bullet.BULLET_WIDTH, 0, Bullet.BULLET_WIDTH};
+        int[] y_coords = new int[]{-Bullet.BULLET_HEIGHT, Bullet.BULLET_HEIGHT, -Bullet.BULLET_HEIGHT};
+
+        double[] x_adjusted = new double[3];
+        double[] y_adjusted = new double[3];
+        for (int i = 0; i < 3; i++) {
+            x_adjusted[i] = x + (x_coords[i] * Math.cos(radius) - y_coords[i] * Math.sin(radius)) * scale;
+            y_adjusted[i] = y + (x_coords[i] * Math.sin(radius) + y_coords[i] * Math.cos(radius)) * scale;
+        }
+
+        // Create flame gradient
+        LinearGradient flameGradient = new LinearGradient(0, 0, 1, 0, true, CycleMethod.NO_CYCLE,
+                new Stop(0.0, Color.YELLOW),
+                new Stop(1.0, Color.RED));
+        gc.setFill(flameGradient);
         gc.fillPolygon(x_adjusted, y_adjusted, x_adjusted.length);
     }
 
@@ -100,7 +136,7 @@ public class GameScreen implements Screen {
         gc.fillRect(x + 2 * EnemyShip.SHIP_SCALE, y + EnemyShip.SHIP_SCALE * 0, EnemyShip.SHIP_SCALE, EnemyShip.SHIP_SCALE);
         gc.fillRect(x + 6 * EnemyShip.SHIP_SCALE, y + EnemyShip.SHIP_SCALE * 0, EnemyShip.SHIP_SCALE, EnemyShip.SHIP_SCALE);
 
-        // creating eyeholes
+        // creating eye-holes
         gc.setFill(Color.BLACK);
         gc.fillRect(x + 3 * EnemyShip.SHIP_SCALE, y + EnemyShip.SHIP_SCALE * 3, EnemyShip.SHIP_SCALE, EnemyShip.SHIP_SCALE);
         gc.fillRect(x + 5 * EnemyShip.SHIP_SCALE, y + EnemyShip.SHIP_SCALE * 3, EnemyShip.SHIP_SCALE, EnemyShip.SHIP_SCALE);
@@ -141,8 +177,21 @@ public class GameScreen implements Screen {
         GraphicsContext gc = this.canvas.getGraphicsContext2D();
         gc.clearRect(0, 0, BouncyAsteroidsGame.SCREEN_WIDTH, BouncyAsteroidsGame.SCREEN_HEIGHT);
         if (game != null) {
+            // Set Background Color
             gc.setFill(Color.BLACK);
             gc.fillRect(0, 0, BouncyAsteroidsGame.SCREEN_WIDTH, BouncyAsteroidsGame.SCREEN_HEIGHT);
+
+            // Draw stars
+            int numOfStars = 100;
+            gc.setFill(Color.WHITE);
+            java.util.Random rand = new java.util.Random();   // create a random number generator to create random stars
+            for (int i = 0; i < numOfStars; i++) {
+                double x = rand.nextDouble() * BouncyAsteroidsGame.SCREEN_WIDTH;
+                double y = rand.nextDouble() * BouncyAsteroidsGame.SCREEN_HEIGHT;
+                double radius = rand.nextDouble() * 2;  // randomly determine the radius of the star,the maximum radius is 2
+                gc.fillOval(x, y, radius, radius);
+            }
+
             gc.setFill(Color.GREEN);
             gc.setTextAlign(TextAlignment.LEFT);
             gc.setTextBaseline(VPos.TOP);

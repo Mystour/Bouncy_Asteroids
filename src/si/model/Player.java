@@ -88,7 +88,7 @@ public class Player implements Hittable {
     public List<Bullet> fire() {
         List<Bullet> b = new ArrayList<Bullet>();
         if (weaponCountdown == 0) {
-            b.add(new Bullet(x, y, rotation + Math.PI * 3/2, "player"));
+            b.add(new Bullet(this.getHeadX(), this.getHeadY(), rotation + Math.PI * 3/2, "player"));
             if (tripleFire){
                 b.add(new Bullet(x - Math.cos(rotation) * 4 * SHIP_SCALE, y - Math.sin(rotation) * 30, rotation + Math.PI * 3/2, "player"));
                 b.add(new Bullet(x + Math.cos(rotation) * 4 * SHIP_SCALE, y + Math.sin(rotation) * 30, rotation + Math.PI * 3/2, "player"));
@@ -174,5 +174,13 @@ public class Player implements Hittable {
     }
     public void setAlive(boolean alive) {
         this.alive = alive;
+    }
+
+    public double getHeadX() {
+        return x - 6 * SHIP_SCALE * Math.cos(rotation + Math.PI * 1/2);
+    }
+
+    public double getHeadY() {
+        return y - 6 * SHIP_SCALE * Math.sin(rotation + Math.PI * 1/2);
     }
 }
