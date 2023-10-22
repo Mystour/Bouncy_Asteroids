@@ -84,10 +84,7 @@ public class Asteroids implements Hittable, Collisible {
         x += cX;
         y += cY;
         for (Crater crater : craters) {
-            for (int i = 0; i < crater.getNumVertices(); i++) {
-                crater.getX_coords_detail()[i] += cX;
-                crater.getY_coords_detail()[i] += cY;
-            }
+            crater.move(cX, cY);
         }
     }
 
@@ -141,7 +138,7 @@ public class Asteroids implements Hittable, Collisible {
                     new Stop(0.8, Color.DARKGRAY),
                     new Stop(1.0, Color.BLACK)
             );
-            craters.add(new Crater(gradient, x_coords_detail, y_coords_detail, numVertices));
+            craters.add(new Crater(detailX, detailY, x_coords_detail, y_coords_detail, numVertices));
         }
         return craters;
     }

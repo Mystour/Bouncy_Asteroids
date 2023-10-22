@@ -1,29 +1,52 @@
 package si.model;
 
+
+import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.RadialGradient;
+import javafx.scene.paint.Stop;
 
-public class Crater {
-    private RadialGradient gradient;
-    private double[] x_coords_detail;
-    private double[] y_coords_detail;
+public class Crater{
+    private double detailX, detailY;
+    private double[] x_coords_detail, y_coords_detail;
     private int numVertices;
+    private int detailSize;
 
-    public Crater(RadialGradient gradient, double[] x_coords_detail, double[] y_coords_detail, int numVertices) {
-        this.gradient = gradient;
+    public Crater(double detailX, double detailY, double[] x_coords_detail, double[] y_coords_detail, int numVertices) {
+        this.detailX = detailX;
+        this.detailY = detailY;
         this.x_coords_detail = x_coords_detail;
         this.y_coords_detail = y_coords_detail;
         this.numVertices = numVertices;
     }
-    public void setGradient(RadialGradient gradient) { this.gradient = gradient; }
-    public double[] getX_coords_detail() {
+
+    public void move(double cX, double cY) {
+        detailX += cX;
+        detailY += cY;
+        for (int i = 0; i < numVertices; i++) {
+            x_coords_detail[i] += cX;
+            y_coords_detail[i] += cY;
+        }
+    }
+
+    public double[] x_coords_detail() {
         return x_coords_detail;
     }
 
-    public double[] getY_coords_detail() {
+    public double[] y_coords_detail() {
         return y_coords_detail;
     }
 
-    public int getNumVertices() {
+    public int numVertices() {
         return numVertices;
+    }
+
+    public RadialGradient getColor() {
+        return new RadialGradient(
+                0, 0, detailX + detailSize / 2, detailY + detailSize / 2, detailSize / 2, false, CycleMethod.NO_CYCLE,
+                new Stop(0.0, Color.LIGHTGRAY),
+                new Stop(0.8, Color.DARKGRAY),
+                new Stop(1.0, Color.BLACK)
+        );
     }
 }
