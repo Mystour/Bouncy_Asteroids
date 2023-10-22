@@ -100,6 +100,11 @@ public class GameScreen implements Screen {
 
         gc.setFill(Color.GRAY);  // Choose a color for the asteroid
         gc.fillOval(x, y, size, size);  // draw a circle at (x, y) with a diameter the same as our size.
+
+        for (Crater c : at.getCraters()) {
+            gc.setFill(c.getGradient());
+            gc.fillPolygon(c.getX_coords_detail(), c.getY_coords_detail(), c.getNumVertices());
+        }
     }
 
     private void drawShape(GraphicsContext gc, EnemyShip es) {
