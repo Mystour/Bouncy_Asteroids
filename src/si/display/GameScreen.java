@@ -3,10 +3,7 @@ package si.display;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.CycleMethod;
-import javafx.scene.paint.LinearGradient;
-import javafx.scene.paint.Stop;
+import javafx.scene.paint.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import si.model.*;
@@ -40,14 +37,7 @@ public class GameScreen implements Screen {
             x_adjusted[i] = x + (x_coords[i] * Math.cos(radius) - y_coords[i] * Math.sin(radius)) * Player.SHIP_SCALE;
             y_adjusted[i] = y + (x_coords[i] * Math.sin(radius) + y_coords[i] * Math.cos(radius)) * Player.SHIP_SCALE;
         }
-        LinearGradient camouflage = new LinearGradient(
-                0, 0, 1, 1, true, CycleMethod.REFLECT,
-                new Stop(0.0, Color.GREEN),
-                new Stop(0.33, Color.BLACK),
-                new Stop(0.67, Color.BROWN),
-                new Stop(1.0, Color.GREEN)
-        );
-        gc.setFill(camouflage);
+        gc.setFill(Color.GRAY);
         gc.fillPolygon(x_adjusted, y_adjusted, x_adjusted.length);
     }
 
@@ -68,11 +58,11 @@ public class GameScreen implements Screen {
 
         if (b.getType().equals("player")) {
             gc.setFill(Color.GREEN);
+            drawFlame(gc, b);
         } else {
             gc.setFill(Color.RED);
         }
         gc.fillPolygon(x_adjusted, y_adjusted, x_adjusted.length);
-        drawFlame(gc, b);
     }
 
     private void drawFlame(GraphicsContext gc, Bullet b) {
