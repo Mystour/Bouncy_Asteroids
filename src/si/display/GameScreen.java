@@ -73,7 +73,7 @@ public class GameScreen implements Screen, Serializable {
         double x = b.getX();
         double y = b.getY();
         double radius = b.getRotation() + Math.PI / 2;
-        double scale = Player.SHIP_SCALE / 2;
+        double scale = Player.SHIP_SCALE / 2.0;
 
         int[] x_coords = new int[]{-Bullet.BULLET_WIDTH, 0, Bullet.BULLET_WIDTH};
         int[] y_coords = new int[]{-Bullet.BULLET_HEIGHT, Bullet.BULLET_HEIGHT, -Bullet.BULLET_HEIGHT};
@@ -192,7 +192,7 @@ public class GameScreen implements Screen, Serializable {
             gc.fillText("Level: " + game.getLevel(), 0, 30);
 
             gc.setTextAlign(TextAlignment.CENTER);
-            gc.fillText("Time: " + game.getTime() + "s", BouncyAsteroidsGame.SCREEN_WIDTH/2, 0);
+            gc.fillText("Time: " + game.getTime() + "s", BouncyAsteroidsGame.SCREEN_WIDTH/2.0, 0);
 
             gc.setTextAlign(TextAlignment.RIGHT);
             gc.fillText("Score: " + game.getPlayerScore(), BouncyAsteroidsGame.SCREEN_WIDTH, 0);
@@ -216,14 +216,14 @@ public class GameScreen implements Screen, Serializable {
                 gc.setTextBaseline(VPos.CENTER);
                 gc.setFont(new Font("Arial", 24));
                 gc.setFill(Color.GREEN);
-                gc.fillText("Press 'p' to continue ", BouncyAsteroidsGame.SCREEN_WIDTH/2, BouncyAsteroidsGame.SCREEN_HEIGHT/2);
+                gc.fillText("Press 'p' to continue ", BouncyAsteroidsGame.SCREEN_WIDTH/2.0, BouncyAsteroidsGame.SCREEN_HEIGHT/2.0);
 
             } else if (!game.isPlayerAlive() && game.getLives() == 0) {
                 gc.setTextAlign(TextAlignment.CENTER);
                 gc.setTextBaseline(VPos.CENTER);
                 gc.setFont(new Font("Arial", 48));
                 gc.setFill(Color.GREEN);
-                gc.fillText("Game over ", BouncyAsteroidsGame.SCREEN_WIDTH/2, BouncyAsteroidsGame.SCREEN_HEIGHT/2);
+                gc.fillText("Game over ", BouncyAsteroidsGame.SCREEN_WIDTH/2.0, BouncyAsteroidsGame.SCREEN_HEIGHT/2.0);
             }
         }
     }

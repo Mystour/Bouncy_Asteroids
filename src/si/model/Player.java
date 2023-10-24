@@ -116,8 +116,7 @@ public class Player implements Hittable {
             this.y += BouncyAsteroidsGame.SCREEN_HEIGHT;
         }
 
-        Rectangle2D newBox = new Rectangle2D(this.x, this.y, 8 * SHIP_SCALE, 5 * SHIP_SCALE);
-        hitBox = newBox;
+        hitBox = new Rectangle2D(this.x, this.y, 8 * SHIP_SCALE, 5 * SHIP_SCALE);
     }
 
     public void rotate(double degrees) {

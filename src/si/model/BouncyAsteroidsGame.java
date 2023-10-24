@@ -4,8 +4,6 @@ import ucd.comp2011j.engine.Game;
 import javafx.geometry.Rectangle2D;
 import si.display.PlayerListener;
 
-import java.time.Instant;
-
 import java.util.ArrayList;
 import java.util.List;
 
