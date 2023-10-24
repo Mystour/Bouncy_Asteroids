@@ -9,6 +9,8 @@ public class Swarm implements Movable {
     private final List<Props> props;
     private final BouncyAsteroidsGame game;
 
+    public final static int safeDistance = 20;
+
     public Swarm(int numA, int numB, int numC, BouncyAsteroidsGame g) {
         game = g;
         asteroids = new ArrayList<>();
@@ -22,7 +24,7 @@ public class Swarm implements Movable {
             type = PlanetType.A;
             x = type.getRadius() + Math.random() * (game.getScreenWidth() - 2 * type.getRadius());
             y = type.getRadius() + Math.random() * (game.getScreenHeight() - 2 * type.getRadius());
-            while (Math.abs(x - player.getX()) <  PlanetType.A.getRadius() && Math.abs(y - player.getY()) < PlanetType.A.getRadius()) {
+            while (Math.abs(x - player.getX()) <  PlanetType.A.getRadius() + safeDistance && Math.abs(y - player.getY()) < PlanetType.A.getRadius() + safeDistance) {
                 x = type.getRadius() + Math.random() * (game.getScreenWidth() - 2 * type.getRadius());
                 y = type.getRadius() + Math.random() * (game.getScreenHeight() - 2 * type.getRadius());
             }
@@ -33,7 +35,7 @@ public class Swarm implements Movable {
             type = PlanetType.B;
             x = type.getRadius() + Math.random() * (game.getScreenWidth() - 2 * type.getRadius());
             y = type.getRadius() + Math.random() * (game.getScreenHeight() - 2 * type.getRadius());
-            while (Math.abs(x - player.getX()) <  PlanetType.B.getRadius() && Math.abs(y - player.getY()) < PlanetType.B.getRadius()) {
+            while (Math.abs(x - player.getX()) <  PlanetType.B.getRadius() + safeDistance && Math.abs(y - player.getY()) < PlanetType.B.getRadius() + safeDistance) {
                 x = type.getRadius() + Math.random() * (game.getScreenWidth() - 2 * type.getRadius());
                 y = type.getRadius() + Math.random() * (game.getScreenHeight() - 2 * type.getRadius());
             }
@@ -44,7 +46,7 @@ public class Swarm implements Movable {
             type = PlanetType.C;
             x = type.getRadius() + Math.random() * (game.getScreenWidth() - 2 * type.getRadius());
             y = type.getRadius() + Math.random() * (game.getScreenHeight() - 2 * type.getRadius());
-            while (Math.abs(x - player.getX()) <  PlanetType.C.getRadius() && Math.abs(y - player.getY()) < PlanetType.C.getRadius()) {
+            while (Math.abs(x - player.getX()) <  PlanetType.C.getRadius() + safeDistance && Math.abs(y - player.getY()) < PlanetType.C.getRadius() + safeDistance) {
                 x = type.getRadius() + Math.random() * (game.getScreenWidth() - 2 * type.getRadius());
                 y = type.getRadius() + Math.random() * (game.getScreenHeight() - 2 * type.getRadius());
             }

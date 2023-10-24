@@ -61,14 +61,14 @@ public class Level {
     private EnemyShip createEnemyShip(int currentLevel) {
         double x, y;
         AlienType type;
-        if (currentLevel <= 5) {
+        if (currentLevel + 1 <= 5) {
             type = AlienType.A;
         } else {
             type = AlienType.B;
         }
         x = type.getWidth() + Math.random() * (game.getScreenWidth() - 2 * type.getWidth());
         y = type.getHeight() + Math.random() * (game.getScreenHeight() - 2 * type.getHeight());
-        while (Math.abs(x - game.getPlayer().getX()) < 20 && Math.abs(y - game.getPlayer().getY()) < 20) {
+        while (Math.abs(x - game.getPlayer().getX()) < 20 + Swarm.safeDistance && Math.abs(y - game.getPlayer().getY()) < 20 + Swarm.safeDistance) {
             x = type.getWidth() + Math.random() * game.getScreenWidth();
             y = type.getHeight() + Math.random() * game.getScreenHeight();
         }

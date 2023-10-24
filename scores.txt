@@ -1,8 +1,10 @@
 15950 Highest
 12800 ChenZiang
 12000 Sean
+9450 CC
 9200 Player 1
+8600 MM
 8350 Player 1
 8350 Leo
+7850 CK
 7750 ChenZiang
-6200 Player 1

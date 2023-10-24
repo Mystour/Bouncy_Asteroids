@@ -22,7 +22,7 @@ public class EnemyShip implements Hittable, Collisible {
             this.acceleration = 0;
         }
         else {
-            this.acceleration = 0.1;
+            this.acceleration = 2.0;
         }
         this.height = type.getHeight();
         this.rand = new Random((int)(x * 100 + y));

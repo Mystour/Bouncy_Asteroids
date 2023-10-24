@@ -1,11 +1,14 @@
 package si.model;
 
+import javafx.application.Platform;
+import javafx.scene.control.ChoiceDialog;
 import ucd.comp2011j.engine.Game;
 import javafx.geometry.Rectangle2D;
 import si.display.PlayerListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 public class BouncyAsteroidsGame implements Game {
@@ -28,7 +31,7 @@ public class BouncyAsteroidsGame implements Game {
 
     public BouncyAsteroidsGame(PlayerListener listener) {
         this.listener = listener;
-        startNewGame();
+        startNewGame(false);
     }
 
     @Override
@@ -182,6 +185,52 @@ public class BouncyAsteroidsGame implements Game {
         level[7] = new Level(3, 1, 0, this);
         level[8] = new Level(3, 1, 1, this);
         level[9] = new Level(3, 2, 1, this);
+
+        chooseLevel(); // default
+    }
+
+    public void startNewGame(boolean isChoosingLevel) {
+        targets = new ArrayList<Hittable>();
+        colliders = new ArrayList<Collisible>();
+        playerScore = 0;
+        currentLevel = 0;
+        playerBullets = new ArrayList<Bullet>();
+        enemyBullets = new ArrayList<Bullet>();
+        player = new Player();
+        level = new Level[NO_LEVELS];
+        level[0] = new Level(1, 0, 0, this);
+        level[1] = new Level(1, 0, 1, this);
+        level[2] = new Level(1, 1, 1, this);
+        level[3] = new Level(2, 0, 0, this);
+        level[4] = new Level(2, 1, 0, this);
+        level[5] = new Level(2, 1, 1, this);
+        level[6] = new Level(3, 0, 0, this);
+        level[7] = new Level(3, 1, 0, this);
+        level[8] = new Level(3, 1, 1, this);
+        level[9] = new Level(3, 2, 1, this);
+
+        if(isChoosingLevel) {
+        	chooseLevel();
+        }
+    }
+
+    public void chooseLevel() {
+        List<Integer> choices = new ArrayList<>();
+        for (int i = 1; i <= NO_LEVELS; i++) {
+            choices.add(i);
+        }
+
+
+        // It's not a good idea to run JavaFX code from a thread other than the JavaFX Application Thread.
+        Platform.runLater(() -> {
+            ChoiceDialog<Integer> dialog = new ChoiceDialog<>(1, choices);
+            dialog.setTitle("Game Level Selection");
+            dialog.setHeaderText("Select the Level to Start the Game");
+            dialog.setContentText("Choose your level:");
+
+            Optional<Integer> result = dialog.showAndWait();
+            currentLevel = result.map(integer -> integer - 1).orElse(0);
+        });
     }
 
     @Override
