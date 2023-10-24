@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="52b52198-ca85-4962-8e92-807cb5161ed5" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/si/display/GameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/display/GameScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/si/model/BouncyAsteroidsGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/BouncyAsteroidsGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/si/model/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/Level.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/si/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/si/model/Props.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/Props.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scores.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scores.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +157,10 @@
       <workItem from="1698038100591" duration="2036000" />
       <workItem from="1698120517245" duration="2205000" />
       <workItem from="1698124889024" duration="2972000" />
-      <workItem from="1698127936172" duration="3713000" />
+      <workItem from="1698127936172" duration="4437000" />
+      <workItem from="1698132911527" duration="539000" />
+      <workItem from="1698133706352" duration="510000" />
+      <workItem from="1698136072238" duration="28000" />
     </task>
     <servers />
   </component>
