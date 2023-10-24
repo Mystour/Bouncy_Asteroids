@@ -190,13 +190,7 @@ public class BouncyAsteroidsGame implements Game {
     public boolean isLevelFinished() {
         if (currentLevel < NO_LEVELS) {
             int noAsteroids = level[currentLevel].getAsteroidsRemaining();
-            if (noAsteroids == 0 && level[currentLevel].getEnemyShips().isEmpty()){
-                level[currentLevel+1].setPropsStartTime(Instant.now());
-                return true;
-            }
-            else {
-                return false;
-            }
+            return noAsteroids == 0 && level[currentLevel].getEnemyShips().isEmpty();
         } else {
             return true;
         }
@@ -217,14 +211,9 @@ public class BouncyAsteroidsGame implements Game {
     @Override
     public void moveToNextLevel() {
         pause = true;
-        Swarm preSwarm = level[currentLevel].getSwarm();
         currentLevel++;
         player.resetDestroyed();
         playerBullets = new ArrayList<Bullet>();
-
-        // move props to the next level
-        Swarm currentSwarm = level[currentLevel].getSwarm();
-        currentSwarm.setProps(preSwarm.getProps());
     }
 
     @Override
@@ -254,7 +243,7 @@ public class BouncyAsteroidsGame implements Game {
 
     public List<EnemyShip> getEnemyShips() { return level[currentLevel].getEnemyShips(); }
 
-    public List<Props> getProps() { return level[currentLevel].getProps(); }
+    public List<Props> getProps() { return getSwarm().getProps(); }
 
     public int getLevel() { return currentLevel + 1; }
 
@@ -274,7 +263,7 @@ public class BouncyAsteroidsGame implements Game {
         propsCountdown--;
 
         if(propsCountdown == 0){
-            createProps();
+            level[currentLevel].getSwarm().addProps(createProps());
             propsCountdown = 60 * 20;
         }
     }
@@ -289,4 +278,6 @@ public class BouncyAsteroidsGame implements Game {
         }
         return new Props(x, y);
     }
+
+    private Swarm getSwarm() { return level[currentLevel].getSwarm(); }
 }

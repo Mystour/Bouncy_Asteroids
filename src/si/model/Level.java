@@ -4,15 +4,11 @@ package si.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import java.time.Duration;
-import java.time.Instant;
-
 public class Level {
     private Swarm swarm;
     int numA, numB, numC;
 
     private final BouncyAsteroidsGame game;
-    private Instant propsStartTime;
     private double levelTime = 0;
     private int enemyCountdown = 60 * 30;
 
@@ -45,11 +41,9 @@ public class Level {
     public List<EnemyShip> getEnemyShips() {
         return swarm.getEnemyShips();
     }
-    public List<Props> getProps(){ return swarm.getProps();}
 
     public void reset() {
         swarm = new Swarm(numA, numB, numC, game);
-        propsStartTime = Instant.now();
     }
 
 
@@ -60,11 +54,6 @@ public class Level {
             swarm.addEnemyShip(newShip);
             enemyCountdown = 60 * 30;
         }
-        if (has20SecondsPassed()) {
-            Props newProps = createProps();
-            swarm.addProps(newProps);
-            propsStartTime = Instant.now();
-        }
 
         Player player = game.getPlayer();
         if (player.has10SecondsPassed()){
@@ -73,10 +62,6 @@ public class Level {
         return getEbullet();
     }
 
-
-    private boolean has20SecondsPassed() {
-        return Duration.between(propsStartTime, Instant.now()).getSeconds() >= 20;
-    }
 
     private EnemyShip createEnemyShip(int currentLevel) {
         double x, y;
@@ -95,16 +80,6 @@ public class Level {
         return new EnemyShip(x, y, type);
     }
 
-    private Props createProps() {
-        double x, y;
-        x = Props.getRadius() + Math.random() * (game.getScreenWidth() - 2 * Props.getRadius());
-        y = Props.getRadius() + Math.random() * (game.getScreenHeight() - 2 * Props.getRadius());
-        while (Math.abs(x - game.getPlayer().getX()) < 20 && Math.abs(y - game.getPlayer().getY()) < 20) {
-            x = Props.getRadius() + Math.random() * game.getScreenWidth();
-            y = Props.getRadius() + Math.random() * game.getScreenHeight();
-        }
-        return new Props(x, y);
-    }
 
     private List<Bullet> getEbullet() {
         List<Bullet> eBullets = new ArrayList<Bullet>();
@@ -120,10 +95,6 @@ public class Level {
             }
         }
         return eBullets;
-    }
-
-    public void setPropsStartTime(Instant propsStartTime) {
-        this.propsStartTime = propsStartTime;
     }
 
     public void tick(){
