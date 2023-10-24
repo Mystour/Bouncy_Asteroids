@@ -49,11 +49,10 @@ public class ScoreScreen implements Screen {
         gc.setTextBaseline(VPos.CENTER);
         gc.setFont(new Font("Arial", 20));
         gc.setFill(Color.YELLOW);
-        gc.fillText("Note: Scores are only saved ", BouncyAsteroidsGame.SCREEN_WIDTH/2, BouncyAsteroidsGame.SCREEN_HEIGHT / 20 * 15);
-        gc.fillText("if you higher than the lowest score ", BouncyAsteroidsGame.SCREEN_WIDTH/2, BouncyAsteroidsGame.SCREEN_HEIGHT / 20 * 16);
-        gc.fillText("and exit the game normally with 'X'", BouncyAsteroidsGame.SCREEN_WIDTH/2, BouncyAsteroidsGame.SCREEN_HEIGHT / 20 * 17);
+        gc.fillText("Note: Scores are only saved if you", BouncyAsteroidsGame.SCREEN_WIDTH/2, BouncyAsteroidsGame.SCREEN_HEIGHT / 20 * 17);
+        gc.fillText("higher than the lowest score and exit the game normally with 'X'", BouncyAsteroidsGame.SCREEN_WIDTH/2, BouncyAsteroidsGame.SCREEN_HEIGHT / 20 * 18);
         gc.setFont(new Font("Arial", 28));
         gc.setFill(Color.GREEN);
-        gc.fillText("Press 'M' to return to the Main Menu", BouncyAsteroidsGame.SCREEN_WIDTH/2, BouncyAsteroidsGame.SCREEN_HEIGHT / 10 * 9);
+        gc.fillText("Press 'M' to return to the Main Menu", BouncyAsteroidsGame.SCREEN_WIDTH/2, BouncyAsteroidsGame.SCREEN_HEIGHT / 20 * 19);
     }
 }

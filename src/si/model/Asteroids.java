@@ -131,7 +131,7 @@ public class Asteroids implements Hittable, Collisible {
         List<Crater> craters = new ArrayList<Crater>();
         for (int i = 0; i < numDetails; i++) {
             // Create an asteroid detail (a smaller irregular polygon)
-            int detailSize = (int) type.getRadius(); // The size of the detail is a fraction of the asteroid's size
+            int detailSize = type.getRadius(); // The size of the detail is a fraction of the asteroid's size
             double detailX = x + Math.random() * type.getRadius() - detailSize / 2; // The position of the detail is somewhere on the asteroid
             double detailY = y + Math.random() * type.getRadius() - detailSize / 2;
 

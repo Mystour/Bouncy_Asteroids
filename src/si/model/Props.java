@@ -41,10 +41,6 @@ public class Props implements Collisible{
         move(speed_x, speed_y);
     }
 
-    public void setAlive(boolean alive) {
-        this.alive = alive;
-    }
-
     public static int getRadius() {
         return radius;
     }

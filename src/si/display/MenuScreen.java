@@ -10,10 +10,13 @@ import javafx.scene.text.TextAlignment;
 import si.model.BouncyAsteroidsGame;
 import ucd.comp2011j.engine.Screen;
 
-public class MenuScreen implements Screen {
+import java.io.Serial;
+import java.io.Serializable;
+
+public class MenuScreen implements Screen, Serializable {
+    @Serial
     private static final long serialVersionUID = 1616386874546775416L;
-    private Canvas canvas;
-    private final double OFFSET = BouncyAsteroidsGame.SCREEN_HEIGHT / 6;
+    private final Canvas canvas;
 
     public MenuScreen() {
         canvas = new Canvas(BouncyAsteroidsGame.SCREEN_WIDTH, BouncyAsteroidsGame.SCREEN_HEIGHT);
@@ -27,7 +30,7 @@ public class MenuScreen implements Screen {
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.clearRect(0, 0, BouncyAsteroidsGame.SCREEN_WIDTH, BouncyAsteroidsGame.SCREEN_HEIGHT);
 
-        // Set Background Colour
+        // Set Background Color
         gc.setFill(Color.BLACK);
         gc.fillRect(0, 0, BouncyAsteroidsGame.SCREEN_WIDTH, BouncyAsteroidsGame.SCREEN_HEIGHT);
 
@@ -38,6 +41,7 @@ public class MenuScreen implements Screen {
         // Greeting
         gc.setFont(new Font("Monospaced", 40));
         gc.setFill(Color.CYAN);
+        double OFFSET = BouncyAsteroidsGame.SCREEN_HEIGHT / 6;
         gc.fillText("Welcome to Bouncy Asteroids!!!!", BouncyAsteroidsGame.SCREEN_WIDTH/2, OFFSET);
 
         // Instructions

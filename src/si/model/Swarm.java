@@ -142,7 +142,7 @@ public class Swarm implements Movable {
 
             for (Props p: props){
                 double speed_x, speed_y;
-                int radius = p.getRadius();
+                int radius = Props.getRadius();
 
                 speed_x = p.getSpeedX();
                 speed_y = p.getSpeedY();

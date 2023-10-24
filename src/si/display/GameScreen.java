@@ -9,7 +9,11 @@ import javafx.scene.text.TextAlignment;
 import si.model.*;
 import ucd.comp2011j.engine.Screen;
 
-public class GameScreen implements Screen {
+import java.io.Serial;
+import java.io.Serializable;
+
+public class GameScreen implements Screen, Serializable {
+    @Serial
     private static final long serialVersionUID = -8282302849760730222L;
     private final BouncyAsteroidsGame game;
     private final Canvas canvas;
