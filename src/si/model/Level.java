@@ -133,6 +133,10 @@ public class Level {
         this.propsStartTime = propsStartTime;
     }
 
+    public int getTime(){
+        return (int)Duration.between(enemyStartTime, Instant.now()).getSeconds();
+    }
+
     public Swarm getSwarm() {
         return swarm;
     }

@@ -185,11 +185,15 @@ public class GameScreen implements Screen, Serializable {
             }
 
             gc.setFill(Color.GREEN);
-            gc.setTextAlign(TextAlignment.LEFT);
+            gc.setTextAlign(TextAlignment.LEFT);  // Align the text to the left
             gc.setTextBaseline(VPos.TOP);
             gc.setFont(new Font("Arial", 24));
             gc.fillText("Lives: " + game.getLives(), 0, 0);
             gc.fillText("Level: " + game.getLevel(), 0, 30);
+
+            gc.setTextAlign(TextAlignment.CENTER);
+            gc.fillText("Time: " + game.getTime() + "s", BouncyAsteroidsGame.SCREEN_WIDTH/2, 0);
+
             gc.setTextAlign(TextAlignment.RIGHT);
             gc.fillText("Score: " + game.getPlayerScore(), BouncyAsteroidsGame.SCREEN_WIDTH, 0);
             if (game.getPlayer().isAlive() && shouldPaint()) {

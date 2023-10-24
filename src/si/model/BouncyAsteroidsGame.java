@@ -258,6 +258,7 @@ public class BouncyAsteroidsGame implements Game {
 
     public int getLevel() { return currentLevel + 1; }
 
+    public int getTime() { return level[currentLevel].getTime(); }
     public Player getPlayer() { return player; }
 
     public void hasOver10000(){
