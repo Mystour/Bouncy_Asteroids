@@ -11,7 +11,7 @@ public class Bullet implements Movable, Hittable {
     private static int bulletCounter = 0;
     public static final int BULLET_HEIGHT = 4;
     public static final int BULLET_WIDTH = 2;
-    private static final int BULLET_SPEED = 5;
+    private static final int BULLET_SPEED = 8;
     private String type;
 
     public Bullet(double x, double y, double rotation, String type) {
