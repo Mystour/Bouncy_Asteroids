@@ -37,10 +37,6 @@ public class Props implements Collisible{
         return new Rectangle2D(x, y, radius, radius);
     }
 
-    public void tick() {
-        move(speed_x, speed_y);
-    }
-
     public static int getRadius() {
         return radius;
     }
@@ -74,8 +70,7 @@ public class Props implements Collisible{
         boolean collision = getHitBox().intersects(p.getHitBox());
         if (collision) {
             alive = false;
-            p.setTripleFire(true);
-            p.setPropsTime(Instant.now());
+            p.setTripleFire();
         }
         return collision;
     }

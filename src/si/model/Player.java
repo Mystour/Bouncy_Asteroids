@@ -3,8 +3,6 @@ package si.model;
 
 import javafx.geometry.Rectangle2D;
 
-import java.time.Duration;
-import java.time.Instant;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -16,12 +14,12 @@ public class Player implements Hittable {
     private double rotation;  // Initialized to 0 by default
     private int weaponCountdown;
     private int invincibilityCountdown = 0;
+    private int tripleCountdown = 60 * 10;
     private boolean alive = true;
     private int lives = 3;
     public static final int SHIP_SCALE = 4;
     private static final int WIDTH = SHIP_SCALE * 8;
     private boolean tripleFire;
-    private Instant propsTime = Instant.now();
 
     public Player() {
         // the player starts at the bottom of the screen, centered horizontally
@@ -57,6 +55,13 @@ public class Player implements Hittable {
         } else {
             weaponCountdown = 15;
         }
+        if (tripleFire && tripleCountdown > 0) {
+            tripleCountdown--;
+        }
+        else if (tripleCountdown <= 0){
+            tripleFire = false;
+            resetTripleCountdown();
+        }
     }
 
 
@@ -89,7 +94,7 @@ public class Player implements Hittable {
         List<Bullet> b = new ArrayList<Bullet>();
         if (weaponCountdown == 0) {
             b.add(new Bullet(this.getHeadX(), this.getHeadY(), rotation + Math.PI * 3/2, "player"));
-            if (tripleFire){
+            if (tripleFire && tripleCountdown > 0){
                 b.add(new Bullet(x - Math.cos(rotation) * 4 * SHIP_SCALE, y - Math.sin(rotation) * 30, rotation + Math.PI * 3/2, "player"));
                 b.add(new Bullet(x + Math.cos(rotation) * 4 * SHIP_SCALE, y + Math.sin(rotation) * 30, rotation + Math.PI * 3/2, "player"));
             }
@@ -148,17 +153,23 @@ public class Player implements Hittable {
         this.invincibilityCountdown = invincibilityCountdown;
     }
 
-    public void setTripleFire(boolean tripleFire) {
-        this.tripleFire = tripleFire;
+    public int getTripleCountdown() {
+        return tripleCountdown;
     }
 
-    public void setPropsTime(Instant propsTime) {
-        this.propsTime = propsTime;
+    private void resetTripleCountdown() {
+        this.tripleCountdown = 60 * 10;
     }
 
-    public boolean has10SecondsPassed() {
-        return Duration.between(propsTime, Instant.now()).getSeconds() >= 10;
+    public void setTripleFire() {
+        this.tripleFire = true;
+        resetTripleCountdown();
     }
+
+    public boolean getTripleFire() {
+        return tripleFire;
+    }
+
 
     public void setLives(int lives) {
         this.lives = lives;

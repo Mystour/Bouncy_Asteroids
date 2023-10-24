@@ -275,8 +275,8 @@ public class BouncyAsteroidsGame implements Game {
         x = Props.getRadius() + Math.random() * (getScreenWidth() - 2 * Props.getRadius());
         y = Props.getRadius() + Math.random() * (getScreenHeight() - 2 * Props.getRadius());
         while (Math.abs(x - getPlayer().getX()) < 20 && Math.abs(y - getPlayer().getY()) < 20) {
-            x = Props.getRadius() + Math.random() * getScreenWidth();
-            y = Props.getRadius() + Math.random() * getScreenHeight();
+            x = Props.getRadius() + Math.random() * (getScreenWidth() - 2 * Props.getRadius());
+            y = Props.getRadius() + Math.random() * (getScreenHeight() - 2 * Props.getRadius());
         }
         return new Props(x, y);
     }

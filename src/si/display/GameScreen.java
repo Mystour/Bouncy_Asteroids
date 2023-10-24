@@ -165,6 +165,28 @@ public class GameScreen implements Screen, Serializable {
         gc.fillText("P", x + radius/2, y + radius/2);
     }
 
+    private void drawShape(GraphicsContext gc, int tripleCountdown) {
+        double tripleFireRemaining = tripleCountdown / 60.0;
+
+        // Position and dimensions of the progress bar
+        double width = 100;  // Width of the progress bar
+        double height = 15;  // Height of the progress bar
+        double x = BouncyAsteroidsGame.SCREEN_WIDTH / 2.0 - width / 2.0;
+        double y = 30;
+
+        // Draw the background of the progress bar
+        gc.setFill(Color.GRAY);
+        gc.fillRect(x, y, width, height);
+
+        // Draw the foreground of the progress bar
+        gc.setFill(Color.GREEN);
+        gc.fillRect(x, y, width * (tripleFireRemaining / 10), height);
+
+        // Display the remaining time next to the progress bar
+        gc.setFill(Color.RED);
+        gc.fillText("Triple Fire", x + width / 2.0, y);
+    }
+
     public void paint() {
         GraphicsContext gc = this.canvas.getGraphicsContext2D();
         gc.clearRect(0, 0, BouncyAsteroidsGame.SCREEN_WIDTH, BouncyAsteroidsGame.SCREEN_HEIGHT);
@@ -194,6 +216,11 @@ public class GameScreen implements Screen, Serializable {
             gc.setTextAlign(TextAlignment.CENTER);
             gc.fillText("Time: " + game.getTime() + "s", BouncyAsteroidsGame.SCREEN_WIDTH/2.0, 0);
 
+            if(game.getPlayer().getTripleFire()){
+                 drawShape(gc, game.getPlayer().getTripleCountdown());
+            }
+
+            gc.setFill(Color.GREEN);
             gc.setTextAlign(TextAlignment.RIGHT);
             gc.fillText("Score: " + game.getPlayerScore(), BouncyAsteroidsGame.SCREEN_WIDTH, 0);
             if (game.getPlayer().isAlive() && shouldPaint()) {

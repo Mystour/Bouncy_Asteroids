@@ -54,11 +54,6 @@ public class Level {
             swarm.addEnemyShip(newShip);
             enemyCountdown = 60 * 30;
         }
-
-        Player player = game.getPlayer();
-        if (player.has10SecondsPassed()){
-            player.setTripleFire(false);
-        }
         return getEbullet();
     }
 
