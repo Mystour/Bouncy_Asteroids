@@ -209,7 +209,11 @@ public class BouncyAsteroidsGame implements Game {
     @Override
     public void moveToNextLevel() {
         pause = true;
+        Swarm prevSwarm = getSwarm();
+
         currentLevel++;
+
+        getSwarm().setProps(prevSwarm.getProps());
         player.resetDestroyed();
         playerBullets = new ArrayList<Bullet>();
     }
@@ -261,7 +265,7 @@ public class BouncyAsteroidsGame implements Game {
         propsCountdown--;
 
         if(propsCountdown == 0){
-            level[currentLevel].getSwarm().addProps(createProps());
+            getSwarm().addProps(createProps());
             propsCountdown = 60 * 20;
         }
     }
