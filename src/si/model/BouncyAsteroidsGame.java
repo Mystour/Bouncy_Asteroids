@@ -26,6 +26,7 @@ public class BouncyAsteroidsGame implements Game {
     private Level[] level;
     private static final int NO_LEVELS = 10;
     private int currentLevel;
+    private int propsCountdown = 60 * 20;
 
     public BouncyAsteroidsGame(PlayerListener listener) {
         this.listener = listener;
@@ -51,7 +52,7 @@ public class BouncyAsteroidsGame implements Game {
     @Override
     public void updateGame() {
         if (!isPaused()) {
-            player.tick();
+            tick();
             targets.clear();
             targets.addAll(level[currentLevel].getHittable());
             targets.add(player);
@@ -190,7 +191,6 @@ public class BouncyAsteroidsGame implements Game {
         if (currentLevel < NO_LEVELS) {
             int noAsteroids = level[currentLevel].getAsteroidsRemaining();
             if (noAsteroids == 0 && level[currentLevel].getEnemyShips().isEmpty()){
-                level[currentLevel+1].setEnemyStartTime(Instant.now());
                 level[currentLevel+1].setPropsStartTime(Instant.now());
                 return true;
             }
@@ -258,7 +258,7 @@ public class BouncyAsteroidsGame implements Game {
 
     public int getLevel() { return currentLevel + 1; }
 
-    public int getTime() { return level[currentLevel].getTime(); }
+    public int getTime() { return (int)level[currentLevel].getLevelTime(); }
     public Player getPlayer() { return player; }
 
     public void hasOver10000(){
@@ -268,5 +268,25 @@ public class BouncyAsteroidsGame implements Game {
         }
     }
 
+    public void tick(){
+        player.tick();
+        level[currentLevel].tick();
+        propsCountdown--;
 
+        if(propsCountdown == 0){
+            createProps();
+            propsCountdown = 60 * 20;
+        }
+    }
+
+    private Props createProps() {
+        double x, y;
+        x = Props.getRadius() + Math.random() * (getScreenWidth() - 2 * Props.getRadius());
+        y = Props.getRadius() + Math.random() * (getScreenHeight() - 2 * Props.getRadius());
+        while (Math.abs(x - getPlayer().getX()) < 20 && Math.abs(y - getPlayer().getY()) < 20) {
+            x = Props.getRadius() + Math.random() * getScreenWidth();
+            y = Props.getRadius() + Math.random() * getScreenHeight();
+        }
+        return new Props(x, y);
+    }
 }
