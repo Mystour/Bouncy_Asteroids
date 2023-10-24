@@ -1,3 +1,5 @@
+12800 ChenZiang
+12000 Sean
 9200 Player 1
 8350 Player 1
 7750 ChenZiang

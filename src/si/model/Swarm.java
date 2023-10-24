@@ -23,8 +23,8 @@ public class Swarm implements Movable {
             x = type.getRadius() + Math.random() * (game.getScreenWidth() - 2 * type.getRadius());
             y = type.getRadius() + Math.random() * (game.getScreenHeight() - 2 * type.getRadius());
             while (Math.abs(x - player.getX()) <  PlanetType.A.getRadius() && Math.abs(y - player.getY()) < PlanetType.A.getRadius()) {
-                x = type.getRadius() + Math.random() * game.getScreenWidth();
-                y = type.getRadius() + Math.random() * game.getScreenHeight();
+                x = type.getRadius() + Math.random() * (game.getScreenWidth() - 2 * type.getRadius());
+                y = type.getRadius() + Math.random() * (game.getScreenHeight() - 2 * type.getRadius());
             }
             Asteroids a = new Asteroids(x, y, Math.random()* 2 * Math.PI, type);
             asteroids.add(a);
@@ -34,8 +34,8 @@ public class Swarm implements Movable {
             x = type.getRadius() + Math.random() * (game.getScreenWidth() - 2 * type.getRadius());
             y = type.getRadius() + Math.random() * (game.getScreenHeight() - 2 * type.getRadius());
             while (Math.abs(x - player.getX()) <  PlanetType.B.getRadius() && Math.abs(y - player.getY()) < PlanetType.B.getRadius()) {
-                x = type.getRadius() + Math.random() * game.getScreenWidth();
-                y = type.getRadius() + Math.random() * game.getScreenHeight();
+                x = type.getRadius() + Math.random() * (game.getScreenWidth() - 2 * type.getRadius());
+                y = type.getRadius() + Math.random() * (game.getScreenHeight() - 2 * type.getRadius());
             }
             Asteroids a = new Asteroids(x, y, Math.random()* 2 * Math.PI, type);
             asteroids.add(a);
@@ -45,8 +45,8 @@ public class Swarm implements Movable {
             x = type.getRadius() + Math.random() * (game.getScreenWidth() - 2 * type.getRadius());
             y = type.getRadius() + Math.random() * (game.getScreenHeight() - 2 * type.getRadius());
             while (Math.abs(x - player.getX()) <  PlanetType.C.getRadius() && Math.abs(y - player.getY()) < PlanetType.C.getRadius()) {
-                x = type.getRadius() + Math.random() * game.getScreenWidth();
-                y = type.getRadius() + Math.random() * game.getScreenHeight();
+                x = type.getRadius() + Math.random() * (game.getScreenWidth() - 2 * type.getRadius());
+                y = type.getRadius() + Math.random() * (game.getScreenHeight() - 2 * type.getRadius());
             }
             Asteroids a = new Asteroids(x, y, Math.random()* 2 * Math.PI, type);
             asteroids.add(a);

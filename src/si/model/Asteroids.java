@@ -12,7 +12,7 @@ public class Asteroids implements Hittable, Collisible {
     private double speed_x;
     private double speed_y;
     private final PlanetType type;
-    private final int numDetails = (int)(Math.random()*10+5); // Number of additional details
+    private final int numDetails; // Number of additional details
     private final List<Crater> craters;
 
     private final List<Double> coordinatesX = new ArrayList<>();
@@ -31,6 +31,7 @@ public class Asteroids implements Hittable, Collisible {
         this.speed_y = speed * Math.sin(rotation);
         this.alive = true;
 
+        this.numDetails= (int) (Math.random() * 10 + 3); // Random number of vertices for each asteroid
         this.craters = generateCraters();
         generateShape();
         this.shapeX = coordinatesX.stream().mapToDouble(Double::doubleValue).toArray();

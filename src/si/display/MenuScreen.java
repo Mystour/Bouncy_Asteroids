@@ -41,7 +41,7 @@ public class MenuScreen implements Screen {
         gc.fillText("Welcome to Bouncy Asteroids!!!!", BouncyAsteroidsGame.SCREEN_WIDTH/2, OFFSET);
 
         // Instructions
-        gc.setFont(Font.font("Courier New", FontWeight.BOLD, 24));
+        gc.setFont(Font.font("Courier New", FontWeight.BOLD, 25));
         gc.setFill(Color.YELLOW);
         gc.fillText("To play a game press N", BouncyAsteroidsGame.SCREEN_WIDTH/2, OFFSET + 100);
         gc.fillText("To see the controls press A", BouncyAsteroidsGame.SCREEN_WIDTH/2, OFFSET + 200);
