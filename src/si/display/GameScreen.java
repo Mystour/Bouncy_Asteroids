@@ -188,6 +188,10 @@ public class GameScreen implements Screen, Serializable {
     }
 
     public void paint() {
+        // the sound part
+        Sound.stopMenuSound();
+
+
         GraphicsContext gc = this.canvas.getGraphicsContext2D();
         gc.clearRect(0, 0, BouncyAsteroidsGame.SCREEN_WIDTH, BouncyAsteroidsGame.SCREEN_HEIGHT);
         if (game != null) {

@@ -98,6 +98,7 @@ public class Player implements Hittable {
                 b.add(new Bullet(x - Math.cos(rotation) * 4 * SHIP_SCALE, y - Math.sin(rotation) * 30, rotation + Math.PI * 3/2, "player"));
                 b.add(new Bullet(x + Math.cos(rotation) * 4 * SHIP_SCALE, y + Math.sin(rotation) * 30, rotation + Math.PI * 3/2, "player"));
             }
+            Sound.playBulletSound();
         }
         return b;
     }
