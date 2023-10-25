@@ -11,7 +11,7 @@ public class Crater{
     private final double[] x_coords_detail;
     private final double[] y_coords_detail;
     private final int numVertices;
-    private int detailSize;
+    private final int detailSize;
 
     public Crater(int detailSize, double detailX, double detailY, double[] x_coords_detail, double[] y_coords_detail, int numVertices) {
         this.detailSize = detailSize;
@@ -45,7 +45,7 @@ public class Crater{
 
     public RadialGradient getColor() {
         return new RadialGradient(
-                0, 0, detailX + detailSize / 2, detailY + detailSize / 2, detailSize / 2, false, CycleMethod.NO_CYCLE,
+                0, 0, detailX + detailSize / 2.0, detailY + detailSize / 2.0, detailSize / 2.0, false, CycleMethod.NO_CYCLE,
 
                 new Stop(0.0, Color.WHITE),
                 new Stop(0.8, Color.LIGHTGRAY),

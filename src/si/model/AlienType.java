@@ -2,12 +2,13 @@ package si.model;
 
 public enum AlienType {
 	A(9, 7, 500, 1), B(4, 6,1000, 2);
-	private int width;
-	private int height;
-	private int score;
-	private int speed;
+	private final int width;
+	private final int height;
+	private final int score;
+	private final int speed;
 
-	private AlienType(int w, int h, int s, int sp) {
+	// for enum's constructor, private is default
+	AlienType(int w, int h, int s, int sp) {
 		width = w;
 		height = h;
 		score = s;

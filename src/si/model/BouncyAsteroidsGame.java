@@ -167,26 +167,7 @@ public class BouncyAsteroidsGame implements Game {
 
     @Override
     public void startNewGame() {
-        targets = new ArrayList<Hittable>();
-        colliders = new ArrayList<Collisible>();
-        playerScore = 0;
-        currentLevel = 0;
-        playerBullets = new ArrayList<Bullet>();
-        enemyBullets = new ArrayList<Bullet>();
-        player = new Player();
-        level = new Level[NO_LEVELS];
-        level[0] = new Level(1, 0, 0, this);
-        level[1] = new Level(1, 0, 1, this);
-        level[2] = new Level(1, 1, 1, this);
-        level[3] = new Level(2, 0, 0, this);
-        level[4] = new Level(2, 1, 0, this);
-        level[5] = new Level(2, 1, 1, this);
-        level[6] = new Level(3, 0, 0, this);
-        level[7] = new Level(3, 1, 0, this);
-        level[8] = new Level(3, 1, 1, this);
-        level[9] = new Level(3, 2, 1, this);
-
-        chooseLevel(); // default
+        startNewGame(true);
     }
 
     public void startNewGame(boolean isChoosingLevel) {
@@ -258,18 +239,26 @@ public class BouncyAsteroidsGame implements Game {
     @Override
     public void moveToNextLevel() {
         pause = true;
-        Swarm prevSwarm = getSwarm();
+        if (currentLevel + 1 < NO_LEVELS) {
+            Swarm prevSwarm = getSwarm();
 
-        currentLevel++;
+            currentLevel++;
 
-        getSwarm().setProps(prevSwarm.getProps());
-        player.resetDestroyed();
-        playerBullets = new ArrayList<Bullet>();
+            getSwarm().setProps(prevSwarm.getProps());
+            player.resetDestroyed();
+            playerBullets = new ArrayList<Bullet>();
+        }
+        else {
+            currentLevel = 0;
+        }
     }
 
     @Override
     public boolean isGameOver() {
-        return !(player.getLives() > 0 && currentLevel <= NO_LEVELS);
+        if(player.getLives() > 0 && currentLevel + 1 > NO_LEVELS){
+            System.out.println("You win!");
+        }
+        return !(player.getLives() > 0 && currentLevel + 1 <= NO_LEVELS);
     }
 
 

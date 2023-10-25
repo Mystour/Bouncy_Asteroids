@@ -1,5 +1,5 @@
 package si.model;
 
 public interface Movable {
-	public void move();
+	void move();  // for interface, public is default
 }

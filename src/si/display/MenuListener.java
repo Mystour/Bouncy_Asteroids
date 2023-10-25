@@ -1,6 +1,5 @@
 package si.display;
 
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import ucd.comp2011j.engine.MenuCommands;
 
@@ -12,20 +11,17 @@ public class MenuListener implements MenuCommands {
     private boolean newGame;
 
     public void setListeners(Scene s) {
-        s.setOnKeyTyped(new EventHandler<javafx.scene.input.KeyEvent>() {
-            @Override
-            public void handle(javafx.scene.input.KeyEvent e) {
-                if ("A".equalsIgnoreCase(e.getCharacter())) {
-                    about = true;
-                } else if ("X".equalsIgnoreCase(e.getCharacter())) {
-                    exit = true;
-                } else if ("H".equalsIgnoreCase(e.getCharacter())) {
-                    high = true;
-                } else if ("M".equalsIgnoreCase(e.getCharacter())) {
-                    menu = true;
-                } else if ("N".equalsIgnoreCase(e.getCharacter())) {
-                    newGame = true;
-                }
+        s.setOnKeyTyped(e -> {
+            if ("A".equalsIgnoreCase(e.getCharacter())) {
+                about = true;
+            } else if ("X".equalsIgnoreCase(e.getCharacter())) {
+                exit = true;
+            } else if ("H".equalsIgnoreCase(e.getCharacter())) {
+                high = true;
+            } else if ("M".equalsIgnoreCase(e.getCharacter())) {
+                menu = true;
+            } else if ("N".equalsIgnoreCase(e.getCharacter())) {
+                newGame = true;
             }
         });
     }

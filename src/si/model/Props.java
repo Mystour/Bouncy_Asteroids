@@ -2,8 +2,6 @@ package si.model;
 
 import javafx.geometry.Rectangle2D;
 
-import java.time.Instant;
-
 public class Props implements Collisible{
     private boolean alive;
     private double x, y;

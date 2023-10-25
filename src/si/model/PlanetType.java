@@ -2,11 +2,13 @@ package si.model;
 
 public enum PlanetType {
 	A(50, 50, 1), B(30,100, 2), C(20, 200, 3);
-	private int radius;
-	private int score;
-	private int speed;
+	private final int radius;
+	private final int score;
+	private final int speed;
 
-	private PlanetType(int r, int s, int sd) {
+
+	// for enum's constructor, private is default
+	PlanetType(int r, int s, int sd) {
 		radius = r;
 		score = s;
 		speed = sd;

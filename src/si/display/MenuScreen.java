@@ -41,15 +41,15 @@ public class MenuScreen implements Screen, Serializable {
         // Greeting
         gc.setFont(new Font("Monospaced", 40));
         gc.setFill(Color.CYAN);
-        double OFFSET = BouncyAsteroidsGame.SCREEN_HEIGHT / 6;
-        gc.fillText("Welcome to Bouncy Asteroids!!!!", BouncyAsteroidsGame.SCREEN_WIDTH/2, OFFSET);
+        double OFFSET = BouncyAsteroidsGame.SCREEN_HEIGHT / 6.0;
+        gc.fillText("Welcome to Bouncy Asteroids!!!!", BouncyAsteroidsGame.SCREEN_WIDTH/2.0, OFFSET);
 
         // Instructions
         gc.setFont(Font.font("Courier New", FontWeight.BOLD, 25));
         gc.setFill(Color.YELLOW);
-        gc.fillText("To play a game press N", BouncyAsteroidsGame.SCREEN_WIDTH/2, OFFSET + 100);
-        gc.fillText("To see the controls press A", BouncyAsteroidsGame.SCREEN_WIDTH/2, OFFSET + 200);
-        gc.fillText("To see the High scores press H", BouncyAsteroidsGame.SCREEN_WIDTH/2, OFFSET + 300);
-        gc.fillText("To exit press X", BouncyAsteroidsGame.SCREEN_WIDTH/2, OFFSET + 400);
+        gc.fillText("To play a game press N", BouncyAsteroidsGame.SCREEN_WIDTH/2.0, OFFSET + 100);
+        gc.fillText("To see the controls press A", BouncyAsteroidsGame.SCREEN_WIDTH/2.0, OFFSET + 200);
+        gc.fillText("To see the High scores press H", BouncyAsteroidsGame.SCREEN_WIDTH/2.0, OFFSET + 300);
+        gc.fillText("To exit press X", BouncyAsteroidsGame.SCREEN_WIDTH/2.0, OFFSET + 400);
     }
 }

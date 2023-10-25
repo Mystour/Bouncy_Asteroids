@@ -5,12 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52b52198-ca85-4962-8e92-807cb5161ed5" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scores.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scores.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/si/display/AboutScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/display/AboutScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/si/display/MenuListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/display/MenuListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/si/display/MenuScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/display/MenuScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/si/display/PlayerListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/display/PlayerListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/si/display/ScoreScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/display/ScoreScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/si/model/AlienType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/AlienType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/si/model/Asteroids.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/Asteroids.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/si/model/BouncyAsteroidsGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/BouncyAsteroidsGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/si/model/EnemyShip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/EnemyShip.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/si/model/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/Level.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/si/model/Swarm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/Swarm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/si/model/Crater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/Crater.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/si/model/Movable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/Movable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/si/model/PlanetType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/PlanetType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/si/model/Props.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/Props.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +62,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;enemy&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/Program/Java_work/Bouncy_Asteroids/src/si/display&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -169,6 +178,9 @@
       <workItem from="1698136072238" duration="28000" />
       <workItem from="1698149103759" duration="1241000" />
       <workItem from="1698150413600" duration="3301000" />
+      <workItem from="1698198703426" duration="307000" />
+      <workItem from="1698211805573" duration="20000" />
+      <workItem from="1698223496208" duration="3904000" />
     </task>
     <servers />
   </component>

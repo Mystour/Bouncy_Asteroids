@@ -11,10 +11,14 @@ import ucd.comp2011j.engine.Score;
 import ucd.comp2011j.engine.ScoreKeeper;
 import ucd.comp2011j.engine.Screen;
 
-public class ScoreScreen implements Screen {
+import java.io.Serial;
+import java.io.Serializable;
+
+public class ScoreScreen implements Screen, Serializable {
+    @Serial
     private static final long serialVersionUID = 1616386874546775416L;
-    private ScoreKeeper scoreKeeper;
-    private Canvas canvas;
+    private final ScoreKeeper scoreKeeper;
+    private final Canvas canvas;
 
     public ScoreScreen(ScoreKeeper sc) {
         this.scoreKeeper = sc;
@@ -33,7 +37,7 @@ public class ScoreScreen implements Screen {
         gc.setTextBaseline(VPos.CENTER);
         gc.setFont(new Font("Arial", 28));
         gc.setFill(Color.GREEN);
-        gc.fillText("Bouncy Asteroids Hall of Fame", BouncyAsteroidsGame.SCREEN_WIDTH/2, BouncyAsteroidsGame.SCREEN_HEIGHT / 10);
+        gc.fillText("Bouncy Asteroids Hall of Fame", BouncyAsteroidsGame.SCREEN_WIDTH/2.0, BouncyAsteroidsGame.SCREEN_HEIGHT / 10.0);
 
         Score[] scores = scoreKeeper.getScores();
         gc.setFont(new Font("Arial", 16));
@@ -41,18 +45,18 @@ public class ScoreScreen implements Screen {
         gc.setStroke(Color.WHITE);
         for (int i = 0; i < scores.length; i++) {
             Score score = scores[i];
-            gc.fillText(score.getName(), 2 * BouncyAsteroidsGame.SCREEN_WIDTH / 6, 96 + i * 32);
-            gc.fillText("" + score.getScore(), 4 * BouncyAsteroidsGame.SCREEN_WIDTH / 6, 96 + i * 32);
-            gc.strokeLine(2 * BouncyAsteroidsGame.SCREEN_WIDTH / 6, 96 + i * 32 + 16, 4 * BouncyAsteroidsGame.SCREEN_WIDTH / 6 + 40, 96 + i * 32 + 16); // add an underline
+            gc.fillText(score.getName(), 2 * BouncyAsteroidsGame.SCREEN_WIDTH / 6.0, 96 + i * 32);
+            gc.fillText("" + score.getScore(), 4 * BouncyAsteroidsGame.SCREEN_WIDTH / 6.0, 96 + i * 32);
+            gc.strokeLine(2 * BouncyAsteroidsGame.SCREEN_WIDTH / 6.0, 96 + i * 32 + 16, 4 * BouncyAsteroidsGame.SCREEN_WIDTH / 6.0 + 40, 96 + i * 32 + 16); // add an underline
         }
         gc.setTextAlign(TextAlignment.CENTER);
         gc.setTextBaseline(VPos.CENTER);
         gc.setFont(new Font("Arial", 20));
         gc.setFill(Color.YELLOW);
-        gc.fillText("Note: Scores are only saved if you", BouncyAsteroidsGame.SCREEN_WIDTH/2, BouncyAsteroidsGame.SCREEN_HEIGHT / 20 * 17);
-        gc.fillText("higher than the lowest score and exit the game normally with 'X'", BouncyAsteroidsGame.SCREEN_WIDTH/2, BouncyAsteroidsGame.SCREEN_HEIGHT / 20 * 18);
+        gc.fillText("Note: Scores are only saved if you", BouncyAsteroidsGame.SCREEN_WIDTH/2.0, BouncyAsteroidsGame.SCREEN_HEIGHT / 20.0 * 17);
+        gc.fillText("higher than the lowest score and exit the game normally with 'X'", BouncyAsteroidsGame.SCREEN_WIDTH/2.0, BouncyAsteroidsGame.SCREEN_HEIGHT / 20.0 * 18);
         gc.setFont(new Font("Arial", 28));
         gc.setFill(Color.GREEN);
-        gc.fillText("Press 'M' to return to the Main Menu", BouncyAsteroidsGame.SCREEN_WIDTH/2, BouncyAsteroidsGame.SCREEN_HEIGHT / 20 * 19);
+        gc.fillText("Press 'M' to return to the Main Menu", BouncyAsteroidsGame.SCREEN_WIDTH/2.0, BouncyAsteroidsGame.SCREEN_HEIGHT / 20.0 * 19);
     }
 }
