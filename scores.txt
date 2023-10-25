@@ -1,3 +1,4 @@
+18650 Niu
 17300 Highest
 15950 Highest
 12800 ChenZiang
@@ -7,4 +8,3 @@
 8600 MM
 8350 Player 1
 8350 Leo
-7850 CK

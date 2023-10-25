@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 public class Sound {
     private static final Logger LOGGER = Logger.getLogger(Sound.class.getName());
     private static Clip menuSound;
+    private static Clip gameSound;
 
     public static void playBulletSound() {
         Clip bulletSound = initSound("D:\\Program\\Java_work\\Bouncy_Asteroids\\sounds\\bulletSound.wav");
@@ -40,5 +41,10 @@ public class Sound {
 
     public static void stopMenuSound() {
         menuSound.stop();
+    }
+
+    public static void playGameSound() {
+        if (gameSound == null) { gameSound = initSound("D:\\Program\\Java_work\\Bouncy_Asteroids\\sounds\\gameSound.wav");
+        } else gameSound.loop(Clip.LOOP_CONTINUOUSLY);
     }
 }
