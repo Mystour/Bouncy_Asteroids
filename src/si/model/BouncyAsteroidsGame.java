@@ -29,7 +29,7 @@ public class BouncyAsteroidsGame implements Game {
     private int currentLevel;
     private int propsCountdown = 60 * 20;
 
-    private boolean overLevel = false;
+    private boolean overLevel;
 
     public BouncyAsteroidsGame(PlayerListener listener) {
         this.listener = listener;
@@ -194,6 +194,7 @@ public class BouncyAsteroidsGame implements Game {
 
         if(isChoosingLevel) {
         	chooseLevel();
+            overLevel = false;
         }
     }
 
