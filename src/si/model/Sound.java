@@ -47,4 +47,8 @@ public class Sound {
         if (gameSound == null) { gameSound = initSound("D:\\Program\\Java_work\\Bouncy_Asteroids\\sounds\\gameSound.wav");
         } else gameSound.loop(Clip.LOOP_CONTINUOUSLY);
     }
+
+    public static void stopGameSound() {
+        gameSound.stop();
+    }
 }

@@ -255,6 +255,9 @@ public class GameScreen implements Screen, Serializable {
                 gc.setFont(new Font("Arial", 48));
                 gc.setFill(Color.GREEN);
                 gc.fillText("Game over ", BouncyAsteroidsGame.SCREEN_WIDTH/2.0, BouncyAsteroidsGame.SCREEN_HEIGHT/2.0);
+
+                Sound.stopGameSound();
+                Sound.playMenuSound();
             }
         }
     }
