@@ -29,6 +29,8 @@ public class BouncyAsteroidsGame implements Game {
     private int currentLevel;
     private int propsCountdown = 60 * 20;
 
+    private boolean overLevel = false;
+
     public BouncyAsteroidsGame(PlayerListener listener) {
         this.listener = listener;
         startNewGame(false);
@@ -249,16 +251,14 @@ public class BouncyAsteroidsGame implements Game {
             playerBullets = new ArrayList<Bullet>();
         }
         else {
-            currentLevel = 0;
+            System.out.println("You win!");
+            overLevel = true;
         }
     }
 
     @Override
     public boolean isGameOver() {
-        if(player.getLives() > 0 && currentLevel + 1 > NO_LEVELS){
-            System.out.println("You win!");
-        }
-        return !(player.getLives() > 0 && currentLevel + 1 <= NO_LEVELS);
+        return player.getLives() <= 0 || overLevel;
     }
 
 
