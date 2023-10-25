@@ -21,6 +21,20 @@ public class Sound {
         }
     }
 
+    public static void hitSound() {
+        Clip hitSound = initSound("D:\\Program\\Java_work\\Bouncy_Asteroids\\sounds\\hitSound.wav");
+        if (hitSound != null) {
+            hitSound.start();
+        }
+    }
+
+    public static void propsSound() {
+        Clip propsSound = initSound("D:\\Program\\Java_work\\Bouncy_Asteroids\\sounds\\propsSound.wav");
+        if (propsSound != null) {
+            propsSound.start();
+        }
+    }
+
     public static Clip initSound(String path){
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(path).getAbsoluteFile());

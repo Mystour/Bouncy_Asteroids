@@ -101,6 +101,8 @@ public class BouncyAsteroidsGame implements Game {
                 playerBullet.move();
                 for (Hittable t : targets) {
                     if (!t.isPlayer() && t.isHit(playerBullet)) {
+                        Sound.hitSound();
+
                         playerScore += t.getPoints();
                         hasOver10000();
                         playerBullet.destroy();
