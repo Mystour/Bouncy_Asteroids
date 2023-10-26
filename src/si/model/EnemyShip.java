@@ -18,12 +18,6 @@ public class EnemyShip implements Hittable, Collisible {
         this.x = x;
         this.y = y;
         this.type = type;
-        if (type == AlienType.A){
-            this.acceleration = 0;
-        }
-        else {
-            this.acceleration = 2.0;
-        }
         this.height = type.getHeight();
         this.rand = new Random((int)(x * 100 + y));
         double rotation = rand.nextDouble() * 2 * Math.PI;
