@@ -10,12 +10,7 @@
     <list default="true" id="52b52198-ca85-4962-8e92-807cb5161ed5" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scores.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scores.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/si/display/GameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/display/GameScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/si/display/MenuScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/display/MenuScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/si/model/BouncyAsteroidsGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/BouncyAsteroidsGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/si/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/si/model/Props.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/Props.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/si/model/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/Sound.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +186,7 @@
       <workItem from="1698310447083" duration="613000" />
       <workItem from="1698314185315" duration="208000" />
       <workItem from="1698318063814" duration="37000" />
-      <workItem from="1698318127148" duration="3431000" />
+      <workItem from="1698318127148" duration="4160000" />
     </task>
     <servers />
   </component>

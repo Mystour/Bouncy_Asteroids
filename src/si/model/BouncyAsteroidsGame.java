@@ -27,7 +27,7 @@ public class BouncyAsteroidsGame implements Game {
     private Level[] level;
     private static final int NO_LEVELS = 10;
     private int currentLevel;
-    private int propsCountdown = 60 * 20;
+    private int propsCountdown;
 
     private boolean overLevel;
 
@@ -85,7 +85,7 @@ public class BouncyAsteroidsGame implements Game {
         if (listener.isPressingUp()){
             player.accelerate();
         }
-        else if (listener.isPressingLeft()) {
+        if (listener.isPressingLeft()) {
             player.rotate(-Math.PI/32);
         }
         else if (listener.isPressingRight()) {
@@ -169,6 +169,7 @@ public class BouncyAsteroidsGame implements Game {
     @Override
     public void startNewGame() {
         startNewGame(true);
+        propsCountdown = 60 * 20;
     }
 
     public void startNewGame(boolean isChoosingLevel) {
