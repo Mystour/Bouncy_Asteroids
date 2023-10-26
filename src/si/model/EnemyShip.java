@@ -77,7 +77,7 @@ public class EnemyShip implements Hittable, Collisible {
 
     public Bullet fire(double rotation) {
         Bullet bul = null;
-        if (rand.nextInt() % 200 == 0) {
+        if (rand.nextInt() % type.getFireRate() == 0) {
             double a = x + (double) (type.getWidth() * SHIP_SCALE) / 2;
             double b =  y + (SHIP_SCALE * height);
             bul = new Bullet(a, b, rotation, "enemy");
