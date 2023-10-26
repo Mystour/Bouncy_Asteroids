@@ -70,6 +70,7 @@ public class Player implements Hittable {
         x = 400 - WIDTH;
         y = 450;
         hitBox = new Rectangle2D(x, y, 8 * SHIP_SCALE, 5 * SHIP_SCALE);
+        speed_x = speed_y = 0;
     }
 
     public int getPoints() {
@@ -98,7 +99,8 @@ public class Player implements Hittable {
                 b.add(new Bullet(x - Math.cos(rotation) * 4 * SHIP_SCALE, y - Math.sin(rotation) * 30, rotation + Math.PI * 3/2, "player"));
                 b.add(new Bullet(x + Math.cos(rotation) * 4 * SHIP_SCALE, y + Math.sin(rotation) * 30, rotation + Math.PI * 3/2, "player"));
             }
-            Sound.playBulletSound();
+            Sound sound = Sound.getInstance();
+            sound.playBulletSound();
         }
         return b;
     }

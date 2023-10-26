@@ -52,6 +52,8 @@ public class MenuScreen implements Screen, Serializable {
         gc.fillText("To see the controls press A", BouncyAsteroidsGame.SCREEN_WIDTH/2.0, OFFSET + 200);
         gc.fillText("To see the High scores press H", BouncyAsteroidsGame.SCREEN_WIDTH/2.0, OFFSET + 300);
         gc.fillText("To exit press X", BouncyAsteroidsGame.SCREEN_WIDTH/2.0, OFFSET + 400);
-        Sound.playMenuSound();
+
+        Sound sound = Sound.getInstance();
+        sound.playMenuSound();
     }
 }

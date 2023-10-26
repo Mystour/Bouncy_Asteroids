@@ -188,9 +188,10 @@ public class GameScreen implements Screen, Serializable {
     }
 
     public void paint() {
+        Sound sound = Sound.getInstance();
         // the sound part
-        Sound.stopMenuSound();
-        Sound.playGameSound();
+        sound.stopMenuSound();
+        sound.playGameSound();
 
         GraphicsContext gc = this.canvas.getGraphicsContext2D();
         gc.clearRect(0, 0, BouncyAsteroidsGame.SCREEN_WIDTH, BouncyAsteroidsGame.SCREEN_HEIGHT);
@@ -256,8 +257,8 @@ public class GameScreen implements Screen, Serializable {
                 gc.setFill(Color.GREEN);
                 gc.fillText("Game over ", BouncyAsteroidsGame.SCREEN_WIDTH/2.0, BouncyAsteroidsGame.SCREEN_HEIGHT/2.0);
 
-                Sound.stopGameSound();
-                Sound.playMenuSound();
+                sound.stopGameSound();
+                sound.playMenuSound();
             }
         }
     }

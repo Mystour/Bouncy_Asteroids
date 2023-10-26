@@ -67,7 +67,8 @@ public class Props implements Collisible{
     public boolean isCollision(Player p) {
         boolean collision = getHitBox().intersects(p.getHitBox());
         if (collision) {
-            Sound.propsSound();
+            Sound sound = Sound.getInstance();
+            sound.propsSound();
 
             alive = false;
             p.setTripleFire();

@@ -8,12 +8,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52b52198-ca85-4962-8e92-807cb5161ed5" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/sounds/HitSound.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sounds/HitSound.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sounds/PropsSound.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sounds/PropsSound.wav" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scores.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scores.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/si/display/GameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/display/GameScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/si/display/MenuScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/display/MenuScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/si/model/BouncyAsteroidsGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/BouncyAsteroidsGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/si/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/si/model/Props.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/Props.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/si/model/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/Sound.java" afterDir="false" />
     </list>
@@ -61,7 +61,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;sound&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/Program/Java_work/Bouncy_Asteroids/src/si/display&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -70,7 +70,7 @@
     &quot;project.structure.last.edited&quot;: &quot;库&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -183,6 +183,15 @@
       <workItem from="1698198703426" duration="307000" />
       <workItem from="1698211805573" duration="20000" />
       <workItem from="1698223496208" duration="8912000" />
+      <workItem from="1698243449095" duration="3000" />
+      <workItem from="1698291267598" duration="152000" />
+      <workItem from="1698292767934" duration="296000" />
+      <workItem from="1698305358595" duration="1426000" />
+      <workItem from="1698308930135" duration="1065000" />
+      <workItem from="1698310447083" duration="613000" />
+      <workItem from="1698314185315" duration="208000" />
+      <workItem from="1698318063814" duration="37000" />
+      <workItem from="1698318127148" duration="3431000" />
     </task>
     <servers />
   </component>

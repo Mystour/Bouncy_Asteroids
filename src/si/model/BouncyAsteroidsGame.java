@@ -101,7 +101,8 @@ public class BouncyAsteroidsGame implements Game {
                 playerBullet.move();
                 for (Hittable t : targets) {
                     if (!t.isPlayer() && t.isHit(playerBullet)) {
-                        Sound.hitSound();
+                        Sound sound = Sound.getInstance();
+                        sound.hitSound();
 
                         playerScore += t.getPoints();
                         hasOver10000();
@@ -159,10 +160,6 @@ public class BouncyAsteroidsGame implements Game {
         }
     }
 
-
-    public static Rectangle2D getScreenBounds() {
-        return SCREEN_BOUNDS;
-    }
 
     @Override
     public boolean isPaused() {
@@ -256,13 +253,19 @@ public class BouncyAsteroidsGame implements Game {
         else {
             System.out.println("You win!");
             overLevel = true;
-
         }
     }
 
     @Override
     public boolean isGameOver() {
-        return player.getLives() <= 0 || overLevel;
+        if(player.getLives() <= 0 || overLevel) {
+            Sound sound = Sound.getInstance();
+            sound.stopGameSound();
+            sound.playMenuSound();
+
+            return true;
+        }
+        return false;
     }
 
 
