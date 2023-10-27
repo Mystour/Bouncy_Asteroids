@@ -12,12 +12,14 @@ public class Sound {
     private final Logger LOGGER = Logger.getLogger(Sound.class.getName());
     private final Clip menuSound;
     private final Clip gameSound;
+    private final Clip heartBeatSound;
 
     private static Sound instance = null;
 
     public Sound() {
         menuSound = initSound("D:\\Program\\Java_work\\Bouncy_Asteroids\\sounds\\menuSound.wav");
         gameSound = initSound("D:\\Program\\Java_work\\Bouncy_Asteroids\\sounds\\gameSound.wav");
+        heartBeatSound = initSound("D:\\Program\\Java_work\\Bouncy_Asteroids\\sounds\\heartBeatSound.wav");
     }
 
     public static Sound getInstance(){
@@ -27,6 +29,8 @@ public class Sound {
         return instance;
     }
 
+
+    // The sounds need no loop
     public void playBulletSound() {
         playSound("D:\\Program\\Java_work\\Bouncy_Asteroids\\sounds\\bulletSound.wav");
     }
@@ -81,5 +85,21 @@ public class Sound {
         if (gameSound != null) {
             gameSound.stop();
         }
+    }
+
+    public void playHeartBeatSound() {
+        if (heartBeatSound != null) {
+            heartBeatSound.loop(Clip.LOOP_CONTINUOUSLY);
+        }
+    }
+
+    public void stopHeartBeatSound() {
+        if (heartBeatSound != null) {
+            heartBeatSound.stop();
+        }
+    }
+
+    public boolean isHeartBeatSoundRunning() {
+        return heartBeatSound.isRunning();
     }
 }

@@ -191,7 +191,7 @@ public class GameScreen implements Screen, Serializable {
         Sound sound = Sound.getInstance();
         // the sound part
         sound.stopMenuSound();
-        sound.playGameSound();
+        if (!sound.isHeartBeatSoundRunning())  sound.playGameSound();
 
         GraphicsContext gc = this.canvas.getGraphicsContext2D();
         gc.clearRect(0, 0, BouncyAsteroidsGame.SCREEN_WIDTH, BouncyAsteroidsGame.SCREEN_HEIGHT);

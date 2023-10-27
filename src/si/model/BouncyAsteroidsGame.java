@@ -28,8 +28,8 @@ public class BouncyAsteroidsGame implements Game {
     private static final int NO_LEVELS = 10;
     private int currentLevel;
     private int propsCountdown;
-
     private boolean overLevel;
+    private boolean heartBeat = false;
 
     public BouncyAsteroidsGame(PlayerListener listener) {
         this.listener = listener;
@@ -259,12 +259,21 @@ public class BouncyAsteroidsGame implements Game {
 
     @Override
     public boolean isGameOver() {
+        Sound sound = Sound.getInstance();
         if(player.getLives() <= 0 || overLevel) {
-            Sound sound = Sound.getInstance();
             sound.stopGameSound();
             sound.playMenuSound();
 
             return true;
+        }
+        if (player.getLives() == 1) {
+            sound.stopGameSound();
+            sound.playHeartBeatSound();
+            heartBeat = true;
+        } else if (heartBeat) {
+            sound.stopHeartBeatSound();
+            sound.playGameSound();
+            heartBeat = false;
         }
         return false;
     }
