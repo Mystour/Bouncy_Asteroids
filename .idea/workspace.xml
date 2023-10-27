@@ -8,9 +8,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52b52198-ca85-4962-8e92-807cb5161ed5" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/Plane.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scores.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scores.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/si/model/EnemyShip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/EnemyShip.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/si/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/si/model/Swarm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/Swarm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,6 +191,9 @@
       <workItem from="1698318127148" duration="4403000" />
       <workItem from="1698322635128" duration="1662000" />
       <workItem from="1698324355918" duration="671000" />
+      <workItem from="1698325544106" duration="258000" />
+      <workItem from="1698395770987" duration="819000" />
+      <workItem from="1698397046282" duration="1264000" />
     </task>
     <servers />
   </component>

@@ -2,6 +2,7 @@ package si.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Swarm implements Movable {
     private final List<Asteroids> asteroids;
@@ -120,9 +121,8 @@ public class Swarm implements Movable {
                 int height = type.getHeight();
                 int width = type.getWidth();
 
-                double rotation = Math.random() * 2 * Math.PI;
-                speed_x = s.getSpeedX() + s.getAcceleration() * Math.cos(rotation);
-                speed_y = s.getSpeedY() + s.getAcceleration() * Math.sin(rotation);
+                speed_x = s.getSpeedX();
+                speed_y = s.getSpeedY();
 
                 if (s.getX() + speed_x > game.getScreenWidth() - width || s.getX() + speed_x < 0) {
                     s.setSpeedX(-speed_x);
@@ -130,6 +130,13 @@ public class Swarm implements Movable {
                 if (s.getY() + speed_y > game.getScreenHeight() - height || s.getY() + speed_y < 0) {
                     s.setSpeedY(-speed_y);
                 }
+
+                // if type B, rotate 90 degrees clockwise at random
+                if (type == AlienType.B && new Random().nextInt(200) == 0) {
+                    s.setSpeedX(-speed_y);
+                    s.setSpeedY(speed_x);
+                }
+
                 s.move(s.getSpeedX(), s.getSpeedY());
             }
         }
