@@ -39,9 +39,10 @@ public class Player implements Hittable {
     }
 
     public boolean isHit(Bullet b) {
-        boolean hit = hitBox.intersects(b.getHitBox());
+        boolean hit = hitBox.intersects(b.getHitBox())  && invincibilityCountdown <= 0;
         if (hit) {
             alive = false;
+            invincibilityCountdown = 120;  // 60 frames = 1 second
         }
         return hit;
     }
