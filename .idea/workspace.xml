@@ -14,10 +14,7 @@
     </loaded-modules>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52b52198-ca85-4962-8e92-807cb5161ed5" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="52b52198-ca85-4962-8e92-807cb5161ed5" name="更改" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -75,7 +72,7 @@
     "create.test.in.the.same.root": "true",
     "git-widget-placeholder": "master",
     "jdk.selected.JAVA_MODULE": "openjdk-20",
-    "last_opened_file_path": "D:/Program/Java_work/Bouncy_Asteroids/out/artifacts/Bouncy_Asteroids_jar",
+    "last_opened_file_path": "D:/1/学校事务/校内课程总集/面向对象编程/Project1",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -326,7 +323,7 @@
       <workItem from="1701945285702" duration="2666000" />
       <workItem from="1701948468693" duration="300000" />
       <workItem from="1701948792349" duration="5000" />
-      <workItem from="1701948811315" duration="3941000" />
+      <workItem from="1701948811315" duration="4560000" />
     </task>
     <servers />
   </component>
