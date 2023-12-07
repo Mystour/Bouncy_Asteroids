@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="Bouncy_Asteroids">
+    <output-path>$PROJECT_DIR$/out/artifacts/Bouncy_Asteroids</output-path>
+    <root id="root">
+      <element id="archive" name="Bouncy_Asteroids.jar">
+        <element id="module-output" name="Bouncy_Asteroids" />
+      </element>
+      <element id="library" level="project" name="COMP2011J.Game.EngineFX" />
+      <element id="library" level="project" name="lib" />
+      <element id="artifact" artifact-name="Bouncy_Asteroids:jar" />
+    </root>
+  </artifact>
+</component>

@@ -1,31 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AnalysisUIOptions">
-    <option name="SCOPE_TYPE" value="3" />
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Bouncy_Asteroids:jar" />
+    </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="AutomaticModuleUnloader">
+    <loaded-modules>
+      <module name="Bouncy_Asteroids" />
+    </loaded-modules>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="52b52198-ca85-4962-8e92-807cb5161ed5" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/sounds/heartBeatSound.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sounds/heartBeatSound.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qodana.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Bouncy_Asteroids_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Bouncy_Asteroids_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bouncy_Asteroids.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Bouncy_Asteroids.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scores.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scores.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/si/display/GameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/display/GameScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/si/model/BouncyAsteroidsGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/BouncyAsteroidsGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/si/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/si/model/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/Sound.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/si/model/Swarm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/Swarm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled/.idea/workspace.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -53,33 +68,45 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "player",
-    "last_opened_file_path": "D:/Program/Java_work/Bouncy_Asteroids/src/si/display",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "工件",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "com.intellij.jarRepository.settings.RemoteRepositoriesConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;create.test.in.the.same.root&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;player&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-20&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Program/Java_work/Bouncy_Asteroids/out/artifacts/Bouncy_Asteroids_jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Program\Java_work\Bouncy_Asteroids\out\artifacts\Bouncy_Asteroids_jar" />
       <recent name="D:\Program\Java_work\Bouncy_Asteroids\src\si\display" />
       <recent name="D:\Program\Java_work\Bouncy_Asteroids\libs" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Program\Java_work\Bouncy_Asteroids\sounds" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="si.display" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="si.model" />
@@ -88,6 +115,8 @@
   </component>
   <component name="RunManager">
     <configuration name="ApplicationStart" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-20" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="si.display.ApplicationStart" />
       <module name="Bouncy_Asteroids" />
       <option name="VM_PARAMETERS" value="--module-path &quot;D:\Program\Java_work\javafx-sdk-21\lib&quot; --add-modules=javafx.controls,javafx.fxml" />
@@ -195,12 +224,79 @@
       <workItem from="1698324355918" duration="671000" />
       <workItem from="1698325544106" duration="258000" />
       <workItem from="1698395770987" duration="819000" />
-      <workItem from="1698397046282" duration="4630000" />
+      <workItem from="1698397046282" duration="4750000" />
+      <workItem from="1698403710560" duration="2000" />
+      <workItem from="1698426642446" duration="10000" />
+      <workItem from="1698427187661" duration="1227000" />
+      <workItem from="1698473324540" duration="745000" />
+      <workItem from="1698493887818" duration="910000" />
+      <workItem from="1698494813185" duration="1156000" />
+      <workItem from="1698495986899" duration="4888000" />
+      <workItem from="1698557471945" duration="654000" />
+      <workItem from="1698558222869" duration="1000" />
+      <workItem from="1698567631227" duration="129000" />
+      <workItem from="1698571667326" duration="696000" />
+      <workItem from="1698915201405" duration="111000" />
+      <workItem from="1698915407749" duration="512000" />
+      <workItem from="1698918911656" duration="13000" />
+      <workItem from="1698920089967" duration="79000" />
+      <workItem from="1698920178220" duration="850000" />
+      <workItem from="1698923524636" duration="147000" />
+      <workItem from="1698923682384" duration="29000" />
+      <workItem from="1698923719148" duration="91000" />
+      <workItem from="1698923818729" duration="486000" />
+      <workItem from="1698924315967" duration="20000" />
+      <workItem from="1698924352053" duration="335000" />
+      <workItem from="1698924701041" duration="650000" />
+      <workItem from="1698925366100" duration="1447000" />
+      <workItem from="1698926836637" duration="6127000" />
+      <workItem from="1700704490664" duration="219000" />
+      <workItem from="1700798035427" duration="28000" />
+      <workItem from="1701054805542" duration="775000" />
+      <workItem from="1701249289927" duration="1279000" />
+      <workItem from="1701329986090" duration="224000" />
+      <workItem from="1701347317569" duration="557000" />
+      <workItem from="1701409566219" duration="308000" />
+      <workItem from="1701435048783" duration="3351000" />
+      <workItem from="1701506309568" duration="50000" />
+      <workItem from="1701506373038" duration="7830000" />
+      <workItem from="1701580747183" duration="2309000" />
+      <workItem from="1701591259865" duration="337000" />
+      <workItem from="1701600745120" duration="595000" />
+      <workItem from="1701656739521" duration="1134000" />
+      <workItem from="1701762528549" duration="57000" />
+      <workItem from="1701762602944" duration="584000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnloadedModulesList">
+    <module name="Test" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="player" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

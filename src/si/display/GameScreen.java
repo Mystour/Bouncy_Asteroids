@@ -43,30 +43,42 @@ public class GameScreen implements Screen, Serializable {
         }
         gc.setFill(Color.GRAY);
         gc.fillPolygon(x_adjusted, y_adjusted, x_adjusted.length);
+
+        // Draw the window
+        x_coords = new double[]{0, -0.5, -0.5, 0, 0.5, 0.5, 0};
+        y_coords = new double[]{-3.5, -3, -1.5, -1, -1.5, -3, -3.5};
+
+        x_adjusted = new double[x_coords.length];
+        y_adjusted = new double[y_coords.length];
+        for (int i = 0; i < x_coords.length; i++) {
+            x_adjusted[i] = x + (x_coords[i] * Math.cos(radius) - y_coords[i] * Math.sin(radius)) * Player.SHIP_SCALE;
+            y_adjusted[i] = y + (x_coords[i] * Math.sin(radius) + y_coords[i] * Math.cos(radius)) * Player.SHIP_SCALE;
+        }
+        gc.setFill(Color.BLACK);
+        gc.fillPolygon(x_adjusted, y_adjusted, x_adjusted.length);
     }
 
     private void drawShape(GraphicsContext gc, Bullet b) {
-        double x = b.getX();
-        double y = b.getY();
-        double radius = b.getRotation() + Math.PI/2;
-        // Draw the bullet
-        int[] x_coords = new int[]{-Bullet.BULLET_WIDTH/2, Bullet.BULLET_WIDTH/2, Bullet.BULLET_WIDTH/2, -Bullet.BULLET_WIDTH/2};
-        int[] y_coords = new int[]{-Bullet.BULLET_HEIGHT/2, -Bullet.BULLET_HEIGHT/2, Bullet.BULLET_HEIGHT/2, Bullet.BULLET_HEIGHT/2};
-
-        double[] x_adjusted = new double[4];
-        double[] y_adjusted = new double[4];
-        for (int i = 0; i < 4; i++) {
-            x_adjusted[i] = x + (x_coords[i] * Math.cos(radius) - y_coords[i] * Math.sin(radius)) * Player.SHIP_SCALE/2;
-            y_adjusted[i] = y + (x_coords[i] * Math.sin(radius) + y_coords[i] * Math.cos(radius)) * Player.SHIP_SCALE/2;
-        }
-
         if (b.getType().equals("player")) {
-            gc.setFill(Color.GREEN);
             drawFlame(gc, b);
         } else {
+            double x = b.getX();
+            double y = b.getY();
+            double radius = b.getRotation() + Math.PI/2;
+            // Draw the bullet
+            int[] x_coords = new int[]{-Bullet.BULLET_WIDTH/2, Bullet.BULLET_WIDTH/2, Bullet.BULLET_WIDTH/2, -Bullet.BULLET_WIDTH/2};
+            int[] y_coords = new int[]{-Bullet.BULLET_HEIGHT/2, -Bullet.BULLET_HEIGHT/2, Bullet.BULLET_HEIGHT/2, Bullet.BULLET_HEIGHT/2};
+
+            double[] x_adjusted = new double[4];
+            double[] y_adjusted = new double[4];
+            for (int i = 0; i < 4; i++) {
+                x_adjusted[i] = x + (x_coords[i] * Math.cos(radius) - y_coords[i] * Math.sin(radius)) * Player.SHIP_SCALE/2;
+                y_adjusted[i] = y + (x_coords[i] * Math.sin(radius) + y_coords[i] * Math.cos(radius)) * Player.SHIP_SCALE/2;
+            }
+
             gc.setFill(Color.RED);
+            gc.fillPolygon(x_adjusted, y_adjusted, x_adjusted.length);
         }
-        gc.fillPolygon(x_adjusted, y_adjusted, x_adjusted.length);
     }
 
     private void drawFlame(GraphicsContext gc, Bullet b) {

@@ -1,10 +1,10 @@
+26750 TongGuan
+22950 A
+18651 22ChenZiang
 18650 Niu
-18200 HHH
-17300 Highest
 15950 Highest
-12800 ChenZiang
+12800 21ChenZiang
 12000 Sean
-9450 CC
-9200 Player 1
-8600 MM
-8350 Player 1
+10850 OrikasaYuki
+850 S
+10 P

@@ -3,7 +3,6 @@
     <output-path>$PROJECT_DIR$/out/artifacts/Bouncy_Asteroids_jar</output-path>
     <root id="archive" name="Bouncy_Asteroids.jar">
       <element id="module-output" name="Bouncy_Asteroids" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/libs/COMP2011J.Game.EngineFX.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/../javafx-sdk-21/lib/javafx-swt.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/../javafx-sdk-21/lib/javafx.base.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/../javafx-sdk-21/lib/javafx.controls.jar" path-in-jar="/" />
@@ -12,6 +11,7 @@
       <element id="extracted-dir" path="$PROJECT_DIR$/../javafx-sdk-21/lib/javafx.media.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/../javafx-sdk-21/lib/javafx.swing.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/../javafx-sdk-21/lib/javafx.web.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/COMP2011J.Game.EngineFX.jar" path-in-jar="/" />
       <element id="library" level="project" name="lib" />
       <element id="library" level="project" name="COMP2011J.Game.EngineFX" />
     </root>

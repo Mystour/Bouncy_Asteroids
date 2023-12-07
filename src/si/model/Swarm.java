@@ -10,7 +10,7 @@ public class Swarm implements Movable {
     private final List<Props> props;
     private final BouncyAsteroidsGame game;
 
-    public final static int safeDistance = 20;
+    public final static int safeDistance = 80;
 
     public Swarm(int numA, int numB, int numC, BouncyAsteroidsGame g) {
         game = g;
