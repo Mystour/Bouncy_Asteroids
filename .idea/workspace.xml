@@ -15,17 +15,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52b52198-ca85-4962-8e92-807cb5161ed5" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/qodana.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Bouncy_Asteroids_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Bouncy_Asteroids_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Bouncy_Asteroids.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Bouncy_Asteroids.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scores.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scores.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/si/display/GameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/display/GameScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/si/model/Swarm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/Swarm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/untitled/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/BouncyAsteroidsGameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/BouncyAsteroidsGameTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,8 +31,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -71,6 +63,10 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
@@ -78,7 +74,7 @@
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
     &quot;create.test.in.the.same.root&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;player&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;test&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-20&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/Program/Java_work/Bouncy_Asteroids/out/artifacts/Bouncy_Asteroids_jar&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -113,26 +109,88 @@
       <recent name="si.display" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="ApplicationStart" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-20" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="si.display.ApplicationStart" />
+  <component name="RunManager" selected="JUnit.BouncyAsteroidsGameTest.playerCanFireBullets">
+    <configuration name="BouncyAsteroidsGameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Bouncy_Asteroids" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;D:\Program\Java_work\javafx-sdk-21\lib&quot; --add-modules=javafx.controls,javafx.fxml" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="si.display.*" />
+          <option name="PATTERN" value="test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.BouncyAsteroidsGameTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BouncyAsteroidsGameTest,playerCanFireBullets 和其他 1 个" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Bouncy_Asteroids" />
+      <option name="TEST_OBJECT" value="pattern" />
+      <patterns>
+        <pattern testClass="test.BouncyAsteroidsGameTest,playerCanFireBullets" />
+        <pattern testClass="test.BouncyAsteroidsGameTest,playerCanMove" />
+      </patterns>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BouncyAsteroidsGameTest.playerCanFireBullets" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Bouncy_Asteroids" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.BouncyAsteroidsGameTest" />
+      <option name="METHOD_NAME" value="playerCanFireBullets" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BouncyAsteroidsGameTest.playerCanMove" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Bouncy_Asteroids" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.BouncyAsteroidsGameTest" />
+      <option name="METHOD_NAME" value="playerCanMove" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BouncyAsteroidsGameTest.playerCanRotate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Bouncy_Asteroids" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.BouncyAsteroidsGameTest" />
+      <option name="METHOD_NAME" value="playerCanRotate" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.ApplicationStart" />
+        <item itemvalue="JUnit.BouncyAsteroidsGameTest.playerCanFireBullets" />
+        <item itemvalue="JUnit.BouncyAsteroidsGameTest.playerCanMove" />
+        <item itemvalue="JUnit.BouncyAsteroidsGameTest.playerCanRotate" />
+        <item itemvalue="JUnit.BouncyAsteroidsGameTest" />
+        <item itemvalue="JUnit.BouncyAsteroidsGameTest,playerCanFireBullets 和其他 1 个" />
       </list>
     </recent_temporary>
   </component>
@@ -266,6 +324,10 @@
       <workItem from="1701656739521" duration="1134000" />
       <workItem from="1701762528549" duration="57000" />
       <workItem from="1701762602944" duration="584000" />
+      <workItem from="1701945285702" duration="2666000" />
+      <workItem from="1701948468693" duration="300000" />
+      <workItem from="1701948792349" duration="5000" />
+      <workItem from="1701948811315" duration="3276000" />
     </task>
     <servers />
   </component>
