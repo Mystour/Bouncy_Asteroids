@@ -48,7 +48,7 @@ The game is structured into several classes, each responsible for a specific asp
 - JUnit: For running unit tests (if any).
 
 ## Testing
-To run tests (if any), use the following command: `mvn test` (replace with your actual command)
+To run tests, right-click on the test class or method in IntelliJ IDEA and select 'Run'.
 
 ## Appraisal
 
@@ -78,10 +78,7 @@ Please note that this appraisal is based on the current state of the project. Fu
 - Chen Ziang
 
 ## Contact
-For any queries or help related to the project, please reach out at `your-email@example.com`.
+For any queries or help related to the project, please reach out at `960015420@qq.com`.
 
 ## Contributing
 Contributions are welcome! Please fork the repository and create a pull request with your changes.
-
-## License
-This project is licensed under the terms of the MIT license.
