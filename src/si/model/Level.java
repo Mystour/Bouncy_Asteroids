@@ -66,13 +66,25 @@ public class Level {
         } else {
             type = AlienType.B;
         }
-        x = type.getWidth() + Math.random() * (game.getScreenWidth() - 2 * type.getWidth());
-        y = type.getHeight() + Math.random() * (game.getScreenHeight() - 2 * type.getHeight());
-        while (Math.abs(x - game.getPlayer().getX()) < 20 + Swarm.safeDistance && Math.abs(y - game.getPlayer().getY()) < 20 + Swarm.safeDistance) {
-            x = type.getWidth() + Math.random() * game.getScreenWidth();
-            y = type.getHeight() + Math.random() * game.getScreenHeight();
-        }
+        do {
+            x = type.getWidth() + Math.random() * (game.getScreenWidth() - 2 * type.getWidth());
+            y = type.getHeight() + Math.random() * (game.getScreenHeight() - 2 * type.getHeight());
+        } while (!isSafeLocation(x, y));
         return new EnemyShip(x, y, type);
+    }
+
+    private boolean isSafeLocation(double x, double y) {
+        if (Math.abs(x - game.getPlayer().getX()) < 20 + Swarm.safeDistance &&
+            Math.abs(y - game.getPlayer().getY()) < 20 + Swarm.safeDistance) {
+            return false;
+        }
+        for (Asteroids asteroid : swarm.getAsteroids()) {
+            if (Math.abs(x - asteroid.getX()) < 20 + Swarm.safeDistance &&
+                Math.abs(y - asteroid.getY()) < 20 + Swarm.safeDistance) {
+                return false;
+            }
+        }
+        return true;
     }
 
 

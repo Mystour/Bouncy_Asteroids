@@ -9,6 +9,7 @@ public class Swarm implements Movable {
     private final List<EnemyShip> ships;
     private final List<Props> props;
     private final BouncyAsteroidsGame game;
+    private final Player player;
 
     public final static int safeDistance = 80;
 
@@ -17,37 +18,20 @@ public class Swarm implements Movable {
         asteroids = new ArrayList<>();
         ships = new ArrayList<>();
         props = new ArrayList<>();
-        Player player = game.getPlayer();
-        double x;
-        double y;
-        PlanetType type;
-        for (int i = 0; i < numA; i++) {
-            type = PlanetType.A;
+        player = game.getPlayer();
+
+        createAsteroids(numA, PlanetType.A);
+        createAsteroids(numB, PlanetType.B);
+        createAsteroids(numC, PlanetType.C);
+    }
+
+    private void createAsteroids(int num, PlanetType type) {
+        for (int i = 0; i < num; i++) {
+            double x, y;
             x = type.getRadius() + Math.random() * (game.getScreenWidth() - 2 * type.getRadius());
             y = type.getRadius() + Math.random() * (game.getScreenHeight() - 2 * type.getRadius());
-            while (Math.abs(x - player.getX()) <  PlanetType.A.getRadius() + safeDistance && Math.abs(y - player.getY()) < PlanetType.A.getRadius() + safeDistance) {
-                x = type.getRadius() + Math.random() * (game.getScreenWidth() - 2 * type.getRadius());
-                y = type.getRadius() + Math.random() * (game.getScreenHeight() - 2 * type.getRadius());
-            }
-            Asteroids a = new Asteroids(x, y, Math.random()* 2 * Math.PI, type);
-            asteroids.add(a);
-        }
-        for (int i = 0; i < numB; i++) {
-            type = PlanetType.B;
-            x = type.getRadius() + Math.random() * (game.getScreenWidth() - 2 * type.getRadius());
-            y = type.getRadius() + Math.random() * (game.getScreenHeight() - 2 * type.getRadius());
-            while (Math.abs(x - player.getX()) <  PlanetType.B.getRadius() + safeDistance && Math.abs(y - player.getY()) < PlanetType.B.getRadius() + safeDistance) {
-                x = type.getRadius() + Math.random() * (game.getScreenWidth() - 2 * type.getRadius());
-                y = type.getRadius() + Math.random() * (game.getScreenHeight() - 2 * type.getRadius());
-            }
-            Asteroids a = new Asteroids(x, y, Math.random()* 2 * Math.PI, type);
-            asteroids.add(a);
-        }
-        for (int i = 0; i < numC; i++) {
-            type = PlanetType.C;
-            x = type.getRadius() + Math.random() * (game.getScreenWidth() - 2 * type.getRadius());
-            y = type.getRadius() + Math.random() * (game.getScreenHeight() - 2 * type.getRadius());
-            while (Math.abs(x - player.getX()) <  PlanetType.C.getRadius() + safeDistance && Math.abs(y - player.getY()) < PlanetType.C.getRadius() + safeDistance) {
+            while (Math.abs(x - player.getX()) < type.getRadius() + safeDistance &&
+                    Math.abs(y - player.getY()) < type.getRadius() + safeDistance) {
                 x = type.getRadius() + Math.random() * (game.getScreenWidth() - 2 * type.getRadius());
                 y = type.getRadius() + Math.random() * (game.getScreenHeight() - 2 * type.getRadius());
             }
@@ -65,19 +49,16 @@ public class Swarm implements Movable {
             if (!s.isAlive()) {
                 removeA.add(s);
                 PlanetType type = s.getType();
+                int x = (int)s.getX();
+                int y = (int)s.getY();
+                double rotation = s.getRotation();
                 if (type == PlanetType.A) {
-                    int x = (int)s.getX();
-                    int y = (int)s.getY();
-                    double rotation = s.getRotation();
                     Asteroids a = new Asteroids(x, y, rotation - Math.PI / 9 + Math.random() * 2 * Math.PI / 9, PlanetType.B);
                     Asteroids b = new Asteroids(x, y, rotation - Math.PI / 9 - Math.random() * 2 * Math.PI / 9, PlanetType.B);
 
                     addA.add(a);
                     addA.add(b);
                 } else if (type == PlanetType.B) {
-                    int x = (int) s.getX();
-                    int y = (int)s.getY();
-                    double rotation = s.getRotation();
                     Asteroids a = new Asteroids(x, y, rotation - Math.PI / 9 + Math.random() * 2 * Math.PI / 9, PlanetType.C);
                     Asteroids b = new Asteroids(x, y, rotation - Math.PI / 9 - Math.random() * 2 * Math.PI / 9, PlanetType.C);
 
