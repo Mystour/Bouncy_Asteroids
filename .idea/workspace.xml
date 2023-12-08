@@ -15,8 +15,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52b52198-ca85-4962-8e92-807cb5161ed5" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/si/model/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/Level.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/si/model/Swarm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/si/model/Swarm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -328,7 +326,7 @@
       <workItem from="1701948811315" duration="4560000" />
       <workItem from="1702029256499" duration="1477000" />
       <workItem from="1702030894360" duration="50000" />
-      <workItem from="1702030957486" duration="4654000" />
+      <workItem from="1702030957486" duration="5062000" />
     </task>
     <servers />
   </component>

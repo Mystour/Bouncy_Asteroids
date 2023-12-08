@@ -52,16 +52,15 @@ public class Swarm implements Movable {
                 int x = (int)s.getX();
                 int y = (int)s.getY();
                 double rotation = s.getRotation();
+                Asteroids a = null, b = null;
                 if (type == PlanetType.A) {
-                    Asteroids a = new Asteroids(x, y, rotation - Math.PI / 9 + Math.random() * 2 * Math.PI / 9, PlanetType.B);
-                    Asteroids b = new Asteroids(x, y, rotation - Math.PI / 9 - Math.random() * 2 * Math.PI / 9, PlanetType.B);
-
-                    addA.add(a);
-                    addA.add(b);
+                    a = new Asteroids(x, y, rotation - Math.PI / 9 + Math.random() * 2 * Math.PI / 9, PlanetType.B);
+                    b = new Asteroids(x, y, rotation - Math.PI / 9 - Math.random() * 2 * Math.PI / 9, PlanetType.B);
                 } else if (type == PlanetType.B) {
-                    Asteroids a = new Asteroids(x, y, rotation - Math.PI / 9 + Math.random() * 2 * Math.PI / 9, PlanetType.C);
-                    Asteroids b = new Asteroids(x, y, rotation - Math.PI / 9 - Math.random() * 2 * Math.PI / 9, PlanetType.C);
-
+                    a = new Asteroids(x, y, rotation - Math.PI / 9 + Math.random() * 2 * Math.PI / 9, PlanetType.C);
+                    b = new Asteroids(x, y, rotation - Math.PI / 9 - Math.random() * 2 * Math.PI / 9, PlanetType.C);
+                }
+                if (a != null) {
                     addA.add(a);
                     addA.add(b);
                 }
