@@ -27,11 +27,11 @@ public class Level {
 
 
     public List<Hittable> getHittable() {
-        return new ArrayList<Hittable>(swarm.getHittable());
+        return new ArrayList<>(swarm.getHittable());
     }
 
     public List<Collisible> getCollisible() {
-        return new ArrayList<Collisible>(swarm.getCollisible());
+        return new ArrayList<>(swarm.getCollisible());
     }
 
     public List<Asteroids> getAsteroids() {
@@ -89,7 +89,7 @@ public class Level {
 
 
     private List<Bullet> getEbullet() {
-        List<Bullet> eBullets = new ArrayList<Bullet>();
+        List<Bullet> eBullets = new ArrayList<>();
         Player player = game.getPlayer();
         double x = player.getX();
         double y = player.getY();

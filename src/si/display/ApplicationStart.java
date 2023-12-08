@@ -9,8 +9,6 @@ import si.model.BouncyAsteroidsGame;
 import ucd.comp2011j.engine.GameManager;
 import ucd.comp2011j.engine.ScoreKeeper;
 
-import java.io.IOException;
-
 public class ApplicationStart extends Application {
 
     public static void main(String[] args) {
@@ -18,7 +16,7 @@ public class ApplicationStart extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws IOException{
+    public void start(Stage primaryStage) {
         StackPane root = new StackPane();
         Scene scene = new Scene(root, BouncyAsteroidsGame.SCREEN_WIDTH, BouncyAsteroidsGame.SCREEN_HEIGHT);
         PlayerListener playerListener = new PlayerListener();

@@ -5,7 +5,6 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import si.model.BouncyAsteroidsGame;
 import ucd.comp2011j.engine.Screen;
@@ -16,9 +15,7 @@ import java.io.Serializable;
 public class AboutScreen implements Screen, Serializable {
     @Serial
     private static final long serialVersionUID = -1264717778772722118L;
-    private boolean menu = false;
     private final Canvas canvas;
-    private PlayerListener listener;
 
     public AboutScreen() {
         canvas = new Canvas(BouncyAsteroidsGame.SCREEN_WIDTH, BouncyAsteroidsGame.SCREEN_HEIGHT);
@@ -56,13 +53,5 @@ public class AboutScreen implements Screen, Serializable {
         gc.setTextAlign(TextAlignment.CENTER);
         gc.setFont(new Font("Arial", 28));
         gc.fillText("Press 'M' to return to the Main Menu", BouncyAsteroidsGame.SCREEN_WIDTH / 2.0, 416);
-    }
-
-    private double calcCenterX(String t, int size) {
-        Font font = new Font("Arial", size);
-        Text internal = new Text(t);
-        internal.setFont(font);
-        double textWidth = internal.getLayoutBounds().getWidth();
-        return BouncyAsteroidsGame.SCREEN_WIDTH / 2.0 - textWidth;
     }
 }

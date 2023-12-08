@@ -127,7 +127,7 @@ public class BouncyAsteroidsGame implements Game {
     }
 
     private void enemyBullets() {
-        List<Bullet> remove = new ArrayList<Bullet>();
+        List<Bullet> remove = new ArrayList<>();
         for (Bullet b : enemyBullets) {
             if (b.isAlive() && b.getHitBox().intersects(SCREEN_BOUNDS)) {
                 b.move();
@@ -173,12 +173,12 @@ public class BouncyAsteroidsGame implements Game {
     }
 
     public void startNewGame(boolean isChoosingLevel) {
-        targets = new ArrayList<Hittable>();
-        colliders = new ArrayList<Collisible>();
+        targets = new ArrayList<>();
+        colliders = new ArrayList<>();
         playerScore = 0;
         currentLevel = 0;
-        playerBullets = new ArrayList<Bullet>();
-        enemyBullets = new ArrayList<Bullet>();
+        playerBullets = new ArrayList<>();
+        enemyBullets = new ArrayList<>();
         player = new Player();
         level = new Level[NO_LEVELS];
         level[0] = new Level(1, 0, 0, this);
@@ -236,7 +236,7 @@ public class BouncyAsteroidsGame implements Game {
     public void resetDestroyedPlayer() {
         System.out.println("Resetting player");
         player.resetDestroyed();
-        playerBullets = new ArrayList<Bullet>();
+        playerBullets = new ArrayList<>();
     }
 
     @Override
@@ -249,7 +249,7 @@ public class BouncyAsteroidsGame implements Game {
 
             getSwarm().setProps(prevSwarm.getProps());
             player.resetDestroyed();
-            playerBullets = new ArrayList<Bullet>();
+            playerBullets = new ArrayList<>();
         }
         else {
             System.out.println("You win!");

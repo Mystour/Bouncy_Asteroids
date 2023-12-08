@@ -41,10 +41,10 @@ public class Swarm implements Movable {
     }
 
     public void move() {
-        List<Asteroids> removeA = new ArrayList<Asteroids>();
-        List<Asteroids> addA = new ArrayList<Asteroids>();
-        List<EnemyShip> removeS = new ArrayList<EnemyShip>();
-        List<Props> removeP = new ArrayList<Props>();
+        List<Asteroids> removeA = new ArrayList<>();
+        List<Asteroids> addA = new ArrayList<>();
+        List<EnemyShip> removeS = new ArrayList<>();
+        List<Props> removeP = new ArrayList<>();
         for (Asteroids s : asteroids) {
             if (!s.isAlive()) {
                 removeA.add(s);
@@ -160,14 +160,14 @@ public class Swarm implements Movable {
     }
 
     public List<Hittable> getHittable() {
-        List<Hittable> targets = new ArrayList<Hittable>();
+        List<Hittable> targets = new ArrayList<>();
         targets.addAll(asteroids);
         targets.addAll(ships);
         return targets;
     }
 
     public List<Collisible> getCollisible() {
-        List<Collisible> targets = new ArrayList<Collisible>();
+        List<Collisible> targets = new ArrayList<>();
         targets.addAll(asteroids);
         targets.addAll(ships);
         targets.addAll(props);
@@ -175,14 +175,14 @@ public class Swarm implements Movable {
     }
 
     public List<Asteroids> getAsteroids() {
-        return new ArrayList<Asteroids>(asteroids);
+        return new ArrayList<>(asteroids);
     }
 
     public List<EnemyShip> getEnemyShips() {
-        return new ArrayList<EnemyShip>(ships);
+        return new ArrayList<>(ships);
     }
 
-    public List<Props> getProps() { return new ArrayList<Props>(props); }
+    public List<Props> getProps() { return new ArrayList<>(props); }
 
     public void setProps(List<Props> props) { this.props.addAll(props); }
 

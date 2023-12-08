@@ -93,7 +93,7 @@ public class Player implements Hittable {
     }
 
     public List<Bullet> fire() {
-        List<Bullet> b = new ArrayList<Bullet>();
+        List<Bullet> b = new ArrayList<>();
         if (weaponCountdown == 0) {
             b.add(new Bullet(this.getHeadX(), this.getHeadY(), rotation + Math.PI * 3/2, "player"));
             if (tripleFire && tripleCountdown > 0){

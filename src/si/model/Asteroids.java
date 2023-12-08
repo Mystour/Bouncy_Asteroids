@@ -128,7 +128,7 @@ public class Asteroids implements Hittable, Collisible {
     public void setRotation(double rotation) { this.rotation = rotation; }
 
     private List<Crater> generateCraters() {
-        List<Crater> craters = new ArrayList<Crater>();
+        List<Crater> craters = new ArrayList<>();
         for (int i = 0; i < numDetails; i++) {
             // Create an asteroid detail (a smaller irregular polygon)
             int detailSize = type.getRadius(); // The size of the detail is a fraction of the asteroid's size
