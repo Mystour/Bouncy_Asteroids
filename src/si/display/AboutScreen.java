@@ -41,16 +41,16 @@ public class AboutScreen implements Screen, Serializable {
         int start = 128;
         int gap = 48;
         gc.fillText("Accelerate", 1 * BouncyAsteroidsGame.SCREEN_WIDTH / 6.0, start + 0 * gap);
-        gc.fillText("up arrow", 4 * BouncyAsteroidsGame.SCREEN_WIDTH / 6.0, start + 0 * gap);
         gc.fillText("Rotate Left", 1 * BouncyAsteroidsGame.SCREEN_WIDTH / 6.0, start + 1 * gap);
-        gc.fillText("left arrow", 4 * BouncyAsteroidsGame.SCREEN_WIDTH / 6.0, start + 1 * gap);
         gc.fillText("Rotate Right", 1 * BouncyAsteroidsGame.SCREEN_WIDTH / 6.0, start + 2 * gap);
-        gc.fillText("right arrow", 4 * BouncyAsteroidsGame.SCREEN_WIDTH / 6.0, start + 2 * gap);
         gc.fillText("Fire", 1 * BouncyAsteroidsGame.SCREEN_WIDTH / 6.0, start + 3 * gap);
-        gc.fillText("space bar", 4 * BouncyAsteroidsGame.SCREEN_WIDTH / 6.0, start + 3 * gap);
         gc.fillText("Play/Pause", 1 * BouncyAsteroidsGame.SCREEN_WIDTH / 6.0, start + 4 * gap);
-        gc.fillText("p", 4 * BouncyAsteroidsGame.SCREEN_WIDTH / 6.0, start + 4 * gap);
         gc.setTextAlign(TextAlignment.CENTER);
+        gc.fillText("up arrow", 4 * BouncyAsteroidsGame.SCREEN_WIDTH / 6.0, start + 0 * gap);
+        gc.fillText("left arrow", 4 * BouncyAsteroidsGame.SCREEN_WIDTH / 6.0, start + 1 * gap);
+        gc.fillText("right arrow", 4 * BouncyAsteroidsGame.SCREEN_WIDTH / 6.0, start + 2 * gap);
+        gc.fillText("space bar (hold for continuous fire)", 4 * BouncyAsteroidsGame.SCREEN_WIDTH / 6.0, start + 3 * gap);
+        gc.fillText("p", 4 * BouncyAsteroidsGame.SCREEN_WIDTH / 6.0, start + 4 * gap);
         gc.setFont(new Font("Arial", 28));
         gc.fillText("Press 'M' to return to the Main Menu", BouncyAsteroidsGame.SCREEN_WIDTH / 2.0, 416);
     }
