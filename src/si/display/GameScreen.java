@@ -125,8 +125,8 @@ public class GameScreen implements Screen, Serializable {
     }
 
     private void drawEnemyA(GraphicsContext gc, EnemyShip es) {
-        int x = es.getX();
-        int y = es.getY();
+        int x = (int)es.getX();
+        int y = (int)es.getY();
         int[] x_coords = new int[]{0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 8, 8, 7, 7, 6, 6, 5, 5, 4, 4, 3, 3, 2, 2, 1, 1, 0};
         int[] y_coords = new int[]{7, 4, 4, 3, 3, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 3, 3, 4, 4, 7, 7, 5, 5, 7, 7, 6, 6, 7, 7, 6, 6, 7, 7, 5, 5, 7, 7};
         double[] x_adjusted = new double[x_coords.length];
@@ -147,8 +147,8 @@ public class GameScreen implements Screen, Serializable {
     }
 
     private void drawEnemyB(GraphicsContext gc, EnemyShip es) {
-        int x = es.getX();
-        int y = es.getY();
+        int x = (int)es.getX();
+        int y = (int)es.getY();
         int[] x_coords = new int[]{3, 2, 1, 0, 3, 6, 0, 2, 5, 1, 3, 6, 0, 2, 5, 7};
         int[] y_coords = new int[]{0, 1, 2, 3, 3, 3, 4, 5, 5, 6, 6, 6, 7, 7, 7, 7};
         int[] widths = new int[]{2, 4, 6, 2, 2, 2, 8, 1, 1, 1, 2, 1, 1, 1, 1, 1};

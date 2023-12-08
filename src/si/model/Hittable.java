@@ -10,5 +10,9 @@ public interface Hittable {
 	Rectangle2D getHitBox();
 
 	boolean isEnemy();
+
+	// to find the position of the target
+	double getX();
+	double getY();
 }
 

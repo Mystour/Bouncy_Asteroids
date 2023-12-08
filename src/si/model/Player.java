@@ -16,7 +16,7 @@ public class Player implements Hittable {
     private int invincibilityCountdown = 0;
     private int tripleCountdown = 60 * 10;
     private boolean alive = true;
-    private int lives = 3;
+    private int lives = 100;
     public static final int SHIP_SCALE = 4;
     private static final int WIDTH = SHIP_SCALE * 8;
     private boolean tripleFire;

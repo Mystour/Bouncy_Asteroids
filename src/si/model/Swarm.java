@@ -66,8 +66,8 @@ public class Swarm implements Movable {
                 removeA.add(s);
                 PlanetType type = s.getType();
                 if (type == PlanetType.A) {
-                    int x = s.getX();
-                    int y = s.getY();
+                    int x = (int)s.getX();
+                    int y = (int)s.getY();
                     double rotation = s.getRotation();
                     Asteroids a = new Asteroids(x, y, rotation - Math.PI / 9 + Math.random() * 2 * Math.PI / 9, PlanetType.B);
                     Asteroids b = new Asteroids(x, y, rotation - Math.PI / 9 - Math.random() * 2 * Math.PI / 9, PlanetType.B);
@@ -75,8 +75,8 @@ public class Swarm implements Movable {
                     addA.add(a);
                     addA.add(b);
                 } else if (type == PlanetType.B) {
-                    int x = s.getX();
-                    int y = s.getY();
+                    int x = (int) s.getX();
+                    int y = (int)s.getY();
                     double rotation = s.getRotation();
                     Asteroids a = new Asteroids(x, y, rotation - Math.PI / 9 + Math.random() * 2 * Math.PI / 9, PlanetType.C);
                     Asteroids b = new Asteroids(x, y, rotation - Math.PI / 9 - Math.random() * 2 * Math.PI / 9, PlanetType.C);
@@ -121,8 +121,16 @@ public class Swarm implements Movable {
                 int height = type.getHeight();
                 int width = type.getWidth();
 
+                // trying to dodge the player and asteroids
+                for (Asteroids a : asteroids) {
+                    s.dodge(a.getX(), a.getY());
+                }
+                Player player = game.getPlayer();
+                s.dodge(player.getX(), player.getY());
+
                 speed_x = s.getSpeedX();
                 speed_y = s.getSpeedY();
+
 
                 if (s.getX() + speed_x > game.getScreenWidth() - width || s.getX() + speed_x < 0) {
                     speed_x = -speed_x;

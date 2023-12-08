@@ -110,11 +110,11 @@ public class Asteroids implements Hittable, Collisible {
         return false;
     }
 
-    public int getX() {
+    public double getX() {
         return (int) x;
     }
 
-    public int getY() {
+    public double getY() {
         return (int) y;
     }
 

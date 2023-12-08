@@ -88,12 +88,12 @@ public class EnemyShip implements Hittable, Collisible {
         return new Rectangle2D(x, y, SHIP_SCALE * type.getWidth(), SHIP_SCALE * type.getHeight());
     }
 
-    public int getX() {
-        return (int) x;
+    public double getX() {
+        return x;
     }
 
-    public int getY() {
-        return (int) y;
+    public double getY() {
+        return y;
     }
 
     public double getSpeedX() {
@@ -102,6 +102,10 @@ public class EnemyShip implements Hittable, Collisible {
 
     public double getSpeedY() {
         return speed_y;
+    }
+
+    public double getSpeed() {
+        return Math.sqrt(Math.pow(speed_x, 2) + Math.pow(speed_y, 2));
     }
 
     public void setSpeedX(double speed_x) {
@@ -114,5 +118,15 @@ public class EnemyShip implements Hittable, Collisible {
 
     public boolean isEnemy() {
         return true;
+    }
+
+    public void dodge(double x, double y) {
+        double distance = Math.sqrt(Math.pow(x - this.x, 2) + Math.pow(y - this.y, 2));
+        if (distance < 100) {
+            double rotation = Math.atan2(y - this.y, x - this.x);
+            double speed = getSpeed();
+            speed_x = -speed * Math.cos(rotation);
+            speed_y = -speed * Math.sin(rotation);
+        }
     }
 }
