@@ -35,26 +35,23 @@ public class GameScreen implements Screen, Serializable {
         double[] x_coords = new double[]{0, -1, -1, -2, -2, -3, -4, -4, -5, -5, -7, -7, -3, -2, -4, -4, -2, -1, 1, 2, 4, 4, 2, 3, 7, 7, 5, 5, 4, 4, 3, 2, 2, 1, 1, 0};
         double[] y_coords = new double[]{-6, -5, -3, -2, 0, 1, 1.25, 0, 0, 1.5, 2, 4, 4, 5, 6, 7, 7, 6, 6, 7, 7, 6, 5, 4, 4, 2, 1.5, 0, 0, 1.25, 1, 0, -2, -3, -5, -6};
 
+        drawPolygon(gc, x_coords, y_coords, Color.GRAY, x, y, radius);
+
+        // Draw the window
+        x_coords = new double[]{0, -0.5, -0.5, 0, 0.5, 0.5, 0};
+        y_coords = new double[]{-3.5, -3, -1.5, -1, -1.5, -3, -3.5};
+
+        drawPolygon(gc, x_coords, y_coords, Color.BLACK, x, y, radius);
+    }
+
+    private void drawPolygon(GraphicsContext gc, double[] x_coords, double[] y_coords, Color color, double x, double y, double radius) {
         double[] x_adjusted = new double[x_coords.length];
         double[] y_adjusted = new double[y_coords.length];
         for (int i = 0; i < x_coords.length; i++) {
             x_adjusted[i] = x + (x_coords[i] * Math.cos(radius) - y_coords[i] * Math.sin(radius)) * Player.SHIP_SCALE;
             y_adjusted[i] = y + (x_coords[i] * Math.sin(radius) + y_coords[i] * Math.cos(radius)) * Player.SHIP_SCALE;
         }
-        gc.setFill(Color.GRAY);
-        gc.fillPolygon(x_adjusted, y_adjusted, x_adjusted.length);
-
-        // Draw the window
-        x_coords = new double[]{0, -0.5, -0.5, 0, 0.5, 0.5, 0};
-        y_coords = new double[]{-3.5, -3, -1.5, -1, -1.5, -3, -3.5};
-
-        x_adjusted = new double[x_coords.length];
-        y_adjusted = new double[y_coords.length];
-        for (int i = 0; i < x_coords.length; i++) {
-            x_adjusted[i] = x + (x_coords[i] * Math.cos(radius) - y_coords[i] * Math.sin(radius)) * Player.SHIP_SCALE;
-            y_adjusted[i] = y + (x_coords[i] * Math.sin(radius) + y_coords[i] * Math.cos(radius)) * Player.SHIP_SCALE;
-        }
-        gc.setFill(Color.BLACK);
+        gc.setFill(color);
         gc.fillPolygon(x_adjusted, y_adjusted, x_adjusted.length);
     }
 
